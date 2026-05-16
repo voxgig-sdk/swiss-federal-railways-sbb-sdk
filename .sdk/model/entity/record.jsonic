@@ -1,0 +1,195 @@
+# Entity: record
+
+main: kit: entity: record: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "abfahrtszeit_ist"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "abfahrtszeit_soll"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ankunftszeit_ist"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ankunftszeit_soll"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "betreiber_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "betreiber_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "betriebstag"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "durchfahrt"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "faellt_aus"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "fahrt_bezeichner"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "haltestellen_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "linien_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "linien_text"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "produkt_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "verkehrsmittel_text"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "record"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "exclude"
+                orig: "exclude"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "de"
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "order_by"
+                orig: "order_by"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "refine"
+                orig: "refine"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "select"
+                orig: "select"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "where"
+                orig: "where"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/catalog/datasets/ist-daten-sbb/records"
+          parts: [
+            "catalog"
+            "datasets"
+            "ist-daten-sbb"
+            "records"
+          ]
+          select: {
+            exist: [
+              "exclude"
+              "lang"
+              "limit"
+              "offset"
+              "order_by"
+              "refine"
+              "select"
+              "where"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

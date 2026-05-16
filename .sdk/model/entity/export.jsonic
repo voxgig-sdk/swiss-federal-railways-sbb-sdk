@@ -1,0 +1,146 @@
+# Entity: export
+
+main: kit: entity: export: {
+
+  alias: field: {}
+
+  name: "export"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "exclude"
+                orig: "exclude"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "de"
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "refine"
+                orig: "refine"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "where"
+                orig: "where"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/catalog/datasets/ist-daten-sbb/exports/json"
+          parts: [
+            "catalog"
+            "datasets"
+            "ist-daten-sbb"
+            "exports"
+            "json"
+          ]
+          select: {
+            "$action": "json"
+            exist: [
+              "exclude"
+              "lang"
+              "refine"
+              "where"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: ";"
+                kind: "query"
+                name: "delimiter"
+                orig: "delimiter"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "exclude"
+                orig: "exclude"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "de"
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "refine"
+                orig: "refine"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "where"
+                orig: "where"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/catalog/datasets/ist-daten-sbb/exports/csv"
+          parts: [
+            "catalog"
+            "datasets"
+            "ist-daten-sbb"
+            "exports"
+            "csv"
+          ]
+          select: {
+            "$action": "csv"
+            exist: [
+              "delimiter"
+              "exclude"
+              "lang"
+              "refine"
+              "where"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

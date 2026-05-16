@@ -1,0 +1,401 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swiss Federal Railways (SBB)",
+    "description": "This API provides departure, delay, and cancellation data from the Swiss Federal Railways (SBB) for the previous day. It compares scheduled (soll) vs. actual (ist) operations.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Open Data Plattform öV Schweiz",
+      "url": "https://www.opentransportdata.swiss"
+    },
+    "termsOfService": "https://data.sbb.ch"
+  },
+  "servers": [
+    {
+      "url": "https://data.sbb.ch/api/explore/v2.1",
+      "description": "SBB Open Data API Server"
+    }
+  ],
+  "paths": {
+    "/catalog/datasets/ist-daten-sbb/records": {
+      "get": {
+        "summary": "Get SBB departure/arrival records",
+        "description": "Retrieves scheduled vs. actual departure and arrival time comparison data from the previous day",
+        "operationId": "getRecords",
+        "tags": [
+          "Records"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of records to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of records to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "description": "Filter expression for querying specific records",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "Field to order results by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "description": "Comma-separated list of fields to return",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "refine",
+            "in": "query",
+            "description": "Refine results by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exclude",
+            "in": "query",
+            "description": "Exclude results by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language for response (de, fr, it, en)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "de",
+                "fr",
+                "it",
+                "en"
+              ],
+              "default": "de"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with SBB departure/arrival records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_count": {
+                      "type": "integer",
+                      "description": "Total number of records matching the query"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique record identifier"
+                          },
+                          "betriebstag": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Operating day"
+                          },
+                          "fahrt_bezeichner": {
+                            "type": "string",
+                            "description": "Trip identifier"
+                          },
+                          "betreiber_id": {
+                            "type": "string",
+                            "description": "Operator ID"
+                          },
+                          "betreiber_name": {
+                            "type": "string",
+                            "description": "Operator name"
+                          },
+                          "produkt_id": {
+                            "type": "string",
+                            "description": "Product ID (train type)"
+                          },
+                          "linien_id": {
+                            "type": "string",
+                            "description": "Line ID"
+                          },
+                          "linien_text": {
+                            "type": "string",
+                            "description": "Line text/number"
+                          },
+                          "verkehrsmittel_text": {
+                            "type": "string",
+                            "description": "Transport type"
+                          },
+                          "haltestellen_name": {
+                            "type": "string",
+                            "description": "Station name"
+                          },
+                          "ankunftszeit_soll": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Scheduled arrival time"
+                          },
+                          "ankunftszeit_ist": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Actual arrival time"
+                          },
+                          "abfahrtszeit_soll": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Scheduled departure time"
+                          },
+                          "abfahrtszeit_ist": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Actual departure time"
+                          },
+                          "durchfahrt": {
+                            "type": "boolean",
+                            "description": "Through passage (no stop)"
+                          },
+                          "faellt_aus": {
+                            "type": "boolean",
+                            "description": "Cancelled"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "429": {
+            "description": "Too many requests"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/catalog/datasets/ist-daten-sbb/exports/json": {
+      "get": {
+        "summary": "Export records as JSON",
+        "description": "Export all SBB departure/arrival records in JSON format",
+        "operationId": "exportJson",
+        "tags": [
+          "Export"
+        ],
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "description": "Filter expression for export",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "refine",
+            "in": "query",
+            "description": "Refine export by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exclude",
+            "in": "query",
+            "description": "Exclude from export by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language for export (de, fr, it, en)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "de",
+                "fr",
+                "it",
+                "en"
+              ],
+              "default": "de"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON export file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "429": {
+            "description": "Too many requests"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/catalog/datasets/ist-daten-sbb/exports/csv": {
+      "get": {
+        "summary": "Export records as CSV",
+        "description": "Export all SBB departure/arrival records in CSV format",
+        "operationId": "exportCsv",
+        "tags": [
+          "Export"
+        ],
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "description": "Filter expression for export",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "refine",
+            "in": "query",
+            "description": "Refine export by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exclude",
+            "in": "query",
+            "description": "Exclude from export by specific field values",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "delimiter",
+            "in": "query",
+            "description": "CSV delimiter character",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                ",",
+                ";",
+                "\t"
+              ],
+              "default": ";"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language for export (de, fr, it, en)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "de",
+                "fr",
+                "it",
+                "en"
+              ],
+              "default": "de"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV export file",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "429": {
+            "description": "Too many requests"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Records",
+      "description": "Query and retrieve SBB departure/arrival records"
+    },
+    {
+      "name": "Export",
+      "description": "Export SBB data in various formats"
+    }
+  ]
+}

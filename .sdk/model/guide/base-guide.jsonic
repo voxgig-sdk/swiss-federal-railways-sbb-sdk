@@ -1,0 +1,25 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: export: {
+    path: "/catalog/datasets/ist-daten-sbb/exports/csv": {
+      action: "csv": {}
+      op: load: method: *GET
+    }
+    path: "/catalog/datasets/ist-daten-sbb/exports/json": {
+      action: "json": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: record: {
+    path: "/catalog/datasets/ist-daten-sbb/records": {
+      op: list: method: *GET
+    }
+  }
+
+}

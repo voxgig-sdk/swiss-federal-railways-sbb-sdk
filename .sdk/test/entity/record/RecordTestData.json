@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "record": {
+      "RECORD00": {
+        "abfahrtszeit_ist": "sa0",
+        "abfahrtszeit_soll": "sa1",
+        "ankunftszeit_ist": "sa2",
+        "ankunftszeit_soll": "sa3",
+        "betreiber_id": "BETREIBER01",
+        "betreiber_name": "sa5",
+        "betriebstag": "sa6",
+        "durchfahrt": false,
+        "faellt_aus": true,
+        "fahrt_bezeichner": "sa9",
+        "haltestellen_name": "saa",
+        "id": "RECORD00",
+        "linien_id": "LINIEN01",
+        "linien_text": "sad",
+        "produkt_id": "PRODUKT01",
+        "verkehrsmittel_text": "saf"
+      },
+      "RECORD01": {
+        "abfahrtszeit_ist": "s140",
+        "abfahrtszeit_soll": "s141",
+        "ankunftszeit_ist": "s142",
+        "ankunftszeit_soll": "s143",
+        "betreiber_id": "BETREIBER01",
+        "betreiber_name": "s145",
+        "betriebstag": "s146",
+        "durchfahrt": false,
+        "faellt_aus": true,
+        "fahrt_bezeichner": "s149",
+        "haltestellen_name": "s14a",
+        "id": "RECORD01",
+        "linien_id": "LINIEN01",
+        "linien_text": "s14d",
+        "produkt_id": "PRODUKT01",
+        "verkehrsmittel_text": "s14f"
+      },
+      "RECORD02": {
+        "abfahrtszeit_ist": "s1e0",
+        "abfahrtszeit_soll": "s1e1",
+        "ankunftszeit_ist": "s1e2",
+        "ankunftszeit_soll": "s1e3",
+        "betreiber_id": "BETREIBER01",
+        "betreiber_name": "s1e5",
+        "betriebstag": "s1e6",
+        "durchfahrt": false,
+        "faellt_aus": true,
+        "fahrt_bezeichner": "s1e9",
+        "haltestellen_name": "s1ea",
+        "id": "RECORD02",
+        "linien_id": "LINIEN01",
+        "linien_text": "s1ed",
+        "produkt_id": "PRODUKT01",
+        "verkehrsmittel_text": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "record": {
+      "record_ref01": {
+        "abfahrtszeit_ist": "s280",
+        "abfahrtszeit_soll": "s281",
+        "ankunftszeit_ist": "s282",
+        "ankunftszeit_soll": "s283",
+        "betreiber_id": "BETREIBER01",
+        "betreiber_name": "s285",
+        "betriebstag": "s286",
+        "durchfahrt": false,
+        "faellt_aus": true,
+        "fahrt_bezeichner": "s289",
+        "haltestellen_name": "s28a",
+        "linien_id": "LINIEN01",
+        "linien_text": "s28d",
+        "produkt_id": "PRODUKT01",
+        "verkehrsmittel_text": "s28f"
+      }
+    }
+  }
+}
