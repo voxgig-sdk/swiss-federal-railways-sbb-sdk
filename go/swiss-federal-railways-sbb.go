@@ -1,10 +1,10 @@
 package voxgigswissfederalrailwayssbbsdk
 
 import (
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/core"
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/entity"
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/feature"
-	_ "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/utility"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/core"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/entity"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/feature"
+	_ "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

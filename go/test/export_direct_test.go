@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk"
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/core"
+	sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/core"
 )
 
 func TestExportDirect(t *testing.T) {

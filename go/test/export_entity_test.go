@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk"
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/core"
+	sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/utility/struct"
 )
 
 func TestExportEntity(t *testing.T) {

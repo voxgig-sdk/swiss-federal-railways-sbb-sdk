@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/core"
+	"github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go/core"
 )
 
 type LogFeature struct {
