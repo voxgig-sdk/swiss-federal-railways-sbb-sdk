@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://data.sbb.ch/api/explore/v2.1",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
