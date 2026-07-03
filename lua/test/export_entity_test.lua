@@ -98,6 +98,7 @@ function export_basic_setup(extra)
     ["SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID"] = idmap,
     ["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] = "FALSE",
     ["SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN"] = "FALSE",
+    ["SWISSFEDERALRAILWAYSSBB_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -109,6 +110,7 @@ function export_basic_setup(extra)
   if env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
       },
       extra or {},
     })

@@ -63,12 +63,14 @@ function record_direct_setup(mockres)
   local env = runner.env_override({
     ["SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID"] = {},
     ["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] = "FALSE",
+    ["SWISSFEDERALRAILWAYSSBB_APIKEY"] = "NONE",
   })
 
   local live = env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

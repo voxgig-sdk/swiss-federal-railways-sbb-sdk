@@ -106,12 +106,14 @@ def export_direct_setup(mockres)
   env = Runner.env_override({
     "SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID" => {},
     "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
+    "SWISSFEDERALRAILWAYSSBB_APIKEY" => "NONE",
   })
 
   live = env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
     }
     client = SwissFederalRailwaysSbbSDK.new(merged_opts)
     return {

@@ -129,6 +129,7 @@ func exportBasicSetup(extra map[string]any) *entityTestSetup {
 		"SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID": idmap,
 		"SWISSFEDERALRAILWAYSSBB_TEST_LIVE":      "FALSE",
 		"SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN":   "FALSE",
+		"SWISSFEDERALRAILWAYSSBB_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID"])
@@ -139,6 +140,7 @@ func exportBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
 			},
 			extra,
 		})

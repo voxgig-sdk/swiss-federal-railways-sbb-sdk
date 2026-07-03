@@ -135,12 +135,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID': {},
     'SWISSFEDERALRAILWAYSSBB_TEST_LIVE': 'FALSE',
+    'SWISSFEDERALRAILWAYSSBB_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.SWISSFEDERALRAILWAYSSBB_TEST_LIVE
 
   if (live) {
     const client = new SwissFederalRailwaysSbbSDK({
+      apikey: env.SWISSFEDERALRAILWAYSSBB_APIKEY,
     })
 
     let idmap: any = env['SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID']

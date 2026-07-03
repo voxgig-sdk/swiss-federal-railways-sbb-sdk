@@ -1,22 +1,8 @@
 # SwissFederalRailwaysSbb SDK
 
-Browse Swiss Federal Railways (SBB) open datasets — infrastructure, timetables, and previous-day soll/ist performance
+Swiss Federal Railways (SBB) client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Swiss Federal Railways (SBB)
-
-[Swiss Federal Railways (SBB / Schweizerische Bundesbahnen)](https://www.sbb.ch/) publishes a wide-ranging open data portal at [data.sbb.ch](https://data.sbb.ch/). The portal is powered by [OpenDataSoft](https://www.opendatasoft.com/) and exposes a standard Explore v2.1 REST API for searching, filtering and exporting the underlying datasets.
-
-For this SDK the focus is the previous-day operational data — the actual vs. scheduled (`ist` vs. `soll`) record of departures, arrivals, delays and cancellations across the SBB network. Each row typically carries the scheduled and effective times for a stop, the operator, line and a status flag for cancellations, so it can be joined back to other timetable or station datasets.
-
-What you can do via the API:
-
-- Query individual records of a dataset with filters, sorts and aggregations using the OpenDataSoft Query Language (ODSQL).
-- Export full result sets as JSON, CSV, GeoJSON, Parquet or Excel.
-- Browse the dataset catalog and discover other SBB open datasets (infrastructure, station equipment, ridership, etc.).
-
-Operational notes: the v2.1 API does not require authentication for public datasets, though anonymous use is rate-limited by the OpenDataSoft platform. The previous-day dataset is refreshed daily and is not a real-time feed; for live train positions use other SBB/opentransportdata.swiss services.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install swiss-federal-railways-sbb-sdk
 luarocks install swiss-federal-railways-sbb-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { SwissFederalRailwaysSbbSDK } from 'swiss-federal-railways-sbb'
 
-const client = new SwissFederalRailwaysSbbSDK({})
+const client = new SwissFederalRailwaysSbbSDK({
+  apikey: process.env.SWISS-FEDERAL-RAILWAYS-SBB_APIKEY,
+})
 
 // List all exports
 const exports = await client.Export().list()
+console.log(exports.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Export** | Bulk export of a dataset's records in a chosen format (JSON, CSV, GeoJSON, Parquet, Excel), via `/catalog/datasets/{dataset_id}/exports/{format}`. | `/catalog/datasets/ist-daten-sbb/exports/json` |
-| **Record** | An individual row of a dataset — for the SBB previous-day feed, one scheduled stop with its soll/ist times and cancellation flag — retrieved via `/catalog/datasets/{dataset_id}/records`. | `/catalog/datasets/ist-daten-sbb/records` |
+| **Export** |  | `/catalog/datasets/ist-daten-sbb/exports/json` |
+| **Record** |  | `/catalog/datasets/ist-daten-sbb/records` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,17 +101,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
 
-client = SwissFederalRailwaysSbbSDK({})
+client = SwissFederalRailwaysSbbSDK({
+    "apikey": os.environ.get("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
+})
 
 # List all exports
-exports, err = client.Export(None).list(None, None)
+exports, err = client.Export().list()
+print(exports)
 
 # Load a specific export
-export, err = client.Export(None).load(
-    {"id": "example_id"}, None
-)
+export, err = client.Export().load({"id": "example_id"})
+print(export)
 ```
 
 ### PHP
@@ -132,15 +123,17 @@ export, err = client.Export(None).load(
 <?php
 require_once 'swissfederalrailwayssbb_sdk.php';
 
-$client = new SwissFederalRailwaysSbbSDK([]);
+$client = new SwissFederalRailwaysSbbSDK([
+    "apikey" => getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
+]);
 
 // List all exports
-[$exports, $err] = $client->Export(null)->list(null, null);
+[$exports, $err] = $client->Export()->list();
+print_r($exports);
 
 // Load a specific export
-[$export, $err] = $client->Export(null)->load(
-    ["id" => "example_id"], null
-);
+[$export, $err] = $client->Export()->load(["id" => "example_id"]);
+print_r($export);
 ```
 
 ### Golang
@@ -148,10 +141,13 @@ $client = new SwissFederalRailwaysSbbSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go"
 
-client := sdk.NewSwissFederalRailwaysSbbSDK(map[string]any{})
+client := sdk.NewSwissFederalRailwaysSbbSDK(map[string]any{
+    "apikey": os.Getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
+})
 
 // List all exports
 exports, err := client.Export(nil).List(nil, nil)
+fmt.Println(exports)
 ```
 
 ### Ruby
@@ -159,15 +155,17 @@ exports, err := client.Export(nil).List(nil, nil)
 ```ruby
 require_relative "SwissFederalRailwaysSbb_sdk"
 
-client = SwissFederalRailwaysSbbSDK.new({})
+client = SwissFederalRailwaysSbbSDK.new({
+  "apikey" => ENV["SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"],
+})
 
 # List all exports
-exports, err = client.Export(nil).list(nil, nil)
+exports, err = client.Export().list
+puts exports
 
 # Load a specific export
-export, err = client.Export(nil).load(
-  { "id" => "example_id" }, nil
-)
+export, err = client.Export().load({ "id" => "example_id" })
+puts export
 ```
 
 ### Lua
@@ -175,15 +173,17 @@ export, err = client.Export(nil).load(
 ```lua
 local sdk = require("swiss-federal-railways-sbb_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
+})
 
 -- List all exports
-local exports, err = client:Export(nil):list(nil, nil)
+local exports, err = client:Export():list()
+print(exports)
 
 -- Load a specific export
-local export, err = client:Export(nil):load(
-  { id = "example_id" }, nil
-)
+local export, err = client:Export():load({ id = "example_id" })
+print(export)
 ```
 
 ## Unit testing in offline mode
@@ -202,25 +202,21 @@ const result = await client.Export().load({ id: 'test01' })
 ### Python
 
 ```python
-client = SwissFederalRailwaysSbbSDK.test(None, None)
-result, err = client.Export(None).load(
-    {"id": "test01"}, None
-)
+client = SwissFederalRailwaysSbbSDK.test()
+result, err = client.Export().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = SwissFederalRailwaysSbbSDK::test(null, null);
-[$result, $err] = $client->Export(null)->load(
-    ["id" => "test01"], null
-);
+$client = SwissFederalRailwaysSbbSDK::test();
+[$result, $err] = $client->Export()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Export(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -229,19 +225,15 @@ result, err := client.Export(nil).Load(
 ### Ruby
 
 ```ruby
-client = SwissFederalRailwaysSbbSDK.test(nil, nil)
-result, err = client.Export(nil).load(
-  { "id" => "test01" }, nil
-)
+client = SwissFederalRailwaysSbbSDK.test
+result, err = client.Export().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Export(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Export():load({ id = "test01" })
 ```
 
 ## How it works
@@ -345,16 +337,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Swiss Federal Railways (SBB)
-
-- Upstream: [https://data.sbb.ch/](https://data.sbb.ch/)
-- API docs: [https://data.sbb.ch/api/explore/v2.1/console](https://data.sbb.ch/api/explore/v2.1/console)
-
-- Datasets are published by SBB under terms summarised as `NonCommercialAllowed-CommercialAllowed-ReferenceRequired`.
-- Attribution to SBB / Schweizerische Bundesbahnen is required when reusing the data.
-- Some datasets ultimately originate from [opentransportdata.swiss](https://opentransportdata.swiss/) and may carry additional terms.
-- Full licence text: <https://data.sbb.ch/page/licence>.
 
 ---
 

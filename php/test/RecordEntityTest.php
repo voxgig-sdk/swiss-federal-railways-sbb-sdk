@@ -86,6 +86,7 @@ function record_basic_setup($extra)
         "SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID" => $idmap,
         "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN" => "FALSE",
+        "SWISSFEDERALRAILWAYSSBB_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function record_basic_setup($extra)
     if ($env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
             ],
             $extra ?? [],
         ]);

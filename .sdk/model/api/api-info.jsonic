@@ -18,30 +18,7 @@ main: {
       termsOfService: "https://data.sbb.ch"
       title: "Swiss Federal Railways (SBB)"
       version: "1.0.0"
-      tagline: "Browse Swiss Federal Railways (SBB) open datasets — infrastructure, timetables, and previous-day soll/ist performance"
-      homepage: "https://data.sbb.ch/"
-      docs_url: "https://data.sbb.ch/api/explore/v2.1/console"
-      license_short: "Open data — non-commercial and commercial use allowed, attribution required (see SBB licence page)."
-      license_md: `- Datasets are published by SBB under terms summarised as \`NonCommercialAllowed-CommercialAllowed-ReferenceRequired\`.
-- Attribution to SBB / Schweizerische Bundesbahnen is required when reusing the data.
-- Some datasets ultimately originate from [opentransportdata.swiss](https://opentransportdata.swiss/) and may carry additional terms.
-- Full licence text: <https://data.sbb.ch/page/licence>.`
-      about_md: `[Swiss Federal Railways (SBB / Schweizerische Bundesbahnen)](https://www.sbb.ch/) publishes a wide-ranging open data portal at [data.sbb.ch](https://data.sbb.ch/). The portal is powered by [OpenDataSoft](https://www.opendatasoft.com/) and exposes a standard Explore v2.1 REST API for searching, filtering and exporting the underlying datasets.
-
-For this SDK the focus is the previous-day operational data — the actual vs. scheduled (\`ist\` vs. \`soll\`) record of departures, arrivals, delays and cancellations across the SBB network. Each row typically carries the scheduled and effective times for a stop, the operator, line and a status flag for cancellations, so it can be joined back to other timetable or station datasets.
-
-What you can do via the API:
-
-- Query individual records of a dataset with filters, sorts and aggregations using the OpenDataSoft Query Language (ODSQL).
-- Export full result sets as JSON, CSV, GeoJSON, Parquet or Excel.
-- Browse the dataset catalog and discover other SBB open datasets (infrastructure, station equipment, ridership, etc.).
-
-Operational notes: the v2.1 API does not require authentication for public datasets, though anonymous use is rate-limited by the OpenDataSoft platform. The previous-day dataset is refreshed daily and is not a real-time feed; for live train positions use other SBB/opentransportdata.swiss services.`
-      entity_desc: {
-        export: "Bulk export of a dataset's records in a chosen format (JSON, CSV, GeoJSON, Parquet, Excel), via `/catalog/datasets/{dataset_id}/exports/{format}`."
-        record: "An individual row of a dataset — for the SBB previous-day feed, one scheduled stop with its soll/ist times and cancellation flag — retrieved via `/catalog/datasets/{dataset_id}/records`."
-      }
-      auth: false
     }
   }
 }
+
