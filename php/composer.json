@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/swiss-federal-railways-sbb",
-  "description": "SwissFederalRailwaysSbb SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Swiss Federal Railways (SBB) public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "swiss-federal-railways-sbb"],
+  "homepage": "https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

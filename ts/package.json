@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/swiss-federal-railways-sbb",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Swiss Federal Railways (SBB) public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "swiss-federal-railways-sbb"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/issues"
+  },
   "main": "dist/SwissFederalRailwaysSbbSDK.js",
   "type": "commonjs",
   "types": "dist/SwissFederalRailwaysSbbSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "SwissFederalRailwaysSbb",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

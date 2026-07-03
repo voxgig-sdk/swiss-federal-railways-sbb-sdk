@@ -10,13 +10,13 @@ The Ruby SDK for the SwissFederalRailwaysSbb API — an entity-oriented client u
 
 ## Install
 ```bash
-gem install swiss-federal-railways-sbb-sdk
+gem install voxgig-sdk-swiss-federal-railways-sbb
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "swiss-federal-railways-sbb-sdk"
+gem "voxgig-sdk-swiss-federal-railways-sbb"
 ```
 
 Then run:

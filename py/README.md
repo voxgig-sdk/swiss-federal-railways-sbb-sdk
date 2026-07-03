@@ -10,7 +10,7 @@ The Python SDK for the SwissFederalRailwaysSbb API — an entity-oriented client
 
 ## Install
 ```bash
-pip install swiss-federal-railways-sbb-sdk
+pip install voxgig-sdk-swiss-federal-railways-sbb
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The PHP SDK for the SwissFederalRailwaysSbb API — an entity-oriented client us
 
 ## Install
 ```bash
-composer require voxgig/swiss-federal-railways-sbb-sdk
+composer require voxgig-sdk/swiss-federal-railways-sbb
 ```
 
 

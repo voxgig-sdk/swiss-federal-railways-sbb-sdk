@@ -10,7 +10,7 @@ The Lua SDK for the SwissFederalRailwaysSbb API — an entity-oriented client us
 
 ## Install
 ```bash
-luarocks install swiss-federal-railways-sbb-sdk
+luarocks install voxgig-sdk-swiss-federal-railways-sbb
 ```
 
 If the module is not yet published, add the source directory to

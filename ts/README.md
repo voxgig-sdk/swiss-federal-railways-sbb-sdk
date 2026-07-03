@@ -10,7 +10,7 @@ The TypeScript SDK for the SwissFederalRailwaysSbb API — a type-safe, entity-o
 
 ## Install
 ```bash
-npm install swiss-federal-railways-sbb
+npm install @voxgig-sdk/swiss-federal-railways-sbb
 ```
 ## Tutorial: your first API call
 
