@@ -50,14 +50,12 @@ class TestExportEntity:
         export_ref01_ent = client.Export(None)
         export_ref01_match = {}
 
-        export_ref01_list_result, err = export_ref01_ent.list(export_ref01_match, None)
-        assert err is None
+        export_ref01_list_result = export_ref01_ent.list(export_ref01_match, None)
         assert isinstance(export_ref01_list_result, list)
 
         # LOAD
         export_ref01_match_dt0 = {}
-        export_ref01_data_dt0_loaded, err = export_ref01_ent.load(export_ref01_match_dt0, None)
-        assert err is None
+        export_ref01_data_dt0_loaded = export_ref01_ent.load(export_ref01_match_dt0, None)
         assert export_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _export_basic_setup(extra):
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID": idmap,
         "SWISSFEDERALRAILWAYSSBB_TEST_LIVE": "FALSE",
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN": "FALSE",
-        "SWISSFEDERALRAILWAYSSBB_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _export_basic_setup(extra):
     if env.get("SWISSFEDERALRAILWAYSSBB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SWISSFEDERALRAILWAYSSBB_APIKEY"),
             },
             extra or {},
         ])

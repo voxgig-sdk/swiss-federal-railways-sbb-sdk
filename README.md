@@ -10,26 +10,24 @@ This is an unofficial SDK for the Swiss Federal Railways (SBB) public API, gener
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb` | `npm install @voxgig-sdk/swiss-federal-railways-sbb` |
-| Python | `voxgig-sdk-swiss-federal-railways-sbb` | `pip install voxgig-sdk-swiss-federal-railways-sbb` |
-| PHP | `voxgig-sdk/swiss-federal-railways-sbb` | `composer require voxgig-sdk/swiss-federal-railways-sbb` |
-| Golang | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go` | `go get github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go` |
-| Ruby | `voxgig-sdk-swiss-federal-railways-sbb` | `gem install voxgig-sdk-swiss-federal-railways-sbb` |
-| Lua | `voxgig-sdk-swiss-federal-railways-sbb` | `luarocks install voxgig-sdk-swiss-federal-railways-sbb` |
+| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| Python | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| PHP | `voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go` | `go get github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go@latest` |
+| Ruby | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| Lua | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from 'swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
 
-const client = new SwissFederalRailwaysSbbSDK({
-  apikey: process.env.SWISS-FEDERAL-RAILWAYS-SBB_APIKEY,
-})
+const client = new SwissFederalRailwaysSbbSDK()
 
 // List all exports
-const exports = await client.Export().list()
+const exports = await client.export.list()
 console.log(exports.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Export** |  | `/catalog/datasets/ist-daten-sbb/exports/json` |
-| **Record** |  | `/catalog/datasets/ist-daten-sbb/records` |
+| **Export** | The Export entity (list, load). | `/catalog/datasets/ist-daten-sbb/exports/json` |
+| **Record** | The Record entity (list). | `/catalog/datasets/ist-daten-sbb/records` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,19 +80,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
 
-client = SwissFederalRailwaysSbbSDK({
-    "apikey": os.environ.get("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
-})
+client = SwissFederalRailwaysSbbSDK()
 
 # List all exports
-exports, err = client.Export().list()
+exports = client.export.list()
 print(exports)
 
 # Load a specific export
-export, err = client.Export().load({"id": "example_id"})
+export = client.export.load({"id": "example_id"})
 print(export)
 ```
 
@@ -104,16 +99,14 @@ print(export)
 <?php
 require_once 'swissfederalrailwayssbb_sdk.php';
 
-$client = new SwissFederalRailwaysSbbSDK([
-    "apikey" => getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
-]);
+$client = new SwissFederalRailwaysSbbSDK();
 
-// List all exports
-[$exports, $err] = $client->Export()->list();
+// List all exports (throws on error)
+$exports = $client->export()->list();
 print_r($exports);
 
 // Load a specific export
-[$export, $err] = $client->Export()->load(["id" => "example_id"]);
+$export = $client->export()->load(["id" => "example_id"]);
 print_r($export);
 ```
 
@@ -122,9 +115,7 @@ print_r($export);
 ```go
 import sdk "github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go"
 
-client := sdk.NewSwissFederalRailwaysSbbSDK(map[string]any{
-    "apikey": os.Getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
-})
+client := sdk.New()
 
 // List all exports
 exports, err := client.Export(nil).List(nil, nil)
@@ -136,16 +127,14 @@ fmt.Println(exports)
 ```ruby
 require_relative "SwissFederalRailwaysSbb_sdk"
 
-client = SwissFederalRailwaysSbbSDK.new({
-  "apikey" => ENV["SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"],
-})
+client = SwissFederalRailwaysSbbSDK.new
 
 # List all exports
-exports, err = client.Export().list
+exports = client.export.list
 puts exports
 
 # Load a specific export
-export, err = client.Export().load({ "id" => "example_id" })
+export = client.export.load({ "id" => "example_id" })
 puts export
 ```
 
@@ -154,16 +143,14 @@ puts export
 ```lua
 local sdk = require("swiss-federal-railways-sbb_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all exports
-local exports, err = client:Export():list()
+local exports, err = client:export():list()
 print(exports)
 
 -- Load a specific export
-local export, err = client:Export():load({ id = "example_id" })
+local export, err = client:export():load({ id = "example_id" })
 print(export)
 ```
 
@@ -176,7 +163,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SwissFederalRailwaysSbbSDK.test()
-const result = await client.Export().load({ id: 'test01' })
+const result = await client.export.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -184,14 +171,14 @@ const result = await client.Export().load({ id: 'test01' })
 
 ```python
 client = SwissFederalRailwaysSbbSDK.test()
-result, err = client.Export().load({"id": "test01"})
+result = client.export.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = SwissFederalRailwaysSbbSDK::test();
-[$result, $err] = $client->Export()->load(["id" => "test01"]);
+$result = $client->export()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -207,14 +194,14 @@ result, err := client.Export(nil).Load(
 
 ```ruby
 client = SwissFederalRailwaysSbbSDK.test
-result, err = client.Export().load({ "id" => "test01" })
+result = client.export.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Export():load({ id = "test01" })
+local result, err = client:export():load({ id = "test01" })
 ```
 
 ## How it works
@@ -267,7 +254,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -276,7 +263,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -294,7 +281,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

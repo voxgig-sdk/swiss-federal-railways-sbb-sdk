@@ -50,14 +50,12 @@ class ExportEntityTest extends TestCase
         $export_ref01_ent = $client->Export(null);
         $export_ref01_match = [];
 
-        [$export_ref01_list_result, $err] = $export_ref01_ent->list($export_ref01_match, null);
-        $this->assertNull($err);
+        $export_ref01_list_result = $export_ref01_ent->list($export_ref01_match, null);
         $this->assertIsArray($export_ref01_list_result);
 
         // LOAD
         $export_ref01_match_dt0 = [];
-        [$export_ref01_data_dt0_loaded, $err] = $export_ref01_ent->load($export_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $export_ref01_data_dt0_loaded = $export_ref01_ent->load($export_ref01_match_dt0, null);
         $this->assertNotNull($export_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function export_basic_setup($extra)
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID" => $idmap,
         "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN" => "FALSE",
-        "SWISSFEDERALRAILWAYSSBB_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function export_basic_setup($extra)
     if ($env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
             ],
             $extra ?? [],
         ]);

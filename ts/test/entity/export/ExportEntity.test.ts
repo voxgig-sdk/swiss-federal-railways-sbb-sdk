@@ -119,7 +119,6 @@ function basicSetup(extra?: any) {
     'SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPORT_ENTID': idmap,
     'SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE': 'FALSE',
     'SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN': 'FALSE',
-    'SWISS_FEDERAL_RAILWAYS_SBB_APIKEY': 'NONE',
   })
 
   idmap = env['SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPORT_ENTID']
@@ -129,7 +128,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new SwissFederalRailwaysSbbSDK(merge([
       {
-        apikey: env.SWISS_FEDERAL_RAILWAYS_SBB_APIKEY,
       },
       extra
     ]))

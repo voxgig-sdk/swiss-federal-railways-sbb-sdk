@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## ExportEntity
 
 ```lua
-local export = client:Export(nil)
+local export = client:export(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local export = client:Export(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Export():list()
+local results, err = client:export():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -106,7 +105,7 @@ local results, err = client:Export():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Export():load({ id = "export_id" })
+local result, err = client:export():load({ id = "export_id" })
 ```
 
 ### Common Methods
@@ -142,7 +141,7 @@ Return the entity name.
 ## RecordEntity
 
 ```lua
-local record = client:Record(nil)
+local record = client:record(nil)
 ```
 
 ### Fields
@@ -173,7 +172,7 @@ local record = client:Record(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Record():list()
+local results, err = client:record():list()
 ```
 
 ### Common Methods

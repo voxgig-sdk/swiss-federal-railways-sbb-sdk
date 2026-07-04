@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:export():list() / client:export():load({ id = ... })
+function SwissFederalRailwaysSbbSDK:export(data)
+  local EntityMod = require("entity.export_entity")
+  if data == nil then
+    if self._export == nil then
+      self._export = EntityMod.new(self, nil)
+    end
+    return self._export
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:export() instead.
 function SwissFederalRailwaysSbbSDK:Export(data)
   local EntityMod = require("entity.export_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:record():list() / client:record():load({ id = ... })
+function SwissFederalRailwaysSbbSDK:record(data)
+  local EntityMod = require("entity.record_entity")
+  if data == nil then
+    if self._record == nil then
+      self._record = EntityMod.new(self, nil)
+    end
+    return self._record
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:record() instead.
 function SwissFederalRailwaysSbbSDK:Record(data)
   local EntityMod = require("entity.record_entity")
   return EntityMod.new(self, data)

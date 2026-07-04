@@ -9,9 +9,12 @@ The TypeScript SDK for the SwissFederalRailwaysSbb API — a type-safe, entity-o
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/swiss-federal-railways-sbb
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from 'swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
 
-const client = new SwissFederalRailwaysSbbSDK({
-  apikey: process.env.SWISS-FEDERAL-RAILWAYS-SBB_APIKEY,
-})
+const client = new SwissFederalRailwaysSbbSDK()
 ```
 
 ### 2. List exports
 
 ```ts
-const result = await client.Export().list()
+const result = await client.export.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -39,10 +40,10 @@ if (result.ok) {
 }
 ```
 
-### 3. Load a export
+### 3. Load an export
 
 ```ts
-const result = await client.Export().load({ id: 'example_id' })
+const result = await client.export.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SwissFederalRailwaysSbbSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.export.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new SwissFederalRailwaysSbbSDK({ apikey: '...' })
+const client = new SwissFederalRailwaysSbbSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.export
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new SwissFederalRailwaysSbbSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new SwissFederalRailwaysSbbSDK({
 Create a `.env.local` file at the project root:
 
 ```
-SWISS-FEDERAL-RAILWAYS-SBB_TEST_LIVE=TRUE
-SWISS-FEDERAL-RAILWAYS-SBB_APIKEY=<your-key>
+SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new SwissFederalRailwaysSbbSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new SwissFederalRailwaysSbbSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -303,7 +300,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.Export()`
+Create an instance: `const export = client.export`
 
 #### Operations
 
@@ -315,19 +312,19 @@ Create an instance: `const export = client.Export()`
 #### Example: Load
 
 ```ts
-const export = await client.Export().load({ id: 'export_id' })
+const export = await client.export.load({ id: 'export_id' })
 ```
 
 #### Example: List
 
 ```ts
-const exports = await client.Export().list()
+const exports = await client.export.list()
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.Record()`
+Create an instance: `const record = client.record`
 
 #### Operations
 
@@ -359,7 +356,7 @@ Create an instance: `const record = client.Record()`
 #### Example: List
 
 ```ts
-const records = await client.Record().list()
+const records = await client.record.list()
 ```
 
 
@@ -420,7 +417,7 @@ swiss-federal-railways-sbb/
 Import the SDK from the package root:
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from 'swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
 ```
 
 ### Entity state
@@ -430,11 +427,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const export = client.export
+await export.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// export.data() now returns the loaded export data
+// export.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

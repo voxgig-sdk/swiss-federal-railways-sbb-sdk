@@ -3,6 +3,8 @@
 import { ExportEntity } from './entity/ExportEntity'
 import { RecordEntity } from './entity/RecordEntity'
 
+export type * from './SwissFederalRailwaysSbbTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class SwissFederalRailwaysSbbSDK {
 
 
 
+  _export?: ExportEntity
+
+  // Idiomatic facade: `client.export.list()` / `client.export.load({ id })`.
+  get export(): ExportEntity {
+    return (this._export ??= new ExportEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.export` instead. */
   Export(data?: any) {
     const self = this
     return new ExportEntity(self,data)
   }
 
 
+  _record?: RecordEntity
+
+  // Idiomatic facade: `client.record.list()` / `client.record.load({ id })`.
+  get record(): RecordEntity {
+    return (this._record ??= new RecordEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.record` instead. */
   Record(data?: any) {
     const self = this
     return new RecordEntity(self,data)

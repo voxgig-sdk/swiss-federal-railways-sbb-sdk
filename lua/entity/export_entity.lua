@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ExportLoadMatch
+---@param ctrl? table
+---@return Export
+---@return string? err
 function ExportEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ExportListMatch
+---@param ctrl? table
+---@return Export[]
+---@return string? err
 function ExportEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

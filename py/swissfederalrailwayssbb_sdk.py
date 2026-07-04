@@ -144,16 +144,23 @@ class SwissFederalRailwaysSbbSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class SwissFederalRailwaysSbbSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class SwissFederalRailwaysSbbSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def export(self):
+        """Idiomatic facade: client.export.list() / client.export.load({"id": ...})."""
+        from entity.export_entity import ExportEntity
+        cached = getattr(self, "_export", None)
+        if cached is None:
+            cached = ExportEntity(self, None)
+            self._export = cached
+        return cached
 
     def Export(self, data=None):
+        # Deprecated: use client.export instead.
         from entity.export_entity import ExportEntity
         return ExportEntity(self, data)
 
 
+    @property
+    def record(self):
+        """Idiomatic facade: client.record.list() / client.record.load({"id": ...})."""
+        from entity.record_entity import RecordEntity
+        cached = getattr(self, "_record", None)
+        if cached is None:
+            cached = RecordEntity(self, None)
+            self._record = cached
+        return cached
+
     def Record(self, data=None):
+        # Deprecated: use client.record instead.
         from entity.record_entity import RecordEntity
         return RecordEntity(self, data)
 

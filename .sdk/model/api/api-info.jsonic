@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Open Data Plattform öV Schweiz"
         url: "https://www.opentransportdata.swiss"

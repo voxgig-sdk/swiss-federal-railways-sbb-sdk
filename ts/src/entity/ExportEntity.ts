@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Export,
+  ExportLoadMatch,
+  ExportListMatch,
+} from '../SwissFederalRailwaysSbbTypes'
 
 // TODO: needs Entity superclass
-class ExportEntity extends SwissFederalRailwaysSbbEntityBase {
+class ExportEntity extends SwissFederalRailwaysSbbEntityBase<Export> {
 
   constructor(client: SwissFederalRailwaysSbbSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ExportEntity extends SwissFederalRailwaysSbbEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ExportLoadMatch, ctrl?: Control): Promise<Export> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ExportEntity extends SwissFederalRailwaysSbbEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Export> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ExportListMatch, ctrl?: Control): Promise<Export[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ExportEntity extends SwissFederalRailwaysSbbEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Export[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

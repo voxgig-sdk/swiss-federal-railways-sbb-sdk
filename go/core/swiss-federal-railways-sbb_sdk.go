@@ -245,11 +245,17 @@ func (sdk *SwissFederalRailwaysSbbSDK) Direct(fetchargs map[string]any) (map[str
 }
 
 
+// Export returns a Export entity bound to this client.
+// Idiomatic usage: client.Export(nil).List(nil, nil) or
+// client.Export(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SwissFederalRailwaysSbbSDK) Export(data map[string]any) SwissFederalRailwaysSbbEntity {
 	return NewExportEntityFunc(sdk, data)
 }
 
 
+// Record returns a Record entity bound to this client.
+// Idiomatic usage: client.Record(nil).List(nil, nil) or
+// client.Record(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *SwissFederalRailwaysSbbSDK) Record(data map[string]any) SwissFederalRailwaysSbbEntity {
 	return NewRecordEntityFunc(sdk, data)
 }

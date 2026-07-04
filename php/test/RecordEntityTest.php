@@ -50,8 +50,7 @@ class RecordEntityTest extends TestCase
         $record_ref01_ent = $client->Record(null);
         $record_ref01_match = [];
 
-        [$record_ref01_list_result, $err] = $record_ref01_ent->list($record_ref01_match, null);
-        $this->assertNull($err);
+        $record_ref01_list_result = $record_ref01_ent->list($record_ref01_match, null);
         $this->assertIsArray($record_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function record_basic_setup($extra)
         "SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID" => $idmap,
         "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN" => "FALSE",
-        "SWISSFEDERALRAILWAYSSBB_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function record_basic_setup($extra)
     if ($env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
             ],
             $extra ?? [],
         ]);

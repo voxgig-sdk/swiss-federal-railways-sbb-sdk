@@ -50,8 +50,7 @@ class TestRecordEntity:
         record_ref01_ent = client.Record(None)
         record_ref01_match = {}
 
-        record_ref01_list_result, err = record_ref01_ent.list(record_ref01_match, None)
-        assert err is None
+        record_ref01_list_result = record_ref01_ent.list(record_ref01_match, None)
         assert isinstance(record_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _record_basic_setup(extra):
         "SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID": idmap,
         "SWISSFEDERALRAILWAYSSBB_TEST_LIVE": "FALSE",
         "SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN": "FALSE",
-        "SWISSFEDERALRAILWAYSSBB_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _record_basic_setup(extra):
     if env.get("SWISSFEDERALRAILWAYSSBB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SWISSFEDERALRAILWAYSSBB_APIKEY"),
             },
             extra or {},
         ])

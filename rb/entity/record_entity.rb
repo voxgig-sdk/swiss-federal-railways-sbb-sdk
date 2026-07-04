@@ -45,6 +45,7 @@ class RecordEntity
     end
   end
 
+  # @return [Record, Hash] the current Record data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class RecordEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Record fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class RecordEntity
   
 
   
+  # List Record items matching the given filter.
+  #
+  # @param reqmatch [RecordListMatch, Hash, nil] match filter (any subset of Record fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Record>, Array] the matching Record items; raises SwissFederalRailwaysSbbError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

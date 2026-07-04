@@ -164,14 +164,12 @@ func exportDirectSetup(mockres any) *exportDirectSetupResult {
 	env := envOverride(map[string]any{
 		"SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID": map[string]any{},
 		"SWISSFEDERALRAILWAYSSBB_TEST_LIVE":    "FALSE",
-		"SWISSFEDERALRAILWAYSSBB_APIKEY":       "NONE",
 	})
 
 	live := env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["SWISSFEDERALRAILWAYSSBB_APIKEY"],
 		}
 		client := sdk.NewSwissFederalRailwaysSbbSDK(mergedOpts)
 

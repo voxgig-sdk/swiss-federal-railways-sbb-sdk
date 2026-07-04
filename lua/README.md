@@ -9,12 +9,9 @@ The Lua SDK for the SwissFederalRailwaysSbb API — an entity-oriented client us
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-swiss-federal-railways-sbb
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("swiss-federal-railways-sbb_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("SWISS-FEDERAL-RAILWAYS-SBB_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List exports
 
 ```lua
-local result, err = client:Export():list()
+local result, err = client:export():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -50,10 +45,10 @@ if type(result) == "table" then
 end
 ```
 
-### 3. Load a export
+### 3. Load an export
 
 ```lua
-local result, err = client:Export():load({ id = "example_id" })
+local result, err = client:export():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:SwissFederalRailwaysSbb():load({ id = "test01" })
+local result, err = client:export():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-SWISS-FEDERAL-RAILWAYS-SBB_TEST_LIVE=TRUE
-SWISS-FEDERAL-RAILWAYS-SBB_APIKEY=<your-key>
+SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -260,7 +253,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.Export()`
+Create an instance: `const export = client.export`
 
 #### Operations
 
@@ -272,19 +265,19 @@ Create an instance: `const export = client.Export()`
 #### Example: Load
 
 ```ts
-const export = await client.Export().load({ id: 'export_id' })
+const export = await client.export.load({ id: 'export_id' })
 ```
 
 #### Example: List
 
 ```ts
-const exports = await client.Export().list()
+const exports = await client.export.list()
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.Record()`
+Create an instance: `const record = client.record`
 
 #### Operations
 
@@ -316,7 +309,7 @@ Create an instance: `const record = client.Record()`
 #### Example: List
 
 ```ts
-const records = await client.Record().list()
+const records = await client.record.list()
 ```
 
 
@@ -391,11 +384,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local export = client:export()
+export:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- export:data_get() now returns the loaded export data
+-- export:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

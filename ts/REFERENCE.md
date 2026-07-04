@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `SwissFederalRailwaysSbbSDK.test()`.
 ## ExportEntity
 
 ```ts
-const export = client.Export()
+const export = client.export
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const export = client.Export()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Export().list()
+const results = await client.export.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -140,7 +139,7 @@ const results = await client.Export().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Export().load({ id: 'export_id' })
+const result = await client.export.load({ id: 'export_id' })
 ```
 
 ### Common Methods
@@ -174,7 +173,7 @@ Return a copy of the entity options.
 ## RecordEntity
 
 ```ts
-const record = client.Record()
+const record = client.record
 ```
 
 ### Fields
@@ -205,7 +204,7 @@ const record = client.Record()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Record().list()
+const results = await client.record.list()
 ```
 
 ### Common Methods
