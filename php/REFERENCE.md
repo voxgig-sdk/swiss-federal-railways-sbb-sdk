@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ExportEntity
 
 ```php
-$export = $client->export();
+$export = $client->Export();
 ```
 
 ### Operations
@@ -99,7 +99,7 @@ $export = $client->export();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->export()->list([]);
+$results = $client->Export()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -107,7 +107,7 @@ $results = $client->export()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->export()->load(["id" => "export_id"]);
+$result = $client->Export()->load(["id" => "export_id"]);
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## RecordEntity
 
 ```php
-$record = $client->record();
+$record = $client->Record();
 ```
 
 ### Fields
@@ -174,7 +174,7 @@ $record = $client->record();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->record()->list([]);
+$results = $client->Record()->list([]);
 ```
 
 ### Common Methods

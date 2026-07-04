@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## ExportEntity
 
 ```lua
-local export = client:export(nil)
+local export = client:Export(nil)
 ```
 
 ### Operations
@@ -97,7 +97,7 @@ local export = client:export(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:export():list()
+local results, err = client:Export():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -105,7 +105,7 @@ local results, err = client:export():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:export():load({ id = "export_id" })
+local result, err = client:Export():load({ id = "export_id" })
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## RecordEntity
 
 ```lua
-local record = client:record(nil)
+local record = client:Record(nil)
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ local record = client:record(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:record():list()
+local results, err = client:Record():list()
 ```
 
 ### Common Methods

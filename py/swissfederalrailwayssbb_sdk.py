@@ -220,41 +220,21 @@ class SwissFederalRailwaysSbbSDK:
         }
 
 
-    @property
-    def export(self):
-        """Idiomatic facade: client.export.list() / client.export.load({"id": ...})."""
-        from entity.export_entity import ExportEntity
-        cached = getattr(self, "_export", None)
-        if cached is None:
-            cached = ExportEntity(self, None)
-            self._export = cached
-        return cached
-
-    def Export(self, data=None):
-        # Deprecated: use client.export instead.
+    def Export(self, data=None) -> "ExportEntity":
+        """Entity factory: client.Export().list({}) / client.Export().load({"id": ...})."""
         from entity.export_entity import ExportEntity
         return ExportEntity(self, data)
 
 
-    @property
-    def record(self):
-        """Idiomatic facade: client.record.list() / client.record.load({"id": ...})."""
-        from entity.record_entity import RecordEntity
-        cached = getattr(self, "_record", None)
-        if cached is None:
-            cached = RecordEntity(self, None)
-            self._record = cached
-        return cached
-
-    def Record(self, data=None):
-        # Deprecated: use client.record instead.
+    def Record(self, data=None) -> "RecordEntity":
+        """Entity factory: client.Record().list({}) / client.Record().load({"id": ...})."""
         from entity.record_entity import RecordEntity
         return RecordEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "SwissFederalRailwaysSbbSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class SwissFederalRailwaysSbbSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.export_entity import ExportEntity
+    from entity.record_entity import RecordEntity

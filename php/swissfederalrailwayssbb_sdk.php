@@ -233,10 +233,10 @@ class SwissFederalRailwaysSbbSDK
 
     private $_export = null;
 
-    // Idiomatic facade: $client->export()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Export() (PHP method
-    // names are case-insensitive).
-    public function export($data = null)
+    // Canonical facade: $client->Export()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->export()
+    // resolves here too.
+    public function Export($data = null)
     {
         require_once __DIR__ . '/entity/export_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class SwissFederalRailwaysSbbSDK
 
     private $_record = null;
 
-    // Idiomatic facade: $client->record()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Record() (PHP method
-    // names are case-insensitive).
-    public function record($data = null)
+    // Canonical facade: $client->Record()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->record()
+    // resolves here too.
+    public function Record($data = null)
     {
         require_once __DIR__ . '/entity/record_entity.php';
         if ($data === null) {

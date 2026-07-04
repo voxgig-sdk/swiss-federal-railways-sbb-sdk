@@ -31,26 +31,26 @@ local sdk = require("swiss-federal-railways-sbb_sdk")
 local client = sdk.new()
 ```
 
-### 2. List exports
+### 2. List export records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:export():list()
+local exports, err = client:Export():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(exports) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load an export
 
 ```lua
-local result, err = client:export():load({ id = "example_id" })
+local export, err = client:Export():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(export)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:export():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Export():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -175,7 +175,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Export` | `(data) -> ExportEntity` | Create a Export entity instance. |
+| `Export` | `(data) -> ExportEntity` | Create an Export entity instance. |
 | `Record` | `(data) -> RecordEntity` | Create a Record entity instance. |
 
 ### Entity interface
@@ -198,17 +198,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local export, err = client:Export():load({ id = "example_id" })
+    if err then error(err) end
+    -- export is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -253,7 +258,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.export`
+Create an instance: `local export = client:Export(nil)`
 
 #### Operations
 
@@ -264,20 +269,20 @@ Create an instance: `const export = client.export`
 
 #### Example: Load
 
-```ts
-const export = await client.export.load({ id: 'export_id' })
+```lua
+local export, err = client:Export():load({ id = "export_id" })
 ```
 
 #### Example: List
 
-```ts
-const exports = await client.export.list()
+```lua
+local exports, err = client:Export():list()
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.record`
+Create an instance: `local record = client:Record(nil)`
 
 #### Operations
 
@@ -308,8 +313,8 @@ Create an instance: `const record = client.record`
 
 #### Example: List
 
-```ts
-const records = await client.record.list()
+```lua
+local records, err = client:Record():list()
 ```
 
 
@@ -384,7 +389,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local export = client:export()
+local export = client:Export()
 export:load({ id = "example_id" })
 
 -- export:data_get() now returns the loaded export data

@@ -121,7 +121,7 @@ Alias for `SwissFederalRailwaysSbbSDK.test()`.
 ## ExportEntity
 
 ```ts
-const export = client.export
+const export = client.Export()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const export = client.export
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.export.list()
+const results = await client.Export().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -139,7 +139,7 @@ const results = await client.export.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.export.load({ id: 'export_id' })
+const result = await client.Export().load({ id: 'export_id' })
 ```
 
 ### Common Methods
@@ -173,7 +173,7 @@ Return a copy of the entity options.
 ## RecordEntity
 
 ```ts
-const record = client.record
+const record = client.Record()
 ```
 
 ### Fields
@@ -204,7 +204,7 @@ const record = client.record
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.record.list()
+const results = await client.Record().list()
 ```
 
 ### Common Methods

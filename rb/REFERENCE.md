@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## ExportEntity
 
 ```ruby
-export = client.export
+export = client.Export
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ export = client.export
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.export.list(nil)
+results = client.Export.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -108,7 +108,7 @@ results = client.export.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.export.load({ "id" => "export_id" })
+result = client.Export.load({ "id" => "export_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## RecordEntity
 
 ```ruby
-record = client.record
+record = client.Record
 ```
 
 ### Fields
@@ -175,7 +175,7 @@ record = client.record
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.record.list(nil)
+results = client.Record.list(nil)
 ```
 
 ### Common Methods

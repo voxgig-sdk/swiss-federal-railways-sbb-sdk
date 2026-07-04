@@ -208,26 +208,14 @@ class SwissFederalRailwaysSbbSDK
   end
 
 
-  # Idiomatic facade: client.export.list / client.export.load({ "id" => ... })
-  def export
-    require_relative 'entity/export_entity'
-    @export ||= ExportEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.export instead.
+  # Canonical facade: client.Export.list / client.Export.load({ "id" => ... })
   def Export(data = nil)
     require_relative 'entity/export_entity'
     ExportEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.record.list / client.record.load({ "id" => ... })
-  def record
-    require_relative 'entity/record_entity'
-    @record ||= RecordEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.record instead.
+  # Canonical facade: client.Record.list / client.Record.load({ "id" => ... })
   def Record(data = nil)
     require_relative 'entity/record_entity'
     RecordEntity.new(self, data)

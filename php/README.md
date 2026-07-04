@@ -29,18 +29,16 @@ require_once 'swissfederalrailwayssbb_sdk.php';
 $client = new SwissFederalRailwaysSbbSDK();
 ```
 
-### 2. List exports
+### 2. List export records
 
 ```php
 try {
-    $result = $client->export()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Export records — iterate directly.
+    $exports = $client->Export()->list();
+    foreach ($exports as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->export()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Export record (throws on error).
+    $export = $client->Export()->load(["id" => "example_id"]);
+    print_r($export);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = SwissFederalRailwaysSbbSDK::test();
+$client = SwissFederalRailwaysSbbSDK::test([
+    "entity" => ["export" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->export()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$export = $client->Export()->load(["id" => "test01"]);
+print_r($export);
 ```
 
 ### Use a custom fetch function
@@ -182,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Export` | `($data): ExportEntity` | Create a Export entity instance. |
+| `Export` | `($data): ExportEntity` | Create an Export entity instance. |
 | `Record` | `($data): RecordEntity` | Create a Record entity instance. |
 
 ### Entity interface
@@ -264,7 +267,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.export`
+Create an instance: `$export = $client->Export();`
 
 #### Operations
 
@@ -275,20 +278,22 @@ Create an instance: `const export = client.export`
 
 #### Example: Load
 
-```ts
-const export = await client.export.load({ id: 'export_id' })
+```php
+// load() returns the bare Export record (throws on error).
+$export = $client->Export()->load(["id" => "export_id"]);
 ```
 
 #### Example: List
 
-```ts
-const exports = await client.export.list()
+```php
+// list() returns an array of Export records (throws on error).
+$exports = $client->Export()->list();
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.record`
+Create an instance: `$record = $client->Record();`
 
 #### Operations
 
@@ -319,8 +324,9 @@ Create an instance: `const record = client.record`
 
 #### Example: List
 
-```ts
-const records = await client.record.list()
+```php
+// list() returns an array of Record records (throws on error).
+$records = $client->Record()->list();
 ```
 
 
@@ -395,7 +401,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$export = $client->export();
+$export = $client->Export();
 $export->load(["id" => "example_id"]);
 
 // $export->dataGet() now returns the loaded export data

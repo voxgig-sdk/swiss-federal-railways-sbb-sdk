@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ExportEntity
 
 ```python
-export = client.export
+export = client.Export()
 ```
 
 ### Operations
@@ -94,7 +94,9 @@ export = client.export
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.export.list({})
+results = client.Export().list({})
+for export in results:
+    print(export)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -102,7 +104,7 @@ results = client.export.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.export.load({"id": "export_id"})
+result = client.Export().load({"id": "export_id"})
 ```
 
 ### Common Methods
@@ -137,7 +139,7 @@ Return the entity name.
 ## RecordEntity
 
 ```python
-record = client.record
+record = client.Record()
 ```
 
 ### Fields
@@ -168,7 +170,9 @@ record = client.record
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.record.list({})
+results = client.Record().list({})
+for record in results:
+    print(record)
 ```
 
 ### Common Methods

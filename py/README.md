@@ -31,24 +31,28 @@ from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
 client = SwissFederalRailwaysSbbSDK()
 ```
 
-### 2. List exports
+### 2. List export records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.export.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    exports = client.Export().list({})
+    for export in exports:
+        print(export)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load an export
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.export.load({"id": "example_id"})
-    print(result)
+    export = client.Export().load({"id": "example_id"})
+    print(export)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SwissFederalRailwaysSbbSDK.test()
 
-result = client.export.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+export = client.Export().load({"id": "test01"})
+# export contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -173,7 +178,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Export` | `(data) -> ExportEntity` | Create a Export entity instance. |
+| `Export` | `(data) -> ExportEntity` | Create an Export entity instance. |
 | `Record` | `(data) -> RecordEntity` | Create a Record entity instance. |
 
 ### Entity interface
@@ -255,7 +260,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.export`
+Create an instance: `export = client.Export()`
 
 #### Operations
 
@@ -266,20 +271,20 @@ Create an instance: `const export = client.export`
 
 #### Example: Load
 
-```ts
-const export = await client.export.load({ id: 'export_id' })
+```python
+export = client.Export().load({"id": "export_id"})
 ```
 
 #### Example: List
 
-```ts
-const exports = await client.export.list()
+```python
+exports = client.Export().list({})
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.record`
+Create an instance: `record = client.Record()`
 
 #### Operations
 
@@ -310,8 +315,8 @@ Create an instance: `const record = client.record`
 
 #### Example: List
 
-```ts
-const records = await client.record.list()
+```python
+records = client.Record().list({})
 ```
 
 
@@ -385,7 +390,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-export = client.export
+export = client.Export()
 export.load({"id": "example_id"})
 
 # export.data_get() now returns the loaded export data

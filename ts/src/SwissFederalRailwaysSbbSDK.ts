@@ -205,28 +205,14 @@ class SwissFederalRailwaysSbbSDK {
 
 
 
-  _export?: ExportEntity
-
-  // Idiomatic facade: `client.export.list()` / `client.export.load({ id })`.
-  get export(): ExportEntity {
-    return (this._export ??= new ExportEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.export` instead. */
+  // Entity access: `client.Export().list()` / `client.Export().load({ id })`.
   Export(data?: any) {
     const self = this
     return new ExportEntity(self,data)
   }
 
 
-  _record?: RecordEntity
-
-  // Idiomatic facade: `client.record.list()` / `client.record.load({ id })`.
-  get record(): RecordEntity {
-    return (this._record ??= new RecordEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.record` instead. */
+  // Entity access: `client.Record().list()` / `client.Record().load({ id })`.
   Record(data?: any) {
     const self = this
     return new RecordEntity(self,data)

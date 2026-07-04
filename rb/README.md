@@ -28,16 +28,14 @@ require_relative "SwissFederalRailwaysSbb_sdk"
 client = SwissFederalRailwaysSbbSDK.new
 ```
 
-### 2. List exports
+### 2. List export records
 
 ```ruby
 begin
-  result = client.export.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Export records — iterate directly.
+  exports = client.Export.list
+  exports.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.export.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Export record (raises on error).
+  export = client.Export.load({ "id" => "example_id" })
+  puts export
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = SwissFederalRailwaysSbbSDK.test
+client = SwissFederalRailwaysSbbSDK.test({
+  "entity" => { "export" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.export.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+export = client.Export.load({ "id" => "test01" })
+puts export
 ```
 
 ### Use a custom fetch function
@@ -178,7 +181,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Export` | `(data) -> ExportEntity` | Create a Export entity instance. |
+| `Export` | `(data) -> ExportEntity` | Create an Export entity instance. |
 | `Record` | `(data) -> RecordEntity` | Create a Record entity instance. |
 
 ### Entity interface
@@ -259,7 +262,7 @@ API path: `/catalog/datasets/ist-daten-sbb/records`
 
 ### Export
 
-Create an instance: `const export = client.export`
+Create an instance: `export = client.Export`
 
 #### Operations
 
@@ -270,20 +273,22 @@ Create an instance: `const export = client.export`
 
 #### Example: Load
 
-```ts
-const export = await client.export.load({ id: 'export_id' })
+```ruby
+# load returns the bare Export record (raises on error).
+export = client.Export.load({ "id" => "export_id" })
 ```
 
 #### Example: List
 
-```ts
-const exports = await client.export.list()
+```ruby
+# list returns an Array of Export records (raises on error).
+exports = client.Export.list
 ```
 
 
 ### Record
 
-Create an instance: `const record = client.record`
+Create an instance: `record = client.Record`
 
 #### Operations
 
@@ -314,8 +319,9 @@ Create an instance: `const record = client.record`
 
 #### Example: List
 
-```ts
-const records = await client.record.list()
+```ruby
+# list returns an Array of Record records (raises on error).
+records = client.Record.list
 ```
 
 
@@ -390,7 +396,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-export = client.export
+export = client.Export
 export.load({ "id" => "example_id" })
 
 # export.data_get now returns the loaded export data

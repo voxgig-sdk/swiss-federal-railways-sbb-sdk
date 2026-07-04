@@ -4,64 +4,63 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Export:
+class Export(TypedDict):
     pass
 
 
-@dataclass
-class ExportLoadMatch:
+class ExportLoadMatch(TypedDict):
     pass
 
 
-@dataclass
-class ExportListMatch:
+class ExportListMatch(TypedDict):
     pass
 
 
-@dataclass
-class Record:
-    abfahrtszeit_ist: Optional[str] = None
-    abfahrtszeit_soll: Optional[str] = None
-    ankunftszeit_ist: Optional[str] = None
-    ankunftszeit_soll: Optional[str] = None
-    betreiber_id: Optional[str] = None
-    betreiber_name: Optional[str] = None
-    betriebstag: Optional[str] = None
-    durchfahrt: Optional[bool] = None
-    faellt_aus: Optional[bool] = None
-    fahrt_bezeichner: Optional[str] = None
-    haltestellen_name: Optional[str] = None
-    id: Optional[str] = None
-    linien_id: Optional[str] = None
-    linien_text: Optional[str] = None
-    produkt_id: Optional[str] = None
-    verkehrsmittel_text: Optional[str] = None
+class Record(TypedDict, total=False):
+    abfahrtszeit_ist: str
+    abfahrtszeit_soll: str
+    ankunftszeit_ist: str
+    ankunftszeit_soll: str
+    betreiber_id: str
+    betreiber_name: str
+    betriebstag: str
+    durchfahrt: bool
+    faellt_aus: bool
+    fahrt_bezeichner: str
+    haltestellen_name: str
+    id: str
+    linien_id: str
+    linien_text: str
+    produkt_id: str
+    verkehrsmittel_text: str
 
 
-@dataclass
-class RecordListMatch:
-    abfahrtszeit_ist: Optional[str] = None
-    abfahrtszeit_soll: Optional[str] = None
-    ankunftszeit_ist: Optional[str] = None
-    ankunftszeit_soll: Optional[str] = None
-    betreiber_id: Optional[str] = None
-    betreiber_name: Optional[str] = None
-    betriebstag: Optional[str] = None
-    durchfahrt: Optional[bool] = None
-    faellt_aus: Optional[bool] = None
-    fahrt_bezeichner: Optional[str] = None
-    haltestellen_name: Optional[str] = None
-    id: Optional[str] = None
-    linien_id: Optional[str] = None
-    linien_text: Optional[str] = None
-    produkt_id: Optional[str] = None
-    verkehrsmittel_text: Optional[str] = None
-
+class RecordListMatch(TypedDict, total=False):
+    abfahrtszeit_ist: str
+    abfahrtszeit_soll: str
+    ankunftszeit_ist: str
+    ankunftszeit_soll: str
+    betreiber_id: str
+    betreiber_name: str
+    betriebstag: str
+    durchfahrt: bool
+    faellt_aus: bool
+    fahrt_bezeichner: str
+    haltestellen_name: str
+    id: str
+    linien_id: str
+    linien_text: str
+    produkt_id: str
+    verkehrsmittel_text: str
