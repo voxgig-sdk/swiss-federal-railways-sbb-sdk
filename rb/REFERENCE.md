@@ -8,7 +8,7 @@ Complete API reference for the SwissFederalRailwaysSbb Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'swiss-federal-railways-sbb_sdk'
+require_relative 'SwissFederalRailwaysSbb_sdk'
 
 client = SwissFederalRailwaysSbbSDK.new(options)
 ```
@@ -95,12 +95,12 @@ export = client.Export
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Export.list(nil)
+results = client.Export.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -108,7 +108,7 @@ results = client.Export.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Export.load({ "id" => "export_id" })
+result = client.Export.load()
 ```
 
 ### Common Methods
@@ -151,31 +151,31 @@ record = client.Record
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | ``$STRING`` | No |  |
-| `abfahrtszeit_soll` | ``$STRING`` | No |  |
-| `ankunftszeit_ist` | ``$STRING`` | No |  |
-| `ankunftszeit_soll` | ``$STRING`` | No |  |
-| `betreiber_id` | ``$STRING`` | No |  |
-| `betreiber_name` | ``$STRING`` | No |  |
-| `betriebstag` | ``$STRING`` | No |  |
-| `durchfahrt` | ``$BOOLEAN`` | No |  |
-| `faellt_aus` | ``$BOOLEAN`` | No |  |
-| `fahrt_bezeichner` | ``$STRING`` | No |  |
-| `haltestellen_name` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `linien_id` | ``$STRING`` | No |  |
-| `linien_text` | ``$STRING`` | No |  |
-| `produkt_id` | ``$STRING`` | No |  |
-| `verkehrsmittel_text` | ``$STRING`` | No |  |
+| `abfahrtszeit_ist` | `String` | No |  |
+| `abfahrtszeit_soll` | `String` | No |  |
+| `ankunftszeit_ist` | `String` | No |  |
+| `ankunftszeit_soll` | `String` | No |  |
+| `betreiber_id` | `String` | No |  |
+| `betreiber_name` | `String` | No |  |
+| `betriebstag` | `String` | No |  |
+| `durchfahrt` | `Boolean` | No |  |
+| `faellt_aus` | `Boolean` | No |  |
+| `fahrt_bezeichner` | `String` | No |  |
+| `haltestellen_name` | `String` | No |  |
+| `id` | `String` | No |  |
+| `linien_id` | `String` | No |  |
+| `linien_text` | `String` | No |  |
+| `produkt_id` | `String` | No |  |
+| `verkehrsmittel_text` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Record.list(nil)
+results = client.Record.list
 ```
 
 ### Common Methods

@@ -17,12 +17,12 @@ class Export
 {
 }
 
-/** Match filter for Export#load (any subset of Export fields). */
+/** Request payload for Export#load. */
 class ExportLoadMatch
 {
 }
 
-/** Match filter for Export#list (any subset of Export fields). */
+/** Request payload for Export#list. */
 class ExportListMatch
 {
 }
@@ -48,7 +48,7 @@ class Record
     public ?string $verkehrsmittel_text = null;
 }
 
-/** Match filter for Record#list (any subset of Record fields). */
+/** Request payload for Record#list. */
 class RecordListMatch
 {
     public ?string $abfahrtszeit_ist = null;

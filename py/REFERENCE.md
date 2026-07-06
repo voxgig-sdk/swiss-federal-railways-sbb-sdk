@@ -8,7 +8,7 @@ Complete API reference for the SwissFederalRailwaysSbb Python SDK.
 ### Constructor
 
 ```python
-from swiss-federal-railways-sbb_sdk import SwissFederalRailwaysSbbSDK
+from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
 
 client = SwissFederalRailwaysSbbSDK(options)
 ```
@@ -89,12 +89,12 @@ export = client.Export()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Export().list({})
+results = client.Export().list()
 for export in results:
     print(export)
 ```
@@ -104,7 +104,7 @@ for export in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Export().load({"id": "export_id"})
+result = client.Export().load()
 ```
 
 ### Common Methods
@@ -146,31 +146,31 @@ record = client.Record()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | ``$STRING`` | No |  |
-| `abfahrtszeit_soll` | ``$STRING`` | No |  |
-| `ankunftszeit_ist` | ``$STRING`` | No |  |
-| `ankunftszeit_soll` | ``$STRING`` | No |  |
-| `betreiber_id` | ``$STRING`` | No |  |
-| `betreiber_name` | ``$STRING`` | No |  |
-| `betriebstag` | ``$STRING`` | No |  |
-| `durchfahrt` | ``$BOOLEAN`` | No |  |
-| `faellt_aus` | ``$BOOLEAN`` | No |  |
-| `fahrt_bezeichner` | ``$STRING`` | No |  |
-| `haltestellen_name` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `linien_id` | ``$STRING`` | No |  |
-| `linien_text` | ``$STRING`` | No |  |
-| `produkt_id` | ``$STRING`` | No |  |
-| `verkehrsmittel_text` | ``$STRING`` | No |  |
+| `abfahrtszeit_ist` | `str` | No |  |
+| `abfahrtszeit_soll` | `str` | No |  |
+| `ankunftszeit_ist` | `str` | No |  |
+| `ankunftszeit_soll` | `str` | No |  |
+| `betreiber_id` | `str` | No |  |
+| `betreiber_name` | `str` | No |  |
+| `betriebstag` | `str` | No |  |
+| `durchfahrt` | `bool` | No |  |
+| `faellt_aus` | `bool` | No |  |
+| `fahrt_bezeichner` | `str` | No |  |
+| `haltestellen_name` | `str` | No |  |
+| `id` | `str` | No |  |
+| `linien_id` | `str` | No |  |
+| `linien_text` | `str` | No |  |
+| `produkt_id` | `str` | No |  |
+| `verkehrsmittel_text` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Record().list({})
+results = client.Record().list()
 for record in results:
     print(record)
 ```

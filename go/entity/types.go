@@ -12,13 +12,11 @@ import "encoding/json"
 type Export struct {
 }
 
-// ExportLoadMatch mirrors the export fields as an all-optional match
-// filter (Go analog of Partial<Export>).
+// ExportLoadMatch is the typed request payload for Export.LoadTyped.
 type ExportLoadMatch struct {
 }
 
-// ExportListMatch mirrors the export fields as an all-optional match
-// filter (Go analog of Partial<Export>).
+// ExportListMatch is the typed request payload for Export.ListTyped.
 type ExportListMatch struct {
 }
 
@@ -42,8 +40,7 @@ type Record struct {
 	VerkehrsmittelText *string `json:"verkehrsmittel_text,omitempty"`
 }
 
-// RecordListMatch mirrors the record fields as an all-optional match
-// filter (Go analog of Partial<Record>).
+// RecordListMatch is the typed request payload for Record.ListTyped.
 type RecordListMatch struct {
 	AbfahrtszeitIst *string `json:"abfahrtszeit_ist,omitempty"`
 	AbfahrtszeitSoll *string `json:"abfahrtszeit_soll,omitempty"`

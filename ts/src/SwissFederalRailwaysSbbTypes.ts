@@ -8,9 +8,11 @@
 export interface Export {
 }
 
-export type ExportLoadMatch = Partial<Export>
+export interface ExportLoadMatch {
+}
 
-export type ExportListMatch = Partial<Export>
+export interface ExportListMatch {
+}
 
 export interface Record {
   abfahrtszeit_ist?: string
@@ -31,5 +33,22 @@ export interface Record {
   verkehrsmittel_text?: string
 }
 
-export type RecordListMatch = Partial<Record>
+export interface RecordListMatch {
+  abfahrtszeit_ist?: string
+  abfahrtszeit_soll?: string
+  ankunftszeit_ist?: string
+  ankunftszeit_soll?: string
+  betreiber_id?: string
+  betreiber_name?: string
+  betriebstag?: string
+  durchfahrt?: boolean
+  faellt_aus?: boolean
+  fahrt_bezeichner?: string
+  haltestellen_name?: string
+  id?: string
+  linien_id?: string
+  linien_text?: string
+  produkt_id?: string
+  verkehrsmittel_text?: string
+}
 

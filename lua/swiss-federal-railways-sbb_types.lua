@@ -31,6 +31,22 @@
 ---@field verkehrsmittel_text? string
 
 ---@class RecordListMatch
+---@field abfahrtszeit_ist? string
+---@field abfahrtszeit_soll? string
+---@field ankunftszeit_ist? string
+---@field ankunftszeit_soll? string
+---@field betreiber_id? string
+---@field betreiber_name? string
+---@field betriebstag? string
+---@field durchfahrt? boolean
+---@field faellt_aus? boolean
+---@field fahrt_bezeichner? string
+---@field haltestellen_name? string
+---@field id? string
+---@field linien_id? string
+---@field linien_text? string
+---@field produkt_id? string
+---@field verkehrsmittel_text? string
 
 local M = {}
 

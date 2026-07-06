@@ -112,7 +112,7 @@ results, err := client.Export(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Export(nil).Load(map[string]any{"id": "export_id"}, nil)
+result, err := client.Export(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -149,22 +149,22 @@ record := client.Record(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | ``$STRING`` | No |  |
-| `abfahrtszeit_soll` | ``$STRING`` | No |  |
-| `ankunftszeit_ist` | ``$STRING`` | No |  |
-| `ankunftszeit_soll` | ``$STRING`` | No |  |
-| `betreiber_id` | ``$STRING`` | No |  |
-| `betreiber_name` | ``$STRING`` | No |  |
-| `betriebstag` | ``$STRING`` | No |  |
-| `durchfahrt` | ``$BOOLEAN`` | No |  |
-| `faellt_aus` | ``$BOOLEAN`` | No |  |
-| `fahrt_bezeichner` | ``$STRING`` | No |  |
-| `haltestellen_name` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `linien_id` | ``$STRING`` | No |  |
-| `linien_text` | ``$STRING`` | No |  |
-| `produkt_id` | ``$STRING`` | No |  |
-| `verkehrsmittel_text` | ``$STRING`` | No |  |
+| `abfahrtszeit_ist` | `string` | No |  |
+| `abfahrtszeit_soll` | `string` | No |  |
+| `ankunftszeit_ist` | `string` | No |  |
+| `ankunftszeit_soll` | `string` | No |  |
+| `betreiber_id` | `string` | No |  |
+| `betreiber_name` | `string` | No |  |
+| `betriebstag` | `string` | No |  |
+| `durchfahrt` | `bool` | No |  |
+| `faellt_aus` | `bool` | No |  |
+| `fahrt_bezeichner` | `string` | No |  |
+| `haltestellen_name` | `string` | No |  |
+| `id` | `string` | No |  |
+| `linien_id` | `string` | No |  |
+| `linien_text` | `string` | No |  |
+| `produkt_id` | `string` | No |  |
+| `verkehrsmittel_text` | `string` | No |  |
 
 ### Operations
 

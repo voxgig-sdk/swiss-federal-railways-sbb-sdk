@@ -221,13 +221,13 @@ class SwissFederalRailwaysSbbSDK:
 
 
     def Export(self, data=None) -> "ExportEntity":
-        """Entity factory: client.Export().list({}) / client.Export().load({"id": ...})."""
+        """Entity factory: client.Export().list() / client.Export().load({"id": ...})."""
         from entity.export_entity import ExportEntity
         return ExportEntity(self, data)
 
 
     def Record(self, data=None) -> "RecordEntity":
-        """Entity factory: client.Record().list({}) / client.Record().load({"id": ...})."""
+        """Entity factory: client.Record().list() / client.Record().load({"id": ...})."""
         from entity.record_entity import RecordEntity
         return RecordEntity(self, data)
 

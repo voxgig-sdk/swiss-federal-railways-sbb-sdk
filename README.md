@@ -6,6 +6,21 @@ This is an unofficial SDK for the Swiss Federal Railways (SBB) public API, gener
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+## Entities, not endpoints
+
+This SDK exposes the API as a small set of **semantic entities** — Export and Record — that you
+call directly, instead of assembling URL paths and query strings. Entities are
+**Capitalised** to mark them as the primary surface, each with the operations they
+support (`list`, `load`):
+
+```ts
+const client = new SwissFederalRailwaysSbbSDK()
+const items = await client.Export().list()
+```
+
+Thinking in entities keeps the mental model small — for people and AI agents alike —
+rather than reasoning about raw HTTP routes and query parameters.
+
 ## Packages
 
 | Language | Package | Install |
@@ -27,9 +42,9 @@ import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-s
 const client = new SwissFederalRailwaysSbbSDK()
 
 // List all exports (returns Export[])
-const exports = await client.Export().list()
-for (const export of exports) {
-  console.log(export)
+const export_s = await client.Export().list()
+for (const export_ of export_s) {
+  console.log(export_)
 }
 ```
 
@@ -74,8 +89,8 @@ The API exposes 2 entities:
 | **Export** | The Export entity (list, load). | `/catalog/datasets/ist-daten-sbb/exports/json` |
 | **Record** | The Record entity (list). | `/catalog/datasets/ist-daten-sbb/records` |
 
-Each entity supports the following operations where available: **load**,
-**list**, **create**, **update**, and **remove**.
+The operations available across these entities are **load**, **list** — see each entity's
+own list above for exactly which it supports.
 
 ## Quickstart in other languages
 
@@ -87,12 +102,12 @@ from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
 client = SwissFederalRailwaysSbbSDK()
 
 # List all exports (returns a list, raises on error)
-exports = client.Export().list({})
+exports = client.Export().list()
 for export in exports:
     print(export)
 
 # Load a specific export (returns the record, raises on error)
-export = client.Export().load({"id": "example_id"})
+export = client.Export().load()
 print(export)
 ```
 
@@ -109,7 +124,7 @@ $exports = $client->Export()->list();
 print_r($exports);
 
 // Load a specific export (returns the bare record; throws on error)
-$export = $client->Export()->load(["id" => "example_id"]);
+$export = $client->Export()->load();
 print_r($export);
 ```
 
@@ -137,7 +152,7 @@ exports = client.Export.list
 puts exports
 
 # Load a specific export (returns the bare record; raises on error)
-export = client.Export.load({ "id" => "example_id" })
+export = client.Export.load()
 puts export
 ```
 
@@ -153,7 +168,7 @@ local exports, err = client:Export():list()
 print(exports)
 
 -- Load a specific export
-local export, err = client:Export():load({ id = "example_id" })
+local export, err = client:Export():load()
 print(export)
 ```
 
@@ -166,16 +181,16 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = SwissFederalRailwaysSbbSDK.test()
-const export = await client.Export().load({ id: 'test01' })
-// export is a bare Export populated with mock data
-console.log(export)
+const export_ = await client.Export().list()
+// export_ is a bare Export populated with mock data
+console.log(export_)
 ```
 
 ### Python
 
 ```python
 client = SwissFederalRailwaysSbbSDK.test()
-export = client.Export().load({"id": "test01"})
+export = client.Export().list()
 print(export)
 ```
 
@@ -184,17 +199,17 @@ print(export)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = SwissFederalRailwaysSbbSDK::test([
-    "entity" => ["export" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["export" => ["test01" => []]],
 ]);
-$export = $client->Export()->load(["id" => "test01"]);
+$export = $client->Export()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Export(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+result, err := client.Export(nil).List(
+    nil, nil,
 )
 ```
 
@@ -203,41 +218,19 @@ result, err := client.Export(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = SwissFederalRailwaysSbbSDK.test({
-  "entity" => { "export" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "export" => { "test01" => {} } },
 })
-export = client.Export.load({ "id" => "test01" })
+export = client.Export.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Export():load({ id = "test01" })
+local result, err = client:Export():list()
 ```
 
-## How it works
-
-Every SDK call runs the same five-stage pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), so features can inspect or modify the pipeline without
-forking the SDK.
-
-### Features
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-Pass custom features via the `extend` option at construction time.
-
-### Direct and Prepare
+## Direct and prepare
 
 For endpoints the entity model doesn't cover, use the low-level methods:
 
@@ -310,6 +303,31 @@ local result, err = client:direct({
   params = { id = "example" },
 })
 ```
+
+## Advanced
+
+> Everyday use only needs the sections above. This explains the internals
+> behind every call — relevant when writing custom features.
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
 
 ## Per-language documentation
 

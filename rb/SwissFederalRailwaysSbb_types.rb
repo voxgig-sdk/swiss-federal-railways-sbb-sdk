@@ -12,11 +12,11 @@
 class Export
 end
 
-# Match filter for Export#load (any subset of Export fields).
+# Request payload for Export#load.
 class ExportLoadMatch
 end
 
-# Match filter for Export#list (any subset of Export fields).
+# Request payload for Export#list.
 class ExportListMatch
 end
 
@@ -89,7 +89,7 @@ Record = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Record#list (any subset of Record fields).
+# Request payload for Record#list.
 #
 # @!attribute [rw] abfahrtszeit_ist
 #   @return [String, nil]

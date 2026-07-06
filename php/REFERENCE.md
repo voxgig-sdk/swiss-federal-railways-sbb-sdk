@@ -8,7 +8,7 @@ Complete API reference for the SwissFederalRailwaysSbb PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/swiss-federal-railways-sbb_sdk.php';
+require_once __DIR__ . '/swissfederalrailwayssbb_sdk.php';
 
 $client = new SwissFederalRailwaysSbbSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `ExportEntity` instance. Pass `null` for no initial data.
 
 Create a new `RecordEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): SwissFederalRailwaysSbbUtility`
 
 Return a copy of the SDK utility object.
 
@@ -94,12 +94,12 @@ $export = $client->Export();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Export()->list([]);
+$results = $client->Export()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -107,24 +107,24 @@ $results = $client->Export()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Export()->load(["id" => "export_id"]);
+$result = $client->Export()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -133,7 +133,7 @@ Set the entity match criteria.
 Create a new `ExportEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -150,48 +150,48 @@ $record = $client->Record();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | ``$STRING`` | No |  |
-| `abfahrtszeit_soll` | ``$STRING`` | No |  |
-| `ankunftszeit_ist` | ``$STRING`` | No |  |
-| `ankunftszeit_soll` | ``$STRING`` | No |  |
-| `betreiber_id` | ``$STRING`` | No |  |
-| `betreiber_name` | ``$STRING`` | No |  |
-| `betriebstag` | ``$STRING`` | No |  |
-| `durchfahrt` | ``$BOOLEAN`` | No |  |
-| `faellt_aus` | ``$BOOLEAN`` | No |  |
-| `fahrt_bezeichner` | ``$STRING`` | No |  |
-| `haltestellen_name` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `linien_id` | ``$STRING`` | No |  |
-| `linien_text` | ``$STRING`` | No |  |
-| `produkt_id` | ``$STRING`` | No |  |
-| `verkehrsmittel_text` | ``$STRING`` | No |  |
+| `abfahrtszeit_ist` | `string` | No |  |
+| `abfahrtszeit_soll` | `string` | No |  |
+| `ankunftszeit_ist` | `string` | No |  |
+| `ankunftszeit_soll` | `string` | No |  |
+| `betreiber_id` | `string` | No |  |
+| `betreiber_name` | `string` | No |  |
+| `betriebstag` | `string` | No |  |
+| `durchfahrt` | `bool` | No |  |
+| `faellt_aus` | `bool` | No |  |
+| `fahrt_bezeichner` | `string` | No |  |
+| `haltestellen_name` | `string` | No |  |
+| `id` | `string` | No |  |
+| `linien_id` | `string` | No |  |
+| `linien_text` | `string` | No |  |
+| `produkt_id` | `string` | No |  |
+| `verkehrsmittel_text` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Record()->list([]);
+$results = $client->Record()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -200,7 +200,7 @@ Set the entity match criteria.
 Create a new `RecordEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
