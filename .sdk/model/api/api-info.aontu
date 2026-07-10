@@ -16,10 +16,10 @@ main: {
           url: "https://data.sbb.ch/api/explore/v2.1"
         }
       ]
+      summary: "This API provides departure, delay, and cancellation data from the Swiss Federal Railways (SBB) for the previous day."
       termsOfService: "https://data.sbb.ch"
       title: "Swiss Federal Railways (SBB)"
       version: "1.0.0"
+      website: "https://data.sbb.ch"
     }
   }
-}
-

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -574,15 +571,18 @@
           "url": "https://www.opentransportdata.swiss"
         },
         "description": "This API provides departure, delay, and cancellation data from the Swiss Federal Railways (SBB) for the previous day. It compares scheduled (soll) vs. actual (ist) operations.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "SBB Open Data API Server",
             "url": "https://data.sbb.ch/api/explore/v2.1"
           }
         ],
+        "summary": "This API provides departure, delay, and cancellation data from the Swiss Federal Railways (SBB) for the previous day.",
         "termsOfService": "https://data.sbb.ch",
         "title": "Swiss Federal Railways (SBB)",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://data.sbb.ch"
       },
       "option": {},
       "target": {
@@ -635,6 +635,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -685,6 +688,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

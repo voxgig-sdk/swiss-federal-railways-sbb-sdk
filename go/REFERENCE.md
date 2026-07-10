@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 export := client.Export(nil)
+fmt.Println(export.GetName()) // "export"
 ```
 
 ### Operations
@@ -105,6 +106,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Export(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -113,6 +118,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Export(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -143,6 +152,7 @@ Return the entity name.
 
 ```go
 record := client.Record(nil)
+fmt.Println(record.GetName()) // "record"
 ```
 
 ### Fields
@@ -174,6 +184,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Record(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
