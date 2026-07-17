@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- SwissFederalRailwaysSbb SDK exists test
 
 local sdk = require("swiss-federal-railways-sbb_sdk")
 
