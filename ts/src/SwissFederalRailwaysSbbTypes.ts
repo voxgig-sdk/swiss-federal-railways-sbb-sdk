@@ -9,9 +9,21 @@ export interface Export {
 }
 
 export interface ExportLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'csv'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ExportListMatch {
+
+  // Selects a custom action instead of the plain list:
+  //   'json'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Record {

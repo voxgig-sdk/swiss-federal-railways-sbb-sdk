@@ -43,8 +43,8 @@ class SwissFederalRailwaysSbbTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('SWISSFEDERALRAILWAYSSBB_TEST_LIVE');
-        $override = self::getenv('SWISSFEDERALRAILWAYSSBB_TEST_OVERRIDE');
+        $live = self::getenv('SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE');
+        $override = self::getenv('SWISS_FEDERAL_RAILWAYS_SBB_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class SwissFederalRailwaysSbbTestRunner
             }
         }
 
-        $explain = self::getenv('SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN');
+        $explain = self::getenv('SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN'] = $explain;
+            $m['SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

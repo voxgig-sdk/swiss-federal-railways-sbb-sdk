@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.SWISSFEDERALRAILWAYSSBB_TEST_LIVE ||
-    'TRUE' === process.env.SWISSFEDERALRAILWAYSSBB_TEST_OVERRIDE
+    'TRUE' === process.env.SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE ||
+    'TRUE' === process.env.SWISS_FEDERAL_RAILWAYS_SBB_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN = process.env.SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN || m.SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN
+  m.SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN = process.env.SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN || m.SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN
 
   return m
 }

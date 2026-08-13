@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ SwissFederalRailwaysSbbUtility.registrar = ->(u) {
   u.prepare_params = SwissFederalRailwaysSbbUtilities::PrepareParams
   u.prepare_path = SwissFederalRailwaysSbbUtilities::PreparePath
   u.prepare_query = SwissFederalRailwaysSbbUtilities::PrepareQuery
+  u.graphql_body = SwissFederalRailwaysSbbUtilities::GraphqlBody
+  u.graphql_errors = SwissFederalRailwaysSbbUtilities::GraphqlErrors
   u.result_basic = SwissFederalRailwaysSbbUtilities::ResultBasic
   u.result_body = SwissFederalRailwaysSbbUtilities::ResultBody
   u.result_headers = SwissFederalRailwaysSbbUtilities::ResultHeaders

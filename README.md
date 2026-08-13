@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SwissFederalRailwaysSbbSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SwissFederalRailwaysSbbSDK.test({
+  entity: {
+    export: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const export_s = await client.Export().list()
-// export_s is an array of bare Export records populated with mock data
+// export_s is an array of Export entities, populated with mock data
+// — call export_s[0].data() for the record itself
 console.log(export_s)
 ```
 
@@ -110,7 +119,7 @@ import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-s
 
 const client = new SwissFederalRailwaysSbbSDK()
 
-// List all exports (returns Export[])
+// List all exports (returns ExportEntity[] — .data() for the record)
 const export_s = await client.Export().list()
 for (const export_ of export_s) {
   console.log(export_)
@@ -192,7 +201,7 @@ $client = new SwissFederalRailwaysSbbSDK();
 $exports = $client->Export()->list();
 print_r($exports);
 
-// Load a specific export (returns the bare record; throws on error)
+// Load a specific export (returns the ENTITY; call data_get() for the record; throws on error)
 $export = $client->Export()->load();
 print_r($export);
 ```
@@ -223,7 +232,7 @@ client = SwissFederalRailwaysSbbSDK.new
 exports = client.Export.list
 puts exports
 
-# Load a specific export (returns the bare record; raises on error)
+# Load a specific export (returns the ENTITY; call data_get for the record)
 export = client.Export.load()
 puts export
 ```
@@ -360,6 +369,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.opentransportdata.swiss](https://www.opentransportdata.swiss)
 

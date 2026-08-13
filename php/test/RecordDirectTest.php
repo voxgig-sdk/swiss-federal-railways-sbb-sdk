@@ -66,11 +66,11 @@ function record_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID" => [],
-        "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_RECORD_ENTID" => [],
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] === "TRUE";
+    $live = $env["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

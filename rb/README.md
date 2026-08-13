@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Export record (raises on error).
+  # load returns the ENTITY — call data_get for the Export record (raises on error).
   export = client.Export.load()
   puts export
 rescue => err
@@ -131,7 +131,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = SwissFederalRailwaysSbbSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 export = client.Export.list()
 puts export
 ```
@@ -299,7 +300,7 @@ Create an instance: `export = client.Export`
 #### Example: Load
 
 ```ruby
-# load returns the bare Export record (raises on error).
+# load returns the ENTITY — call data_get for the Export record (raises on error).
 export = client.Export.load()
 ```
 

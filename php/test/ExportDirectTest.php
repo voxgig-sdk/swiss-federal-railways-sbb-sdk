@@ -111,11 +111,11 @@ function export_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID" => [],
-        "SWISSFEDERALRAILWAYSSBB_TEST_LIVE" => "FALSE",
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPORT_ENTID" => [],
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] === "TRUE";
+    $live = $env["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

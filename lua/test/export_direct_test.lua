@@ -105,11 +105,11 @@ function export_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["SWISSFEDERALRAILWAYSSBB_TEST_EXPORT_ENTID"] = {},
-    ["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] = "FALSE",
+    ["SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPORT_ENTID"] = {},
+    ["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE"
+  local live = env["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

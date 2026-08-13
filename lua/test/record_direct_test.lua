@@ -61,11 +61,11 @@ function record_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID"] = {},
-    ["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] = "FALSE",
+    ["SWISS_FEDERAL_RAILWAYS_SBB_TEST_RECORD_ENTID"] = {},
+    ["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["SWISSFEDERALRAILWAYSSBB_TEST_LIVE"] == "TRUE"
+  local live = env["SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

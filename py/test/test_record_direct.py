@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from swissfederalrailwayssbb_sdk.utility.voxgig_struct import voxgig_struct as vs
 from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
-from core import helpers
+from swissfederalrailwayssbb_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _record_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SWISSFEDERALRAILWAYSSBB_TEST_RECORD_ENTID": {},
-        "SWISSFEDERALRAILWAYSSBB_TEST_LIVE": "FALSE",
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_RECORD_ENTID": {},
+        "SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("SWISSFEDERALRAILWAYSSBB_TEST_LIVE") == "TRUE"
+    live = env.get("SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

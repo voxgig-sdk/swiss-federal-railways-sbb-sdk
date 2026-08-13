@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import SwissFederalRailwaysSbbControl
-from core.error import SwissFederalRailwaysSbbError
-from core.result import SwissFederalRailwaysSbbResult
-from core.spec import SwissFederalRailwaysSbbSpec
+from swissfederalrailwayssbb_sdk.config import make_config
+from swissfederalrailwayssbb_sdk.features import _make_feature
+from swissfederalrailwayssbb_sdk.core.control import SwissFederalRailwaysSbbControl
+from swissfederalrailwayssbb_sdk.core.error import SwissFederalRailwaysSbbError
+from swissfederalrailwayssbb_sdk.core.result import SwissFederalRailwaysSbbResult
+from swissfederalrailwayssbb_sdk.core.spec import SwissFederalRailwaysSbbSpec
 
 
 # True when this SDK was generated with the named feature.

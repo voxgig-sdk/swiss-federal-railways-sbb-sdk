@@ -16,11 +16,11 @@
 import pytest
 
 from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK
-from core.error import SwissFederalRailwaysSbbError
-from core.result import SwissFederalRailwaysSbbResult
-from core.response import SwissFederalRailwaysSbbResponse
-from core.spec import SwissFederalRailwaysSbbSpec
-from feature.base_feature import SwissFederalRailwaysSbbBaseFeature
+from swissfederalrailwayssbb_sdk.core.error import SwissFederalRailwaysSbbError
+from swissfederalrailwayssbb_sdk.core.result import SwissFederalRailwaysSbbResult
+from swissfederalrailwayssbb_sdk.core.response import SwissFederalRailwaysSbbResponse
+from swissfederalrailwayssbb_sdk.core.spec import SwissFederalRailwaysSbbSpec
+from swissfederalrailwayssbb_sdk.feature.base_feature import SwissFederalRailwaysSbbBaseFeature
 
 
 def _client():

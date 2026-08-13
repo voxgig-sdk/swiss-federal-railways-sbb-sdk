@@ -124,6 +124,27 @@ Alias for `SwissFederalRailwaysSbbSDK.test()`.
 const export_ = client.Export()
 ```
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `json` | `/catalog/datasets/ist-daten-sbb/exports/json` | `client.Export().list({ $action: 'json', ... })` |
+| `csv` | `/catalog/datasets/ist-daten-sbb/exports/csv` | `client.Export().load({ $action: 'csv', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Export record — check the API definition for its shape.
+
+```ts
+const result = await client.Export().list({
+  $action: 'json',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`

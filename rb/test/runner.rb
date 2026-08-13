@@ -23,8 +23,8 @@ module SwissFederalRailwaysSbbTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SWISSFEDERALRAILWAYSSBB_TEST_LIVE")
-    override = getenv("SWISSFEDERALRAILWAYSSBB_TEST_OVERRIDE")
+    live = getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE")
+    override = getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module SwissFederalRailwaysSbbTestRunner
       end
     end
 
-    explain = getenv("SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN")
-    m["SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN")
+    m["SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

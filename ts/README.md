@@ -35,7 +35,9 @@ const client = new SwissFederalRailwaysSbbSDK()
 
 ### 2. List export records
 
-`list()` resolves to an array of Export objects — iterate it directly:
+`list()` resolves to an array of Export ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const export_s = await client.Export().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = SwissFederalRailwaysSbbSDK.test()
 
 const export_ = await client.Export().list()
-// export_ is a bare entity populated with mock response data
+// export_ is the entity, populated with mock response data
+// — call export_.data() for the record itself
 console.log(export_)
 ```
 

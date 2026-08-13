@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("SWISSFEDERALRAILWAYSSBB_TEST_LIVE")
-  local override = runner.getenv("SWISSFEDERALRAILWAYSSBB_TEST_OVERRIDE")
+  local live = runner.getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE")
+  local override = runner.getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN")
+  local explain = runner.getenv("SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["SWISSFEDERALRAILWAYSSBB_TEST_EXPLAIN"] = explain
+    m["SWISS_FEDERAL_RAILWAYS_SBB_TEST_EXPLAIN"] = explain
   end
 
   return m

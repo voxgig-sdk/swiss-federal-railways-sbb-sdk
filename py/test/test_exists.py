@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# SwissFederalRailwaysSbb SDK exists test
 
 import pytest
 from swissfederalrailwayssbb_sdk import SwissFederalRailwaysSbbSDK

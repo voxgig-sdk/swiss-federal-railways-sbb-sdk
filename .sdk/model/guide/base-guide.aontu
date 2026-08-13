@@ -19,6 +19,7 @@ guide: {
   entity: record: {
     path: "/catalog/datasets/ist-daten-sbb/records": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 

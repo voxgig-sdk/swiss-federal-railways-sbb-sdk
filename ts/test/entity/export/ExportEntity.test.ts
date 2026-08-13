@@ -26,8 +26,8 @@ import {
 describe('ExportEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SWISSFEDERALRAILWAYSSBB_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SWISSFEDERALRAILWAYSSBB_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SwissFederalRailwaysSbbSDK.test()
@@ -63,12 +63,12 @@ describe('ExportEntity', async () => {
     const export_ref01_ent = client.Export()
     const export_ref01_match: any = {}
 
-    const export_ref01_list = await export_ref01_ent.list(export_ref01_match)
+    const export_ref01_list = (await export_ref01_ent.list(export_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const export_ref01_match_dt0: any = {}
-    const export_ref01_data_dt0 = await export_ref01_ent.load(export_ref01_match_dt0)
+    const export_ref01_data_dt0 = (await export_ref01_ent.load(export_ref01_match_dt0)).data()
     assert(null != export_ref01_data_dt0)
 
 

@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ SwissFederalRailwaysSbbUtility::setRegistrar(function (SwissFederalRailwaysSbbUt
     $u->prepare_params = [SwissFederalRailwaysSbbPrepareParams::class, 'call'];
     $u->prepare_path = [SwissFederalRailwaysSbbPreparePath::class, 'call'];
     $u->prepare_query = [SwissFederalRailwaysSbbPrepareQuery::class, 'call'];
+    $u->graphql_body = [SwissFederalRailwaysSbbGraphql::class, 'body'];
+    $u->graphql_errors = [SwissFederalRailwaysSbbGraphql::class, 'errors'];
     $u->result_basic = [SwissFederalRailwaysSbbResultBasic::class, 'call'];
     $u->result_body = [SwissFederalRailwaysSbbResultBody::class, 'call'];
     $u->result_headers = [SwissFederalRailwaysSbbResultHeaders::class, 'call'];

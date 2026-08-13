@@ -76,6 +76,7 @@ class SwissFederalRailwaysSbbConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/exports/json',
                   'parts' => [
@@ -155,6 +156,7 @@ class SwissFederalRailwaysSbbConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/exports/csv',
                   'parts' => [
@@ -382,6 +384,7 @@ class SwissFederalRailwaysSbbConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/records',
                   'parts' => [
@@ -404,7 +407,7 @@ class SwissFederalRailwaysSbbConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],
