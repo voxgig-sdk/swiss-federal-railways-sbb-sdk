@@ -1,7 +1,30 @@
 # SwissFederalRailwaysSbb SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "SwissFederalRailwaysSbb",
@@ -33,40 +56,31 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "exclude",
                       "orig": "exclude",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "de",
                       "kind": "query",
                       "name": "lang",
                       "orig": "lang",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "refine",
                       "orig": "refine",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "where",
                       "orig": "where",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -94,59 +108,46 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": ";",
                       "kind": "query",
                       "name": "delimiter",
                       "orig": "delimiter",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "exclude",
                       "orig": "exclude",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "de",
                       "kind": "query",
                       "name": "lang",
                       "orig": "lang",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "refine",
                       "orig": "refine",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "where",
                       "orig": "where",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -175,10 +176,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -188,116 +187,68 @@ def make_config():
       "record": {
         "fields": [
           {
-            "active": True,
             "name": "abfahrtszeit_ist",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "abfahrtszeit_soll",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "ankunftszeit_ist",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "ankunftszeit_soll",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "betreiber_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "betreiber_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "betriebstag",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "durchfahrt",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "faellt_aus",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "fahrt_bezeichner",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "haltestellen_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "linien_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "linien_text",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "produkt_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "verkehrsmittel_text",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
         ],
         "name": "record",
@@ -307,74 +258,57 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "exclude",
                       "orig": "exclude",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "de",
                       "kind": "query",
                       "name": "lang",
                       "orig": "lang",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 10,
                       "kind": "query",
                       "name": "limit",
                       "orig": "limit",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "offset",
                       "orig": "offset",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "order_by",
                       "orig": "order_by",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "refine",
                       "orig": "refine",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "select",
                       "orig": "select",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "where",
                       "orig": "where",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -404,10 +338,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {

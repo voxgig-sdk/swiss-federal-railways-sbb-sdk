@@ -1,6 +1,20 @@
 # SwissFederalRailwaysSbb SDK configuration
 
 module SwissFederalRailwaysSbbConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -33,40 +47,31 @@ module SwissFederalRailwaysSbbConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "exclude",
                         "orig" => "exclude",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "de",
                         "kind" => "query",
                         "name" => "lang",
                         "orig" => "lang",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "refine",
                         "orig" => "refine",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "where",
                         "orig" => "where",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -94,59 +99,46 @@ module SwissFederalRailwaysSbbConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => ";",
                         "kind" => "query",
                         "name" => "delimiter",
                         "orig" => "delimiter",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "exclude",
                         "orig" => "exclude",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "de",
                         "kind" => "query",
                         "name" => "lang",
                         "orig" => "lang",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "refine",
                         "orig" => "refine",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "where",
                         "orig" => "where",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -175,10 +167,8 @@ module SwissFederalRailwaysSbbConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -188,116 +178,68 @@ module SwissFederalRailwaysSbbConfig
         "record" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "abfahrtszeit_ist",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "abfahrtszeit_soll",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "ankunftszeit_ist",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "ankunftszeit_soll",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "betreiber_id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "betreiber_name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "betriebstag",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "durchfahrt",
-              "req" => false,
               "type" => "`$BOOLEAN`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "faellt_aus",
-              "req" => false,
               "type" => "`$BOOLEAN`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "fahrt_bezeichner",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "haltestellen_name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
             {
-              "active" => true,
               "name" => "linien_id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 12,
             },
             {
-              "active" => true,
               "name" => "linien_text",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 13,
             },
             {
-              "active" => true,
               "name" => "produkt_id",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 14,
             },
             {
-              "active" => true,
               "name" => "verkehrsmittel_text",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 15,
             },
           ],
           "name" => "record",
@@ -307,74 +249,57 @@ module SwissFederalRailwaysSbbConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "exclude",
                         "orig" => "exclude",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "de",
                         "kind" => "query",
                         "name" => "lang",
                         "orig" => "lang",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 10,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "offset",
                         "orig" => "offset",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "order_by",
                         "orig" => "order_by",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "refine",
                         "orig" => "refine",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "select",
                         "orig" => "select",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "where",
                         "orig" => "where",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -404,10 +329,8 @@ module SwissFederalRailwaysSbbConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://data.sbb.ch/api/explore/v2.1',
+    base: "https://data.sbb.ch/api/explore/v2.1",
 
     headers: {
       "content-type": "application/json"
@@ -64,40 +64,31 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "exclude",
                     "orig": "exclude",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "de",
                     "kind": "query",
                     "name": "lang",
                     "orig": "lang",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "refine",
                     "orig": "refine",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "where",
                     "orig": "where",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -124,60 +115,47 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": ";",
                     "kind": "query",
                     "name": "delimiter",
                     "orig": "delimiter",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "exclude",
                     "orig": "exclude",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "de",
                     "kind": "query",
                     "name": "lang",
                     "orig": "lang",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "refine",
                     "orig": "refine",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "where",
                     "orig": "where",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -205,11 +183,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -219,116 +195,68 @@ class Config {
     "record": {
       "fields": [
         {
-          "active": true,
           "name": "abfahrtszeit_ist",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "abfahrtszeit_soll",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ankunftszeit_ist",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ankunftszeit_soll",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "betreiber_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "betreiber_name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "betriebstag",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "durchfahrt",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 7
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "faellt_aus",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 8
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "fahrt_bezeichner",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "haltestellen_name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "linien_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "linien_text",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "produkt_id",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "verkehrsmittel_text",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         }
       ],
       "name": "record",
@@ -338,74 +266,57 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "exclude",
                     "orig": "exclude",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "de",
                     "kind": "query",
                     "name": "lang",
                     "orig": "lang",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": 10,
                     "kind": "query",
                     "name": "limit",
                     "orig": "limit",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "offset",
                     "orig": "offset",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "order_by",
                     "orig": "order_by",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "refine",
                     "orig": "refine",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "select",
                     "orig": "select",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "where",
                     "orig": "where",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -434,11 +345,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

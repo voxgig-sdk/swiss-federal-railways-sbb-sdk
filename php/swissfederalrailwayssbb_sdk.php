@@ -40,7 +40,7 @@ class SwissFederalRailwaysSbbSDK
         $utility = new SwissFederalRailwaysSbbUtility();
         $this->_utility = $utility;
 
-        $config = SwissFederalRailwaysSbbConfig::make_config();
+        $config = SwissFederalRailwaysSbbConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

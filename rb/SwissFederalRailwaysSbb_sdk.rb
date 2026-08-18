@@ -28,7 +28,7 @@ class SwissFederalRailwaysSbbSDK
     utility = SwissFederalRailwaysSbbUtility.new
     @_utility = utility
 
-    config = SwissFederalRailwaysSbbConfig.make_config
+    config = SwissFederalRailwaysSbbConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
