@@ -197,96 +197,112 @@
               "active": true,
               "name": "abfahrtszeit_ist",
               "req": false,
+              "short": "Actual departure time",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "abfahrtszeit_soll",
               "req": false,
+              "short": "Scheduled departure time",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ankunftszeit_ist",
               "req": false,
+              "short": "Actual arrival time",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ankunftszeit_soll",
               "req": false,
+              "short": "Scheduled arrival time",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "betreiber_id",
               "req": false,
+              "short": "Operator ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "betreiber_name",
               "req": false,
+              "short": "Operator name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "betriebstag",
               "req": false,
+              "short": "Operating day",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "durchfahrt",
               "req": false,
+              "short": "Through passage (no stop)",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "faellt_aus",
               "req": false,
+              "short": "Cancelled",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "fahrt_bezeichner",
               "req": false,
+              "short": "Trip identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "haltestellen_name",
               "req": false,
+              "short": "Station name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique record identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "linien_id",
               "req": false,
+              "short": "Line ID",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "linien_text",
               "req": false,
+              "short": "Line text/number",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "produkt_id",
               "req": false,
+              "short": "Product ID (train type)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "verkehrsmittel_text",
               "req": false,
+              "short": "Transport type",
               "type": "`$STRING`"
             }
           ],

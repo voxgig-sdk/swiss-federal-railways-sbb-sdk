@@ -15,12 +15,12 @@ import type {
 } from '../types'
 
 import type {
-  Record,
+  RecordType,
   RecordListMatch,
 } from '../SwissFederalRailwaysSbbTypes'
 
 // TODO: needs Entity superclass
-class RecordEntity extends SwissFederalRailwaysSbbEntityBase<Record> {
+class RecordEntity extends SwissFederalRailwaysSbbEntityBase<RecordType> {
 
   constructor(client: SwissFederalRailwaysSbbSDK, entopts: any) {
     super(client, entopts)

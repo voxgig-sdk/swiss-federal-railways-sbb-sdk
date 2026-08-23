@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "SwissFederalRailwaysSbb",
+      slug = "swiss-federal-railways-sbb",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -167,66 +170,82 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "abfahrtszeit_ist",
+            ["short"] = "Actual departure time",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "abfahrtszeit_soll",
+            ["short"] = "Scheduled departure time",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "ankunftszeit_ist",
+            ["short"] = "Actual arrival time",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "ankunftszeit_soll",
+            ["short"] = "Scheduled arrival time",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "betreiber_id",
+            ["short"] = "Operator ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "betreiber_name",
+            ["short"] = "Operator name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "betriebstag",
+            ["short"] = "Operating day",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "durchfahrt",
+            ["short"] = "Through passage (no stop)",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "faellt_aus",
+            ["short"] = "Cancelled",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "fahrt_bezeichner",
+            ["short"] = "Trip identifier",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "haltestellen_name",
+            ["short"] = "Station name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique record identifier",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "linien_id",
+            ["short"] = "Line ID",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "linien_text",
+            ["short"] = "Line text/number",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "produkt_id",
+            ["short"] = "Product ID (train type)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "verkehrsmittel_text",
+            ["short"] = "Transport type",
             ["type"] = "`$STRING`",
           },
         },

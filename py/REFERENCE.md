@@ -146,22 +146,22 @@ record = client.Record()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | `str` | No |  |
-| `abfahrtszeit_soll` | `str` | No |  |
-| `ankunftszeit_ist` | `str` | No |  |
-| `ankunftszeit_soll` | `str` | No |  |
-| `betreiber_id` | `str` | No |  |
-| `betreiber_name` | `str` | No |  |
-| `betriebstag` | `str` | No |  |
-| `durchfahrt` | `bool` | No |  |
-| `faellt_aus` | `bool` | No |  |
-| `fahrt_bezeichner` | `str` | No |  |
-| `haltestellen_name` | `str` | No |  |
-| `id` | `str` | No |  |
-| `linien_id` | `str` | No |  |
-| `linien_text` | `str` | No |  |
-| `produkt_id` | `str` | No |  |
-| `verkehrsmittel_text` | `str` | No |  |
+| `abfahrtszeit_ist` | `str` | No | Actual departure time |
+| `abfahrtszeit_soll` | `str` | No | Scheduled departure time |
+| `ankunftszeit_ist` | `str` | No | Actual arrival time |
+| `ankunftszeit_soll` | `str` | No | Scheduled arrival time |
+| `betreiber_id` | `str` | No | Operator ID |
+| `betreiber_name` | `str` | No | Operator name |
+| `betriebstag` | `str` | No | Operating day |
+| `durchfahrt` | `bool` | No | Through passage (no stop) |
+| `faellt_aus` | `bool` | No | Cancelled |
+| `fahrt_bezeichner` | `str` | No | Trip identifier |
+| `haltestellen_name` | `str` | No | Station name |
+| `id` | `str` | No | Unique record identifier |
+| `linien_id` | `str` | No | Line ID |
+| `linien_text` | `str` | No | Line text/number |
+| `produkt_id` | `str` | No | Product ID (train type) |
+| `verkehrsmittel_text` | `str` | No | Transport type |
 
 ### Operations
 

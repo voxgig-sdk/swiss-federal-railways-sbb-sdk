@@ -251,22 +251,22 @@ API path: `/catalog/datasets/ist-daten-sbb/exports/json`
 
 | Field | Description |
 | --- | --- |
-| `abfahrtszeit_ist` |  |
-| `abfahrtszeit_soll` |  |
-| `ankunftszeit_ist` |  |
-| `ankunftszeit_soll` |  |
-| `betreiber_id` |  |
-| `betreiber_name` |  |
-| `betriebstag` |  |
-| `durchfahrt` |  |
-| `faellt_aus` |  |
-| `fahrt_bezeichner` |  |
-| `haltestellen_name` |  |
-| `id` |  |
-| `linien_id` |  |
-| `linien_text` |  |
-| `produkt_id` |  |
-| `verkehrsmittel_text` |  |
+| `abfahrtszeit_ist` | Actual departure time |
+| `abfahrtszeit_soll` | Scheduled departure time |
+| `ankunftszeit_ist` | Actual arrival time |
+| `ankunftszeit_soll` | Scheduled arrival time |
+| `betreiber_id` | Operator ID |
+| `betreiber_name` | Operator name |
+| `betriebstag` | Operating day |
+| `durchfahrt` | Through passage (no stop) |
+| `faellt_aus` | Cancelled |
+| `fahrt_bezeichner` | Trip identifier |
+| `haltestellen_name` | Station name |
+| `id` | Unique record identifier |
+| `linien_id` | Line ID |
+| `linien_text` | Line text/number |
+| `produkt_id` | Product ID (train type) |
+| `verkehrsmittel_text` | Transport type |
 
 Operations: List.
 
@@ -315,22 +315,22 @@ Create an instance: `local record = client:Record(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abfahrtszeit_ist` | `string` |  |
-| `abfahrtszeit_soll` | `string` |  |
-| `ankunftszeit_ist` | `string` |  |
-| `ankunftszeit_soll` | `string` |  |
-| `betreiber_id` | `string` |  |
-| `betreiber_name` | `string` |  |
-| `betriebstag` | `string` |  |
-| `durchfahrt` | `boolean` |  |
-| `faellt_aus` | `boolean` |  |
-| `fahrt_bezeichner` | `string` |  |
-| `haltestellen_name` | `string` |  |
-| `id` | `string` |  |
-| `linien_id` | `string` |  |
-| `linien_text` | `string` |  |
-| `produkt_id` | `string` |  |
-| `verkehrsmittel_text` | `string` |  |
+| `abfahrtszeit_ist` | `string` | Actual departure time |
+| `abfahrtszeit_soll` | `string` | Scheduled departure time |
+| `ankunftszeit_ist` | `string` | Actual arrival time |
+| `ankunftszeit_soll` | `string` | Scheduled arrival time |
+| `betreiber_id` | `string` | Operator ID |
+| `betreiber_name` | `string` | Operator name |
+| `betriebstag` | `string` | Operating day |
+| `durchfahrt` | `boolean` | Through passage (no stop) |
+| `faellt_aus` | `boolean` | Cancelled |
+| `fahrt_bezeichner` | `string` | Trip identifier |
+| `haltestellen_name` | `string` | Station name |
+| `id` | `string` | Unique record identifier |
+| `linien_id` | `string` | Line ID |
+| `linien_text` | `string` | Line text/number |
+| `produkt_id` | `string` | Product ID (train type) |
+| `verkehrsmittel_text` | `string` | Transport type |
 
 #### Example: List
 

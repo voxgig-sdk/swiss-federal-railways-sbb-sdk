@@ -266,22 +266,22 @@ API path: `/catalog/datasets/ist-daten-sbb/exports/json`
 
 | Field | Description |
 | --- | --- |
-| `abfahrtszeit_ist` |  |
-| `abfahrtszeit_soll` |  |
-| `ankunftszeit_ist` |  |
-| `ankunftszeit_soll` |  |
-| `betreiber_id` |  |
-| `betreiber_name` |  |
-| `betriebstag` |  |
-| `durchfahrt` |  |
-| `faellt_aus` |  |
-| `fahrt_bezeichner` |  |
-| `haltestellen_name` |  |
-| `id` |  |
-| `linien_id` |  |
-| `linien_text` |  |
-| `produkt_id` |  |
-| `verkehrsmittel_text` |  |
+| `abfahrtszeit_ist` | Actual departure time |
+| `abfahrtszeit_soll` | Scheduled departure time |
+| `ankunftszeit_ist` | Actual arrival time |
+| `ankunftszeit_soll` | Scheduled arrival time |
+| `betreiber_id` | Operator ID |
+| `betreiber_name` | Operator name |
+| `betriebstag` | Operating day |
+| `durchfahrt` | Through passage (no stop) |
+| `faellt_aus` | Cancelled |
+| `fahrt_bezeichner` | Trip identifier |
+| `haltestellen_name` | Station name |
+| `id` | Unique record identifier |
+| `linien_id` | Line ID |
+| `linien_text` | Line text/number |
+| `produkt_id` | Product ID (train type) |
+| `verkehrsmittel_text` | Transport type |
 
 Operations: List.
 
@@ -330,22 +330,22 @@ Create an instance: `record = client.Record()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abfahrtszeit_ist` | `str` |  |
-| `abfahrtszeit_soll` | `str` |  |
-| `ankunftszeit_ist` | `str` |  |
-| `ankunftszeit_soll` | `str` |  |
-| `betreiber_id` | `str` |  |
-| `betreiber_name` | `str` |  |
-| `betriebstag` | `str` |  |
-| `durchfahrt` | `bool` |  |
-| `faellt_aus` | `bool` |  |
-| `fahrt_bezeichner` | `str` |  |
-| `haltestellen_name` | `str` |  |
-| `id` | `str` |  |
-| `linien_id` | `str` |  |
-| `linien_text` | `str` |  |
-| `produkt_id` | `str` |  |
-| `verkehrsmittel_text` | `str` |  |
+| `abfahrtszeit_ist` | `str` | Actual departure time |
+| `abfahrtszeit_soll` | `str` | Scheduled departure time |
+| `ankunftszeit_ist` | `str` | Actual arrival time |
+| `ankunftszeit_soll` | `str` | Scheduled arrival time |
+| `betreiber_id` | `str` | Operator ID |
+| `betreiber_name` | `str` | Operator name |
+| `betriebstag` | `str` | Operating day |
+| `durchfahrt` | `bool` | Through passage (no stop) |
+| `faellt_aus` | `bool` | Cancelled |
+| `fahrt_bezeichner` | `str` | Trip identifier |
+| `haltestellen_name` | `str` | Station name |
+| `id` | `str` | Unique record identifier |
+| `linien_id` | `str` | Line ID |
+| `linien_text` | `str` | Line text/number |
+| `produkt_id` | `str` | Product ID (train type) |
+| `verkehrsmittel_text` | `str` | Transport type |
 
 #### Example: List
 

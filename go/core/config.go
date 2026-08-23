@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "SwissFederalRailwaysSbb",
+			"slug": "swiss-federal-railways-sbb",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -171,66 +174,82 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "abfahrtszeit_ist",
+						"short": "Actual departure time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "abfahrtszeit_soll",
+						"short": "Scheduled departure time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ankunftszeit_ist",
+						"short": "Actual arrival time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ankunftszeit_soll",
+						"short": "Scheduled arrival time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "betreiber_id",
+						"short": "Operator ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "betreiber_name",
+						"short": "Operator name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "betriebstag",
+						"short": "Operating day",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "durchfahrt",
+						"short": "Through passage (no stop)",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "faellt_aus",
+						"short": "Cancelled",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "fahrt_bezeichner",
+						"short": "Trip identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "haltestellen_name",
+						"short": "Station name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique record identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "linien_id",
+						"short": "Line ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "linien_text",
+						"short": "Line text/number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "produkt_id",
+						"short": "Product ID (train type)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "verkehrsmittel_text",
+						"short": "Transport type",
 						"type": "`$STRING`",
 					},
 				},

@@ -159,22 +159,22 @@ fmt.Println(record.GetName()) // "record"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abfahrtszeit_ist` | `string` | No |  |
-| `abfahrtszeit_soll` | `string` | No |  |
-| `ankunftszeit_ist` | `string` | No |  |
-| `ankunftszeit_soll` | `string` | No |  |
-| `betreiber_id` | `string` | No |  |
-| `betreiber_name` | `string` | No |  |
-| `betriebstag` | `string` | No |  |
-| `durchfahrt` | `bool` | No |  |
-| `faellt_aus` | `bool` | No |  |
-| `fahrt_bezeichner` | `string` | No |  |
-| `haltestellen_name` | `string` | No |  |
-| `id` | `string` | No |  |
-| `linien_id` | `string` | No |  |
-| `linien_text` | `string` | No |  |
-| `produkt_id` | `string` | No |  |
-| `verkehrsmittel_text` | `string` | No |  |
+| `abfahrtszeit_ist` | `string` | No | Actual departure time |
+| `abfahrtszeit_soll` | `string` | No | Scheduled departure time |
+| `ankunftszeit_ist` | `string` | No | Actual arrival time |
+| `ankunftszeit_soll` | `string` | No | Scheduled arrival time |
+| `betreiber_id` | `string` | No | Operator ID |
+| `betreiber_name` | `string` | No | Operator name |
+| `betriebstag` | `string` | No | Operating day |
+| `durchfahrt` | `bool` | No | Through passage (no stop) |
+| `faellt_aus` | `bool` | No | Cancelled |
+| `fahrt_bezeichner` | `string` | No | Trip identifier |
+| `haltestellen_name` | `string` | No | Station name |
+| `id` | `string` | No | Unique record identifier |
+| `linien_id` | `string` | No | Line ID |
+| `linien_text` | `string` | No | Line text/number |
+| `produkt_id` | `string` | No | Product ID (train type) |
+| `verkehrsmittel_text` | `string` | No | Transport type |
 
 ### Operations
 

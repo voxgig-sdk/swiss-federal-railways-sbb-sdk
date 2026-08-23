@@ -8,81 +8,97 @@ main: kit: entity: record: {
     {
       name: "abfahrtszeit_ist"
       req: false
+      short: "Actual departure time"
       type: "`$STRING`"
     }
     {
       name: "abfahrtszeit_soll"
       req: false
+      short: "Scheduled departure time"
       type: "`$STRING`"
     }
     {
       name: "ankunftszeit_ist"
       req: false
+      short: "Actual arrival time"
       type: "`$STRING`"
     }
     {
       name: "ankunftszeit_soll"
       req: false
+      short: "Scheduled arrival time"
       type: "`$STRING`"
     }
     {
       name: "betreiber_id"
       req: false
+      short: "Operator ID"
       type: "`$STRING`"
     }
     {
       name: "betreiber_name"
       req: false
+      short: "Operator name"
       type: "`$STRING`"
     }
     {
       name: "betriebstag"
       req: false
+      short: "Operating day"
       type: "`$STRING`"
     }
     {
       name: "durchfahrt"
       req: false
+      short: "Through passage (no stop)"
       type: "`$BOOLEAN`"
     }
     {
       name: "faellt_aus"
       req: false
+      short: "Cancelled"
       type: "`$BOOLEAN`"
     }
     {
       name: "fahrt_bezeichner"
       req: false
+      short: "Trip identifier"
       type: "`$STRING`"
     }
     {
       name: "haltestellen_name"
       req: false
+      short: "Station name"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique record identifier"
       type: "`$STRING`"
     }
     {
       name: "linien_id"
       req: false
+      short: "Line ID"
       type: "`$STRING`"
     }
     {
       name: "linien_text"
       req: false
+      short: "Line text/number"
       type: "`$STRING`"
     }
     {
       name: "produkt_id"
       req: false
+      short: "Product ID (train type)"
       type: "`$STRING`"
     }
     {
       name: "verkehrsmittel_text"
       req: false
+      short: "Transport type"
       type: "`$STRING`"
     }
   ]

@@ -260,22 +260,22 @@ API path: `/catalog/datasets/ist-daten-sbb/exports/json`
 
 | Field | Description |
 | --- | --- |
-| `abfahrtszeit_ist` |  |
-| `abfahrtszeit_soll` |  |
-| `ankunftszeit_ist` |  |
-| `ankunftszeit_soll` |  |
-| `betreiber_id` |  |
-| `betreiber_name` |  |
-| `betriebstag` |  |
-| `durchfahrt` |  |
-| `faellt_aus` |  |
-| `fahrt_bezeichner` |  |
-| `haltestellen_name` |  |
-| `id` |  |
-| `linien_id` |  |
-| `linien_text` |  |
-| `produkt_id` |  |
-| `verkehrsmittel_text` |  |
+| `abfahrtszeit_ist` | Actual departure time |
+| `abfahrtszeit_soll` | Scheduled departure time |
+| `ankunftszeit_ist` | Actual arrival time |
+| `ankunftszeit_soll` | Scheduled arrival time |
+| `betreiber_id` | Operator ID |
+| `betreiber_name` | Operator name |
+| `betriebstag` | Operating day |
+| `durchfahrt` | Through passage (no stop) |
+| `faellt_aus` | Cancelled |
+| `fahrt_bezeichner` | Trip identifier |
+| `haltestellen_name` | Station name |
+| `id` | Unique record identifier |
+| `linien_id` | Line ID |
+| `linien_text` | Line text/number |
+| `produkt_id` | Product ID (train type) |
+| `verkehrsmittel_text` | Transport type |
 
 Operations: List.
 
@@ -326,22 +326,22 @@ Create an instance: `record = client.Record`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abfahrtszeit_ist` | `String` |  |
-| `abfahrtszeit_soll` | `String` |  |
-| `ankunftszeit_ist` | `String` |  |
-| `ankunftszeit_soll` | `String` |  |
-| `betreiber_id` | `String` |  |
-| `betreiber_name` | `String` |  |
-| `betriebstag` | `String` |  |
-| `durchfahrt` | `Boolean` |  |
-| `faellt_aus` | `Boolean` |  |
-| `fahrt_bezeichner` | `String` |  |
-| `haltestellen_name` | `String` |  |
-| `id` | `String` |  |
-| `linien_id` | `String` |  |
-| `linien_text` | `String` |  |
-| `produkt_id` | `String` |  |
-| `verkehrsmittel_text` | `String` |  |
+| `abfahrtszeit_ist` | `String` | Actual departure time |
+| `abfahrtszeit_soll` | `String` | Scheduled departure time |
+| `ankunftszeit_ist` | `String` | Actual arrival time |
+| `ankunftszeit_soll` | `String` | Scheduled arrival time |
+| `betreiber_id` | `String` | Operator ID |
+| `betreiber_name` | `String` | Operator name |
+| `betriebstag` | `String` | Operating day |
+| `durchfahrt` | `Boolean` | Through passage (no stop) |
+| `faellt_aus` | `Boolean` | Cancelled |
+| `fahrt_bezeichner` | `String` | Trip identifier |
+| `haltestellen_name` | `String` | Station name |
+| `id` | `String` | Unique record identifier |
+| `linien_id` | `String` | Line ID |
+| `linien_text` | `String` | Line text/number |
+| `produkt_id` | `String` | Product ID (train type) |
+| `verkehrsmittel_text` | `String` | Transport type |
 
 #### Example: List
 

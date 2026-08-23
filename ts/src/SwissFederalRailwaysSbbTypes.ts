@@ -26,7 +26,7 @@ export interface ExportListMatch {
   [action: string]: any
 }
 
-export interface Record {
+export interface RecordType {
   abfahrtszeit_ist?: string
   abfahrtszeit_soll?: string
   ankunftszeit_ist?: string
