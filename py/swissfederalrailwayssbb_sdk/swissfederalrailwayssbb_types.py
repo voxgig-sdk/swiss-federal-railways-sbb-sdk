@@ -20,12 +20,19 @@ class Export(TypedDict):
     pass
 
 
-class ExportLoadMatch(TypedDict):
-    pass
+class ExportLoadMatch(TypedDict, total=False):
+    delimiter: str
+    exclude: str
+    lang: str
+    refine: str
+    where: str
 
 
-class ExportListMatch(TypedDict):
-    pass
+class ExportListMatch(TypedDict, total=False):
+    exclude: str
+    lang: str
+    refine: str
+    where: str
 
 
 class Record(TypedDict, total=False):
@@ -48,19 +55,11 @@ class Record(TypedDict, total=False):
 
 
 class RecordListMatch(TypedDict, total=False):
-    abfahrtszeit_ist: str
-    abfahrtszeit_soll: str
-    ankunftszeit_ist: str
-    ankunftszeit_soll: str
-    betreiber_id: str
-    betreiber_name: str
-    betriebstag: str
-    durchfahrt: bool
-    faellt_aus: bool
-    fahrt_bezeichner: str
-    haltestellen_name: str
-    id: str
-    linien_id: str
-    linien_text: str
-    produkt_id: str
-    verkehrsmittel_text: str
+    exclude: str
+    lang: str
+    limit: int
+    offset: int
+    order_by: str
+    refine: str
+    select: str
+    where: str

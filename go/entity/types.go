@@ -18,10 +18,19 @@ type Export struct {
 
 // ExportLoadMatch is the typed request payload for Export.LoadTyped.
 type ExportLoadMatch struct {
+	Delimiter *string `json:"delimiter,omitempty"`
+	Exclude *string `json:"exclude,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	Refine *string `json:"refine,omitempty"`
+	Where *string `json:"where,omitempty"`
 }
 
 // ExportListMatch is the typed request payload for Export.ListTyped.
 type ExportListMatch struct {
+	Exclude *string `json:"exclude,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	Refine *string `json:"refine,omitempty"`
+	Where *string `json:"where,omitempty"`
 }
 
 // Record is the typed data model for the record entity.
@@ -46,22 +55,14 @@ type Record struct {
 
 // RecordListMatch is the typed request payload for Record.ListTyped.
 type RecordListMatch struct {
-	AbfahrtszeitIst *string `json:"abfahrtszeit_ist,omitempty"`
-	AbfahrtszeitSoll *string `json:"abfahrtszeit_soll,omitempty"`
-	AnkunftszeitIst *string `json:"ankunftszeit_ist,omitempty"`
-	AnkunftszeitSoll *string `json:"ankunftszeit_soll,omitempty"`
-	BetreiberId *string `json:"betreiber_id,omitempty"`
-	BetreiberName *string `json:"betreiber_name,omitempty"`
-	Betriebstag *string `json:"betriebstag,omitempty"`
-	Durchfahrt *bool `json:"durchfahrt,omitempty"`
-	FaelltAus *bool `json:"faellt_aus,omitempty"`
-	FahrtBezeichner *string `json:"fahrt_bezeichner,omitempty"`
-	HaltestellenName *string `json:"haltestellen_name,omitempty"`
-	Id *string `json:"id,omitempty"`
-	LinienId *string `json:"linien_id,omitempty"`
-	LinienText *string `json:"linien_text,omitempty"`
-	ProduktId *string `json:"produkt_id,omitempty"`
-	VerkehrsmittelText *string `json:"verkehrsmittel_text,omitempty"`
+	Exclude *string `json:"exclude,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	OrderBy *string `json:"order_by,omitempty"`
+	Refine *string `json:"refine,omitempty"`
+	Select *string `json:"select,omitempty"`
+	Where *string `json:"where,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

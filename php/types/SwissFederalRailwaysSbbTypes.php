@@ -20,11 +20,20 @@ class Export
 /** Request payload for Export#load. */
 class ExportLoadMatch
 {
+    public ?string $delimiter = null;
+    public ?string $exclude = null;
+    public ?string $lang = null;
+    public ?string $refine = null;
+    public ?string $where = null;
 }
 
 /** Request payload for Export#list. */
 class ExportListMatch
 {
+    public ?string $exclude = null;
+    public ?string $lang = null;
+    public ?string $refine = null;
+    public ?string $where = null;
 }
 
 /** Record entity data model. */
@@ -51,21 +60,13 @@ class Record
 /** Request payload for Record#list. */
 class RecordListMatch
 {
-    public ?string $abfahrtszeit_ist = null;
-    public ?string $abfahrtszeit_soll = null;
-    public ?string $ankunftszeit_ist = null;
-    public ?string $ankunftszeit_soll = null;
-    public ?string $betreiber_id = null;
-    public ?string $betreiber_name = null;
-    public ?string $betriebstag = null;
-    public ?bool $durchfahrt = null;
-    public ?bool $faellt_aus = null;
-    public ?string $fahrt_bezeichner = null;
-    public ?string $haltestellen_name = null;
-    public ?string $id = null;
-    public ?string $linien_id = null;
-    public ?string $linien_text = null;
-    public ?string $produkt_id = null;
-    public ?string $verkehrsmittel_text = null;
+    public ?string $exclude = null;
+    public ?string $lang = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $order_by = null;
+    public ?string $refine = null;
+    public ?string $select = null;
+    public ?string $where = null;
 }
 
