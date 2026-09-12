@@ -45,12 +45,22 @@ main: kit: entity: export: {
           }
           method: "GET"
           orig: "/catalog/datasets/ist-daten-sbb/exports/json"
-          parts: [
-            "catalog"
-            "datasets"
-            "ist-daten-sbb"
-            "exports"
-            "json"
+          segments: [
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "datasets"
+            }
+            {
+              lit: "ist-daten-sbb"
+            }
+            {
+              lit: "exports"
+            }
+            {
+              lit: "json"
+            }
           ]
           select: {
             "$action": "json"
@@ -115,12 +125,22 @@ main: kit: entity: export: {
           }
           method: "GET"
           orig: "/catalog/datasets/ist-daten-sbb/exports/csv"
-          parts: [
-            "catalog"
-            "datasets"
-            "ist-daten-sbb"
-            "exports"
-            "csv"
+          segments: [
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "datasets"
+            }
+            {
+              lit: "ist-daten-sbb"
+            }
+            {
+              lit: "exports"
+            }
+            {
+              lit: "csv"
+            }
           ]
           select: {
             "$action": "csv"

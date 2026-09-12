@@ -97,12 +97,22 @@ class SwissFederalRailwaysSbbConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/exports/json',
-                  'parts' => [
-                    'catalog',
-                    'datasets',
-                    'ist-daten-sbb',
-                    'exports',
-                    'json',
+                  'segments' => [
+                    [
+                      'lit' => 'catalog',
+                    ],
+                    [
+                      'lit' => 'datasets',
+                    ],
+                    [
+                      'lit' => 'ist-daten-sbb',
+                    ],
+                    [
+                      'lit' => 'exports',
+                    ],
+                    [
+                      'lit' => 'json',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'json',
@@ -116,6 +126,13 @@ class SwissFederalRailwaysSbbConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'catalog',
+                    'datasets',
+                    'ist-daten-sbb',
+                    'exports',
+                    'json',
                   ],
                 ],
               ],
@@ -164,12 +181,22 @@ class SwissFederalRailwaysSbbConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/exports/csv',
-                  'parts' => [
-                    'catalog',
-                    'datasets',
-                    'ist-daten-sbb',
-                    'exports',
-                    'csv',
+                  'segments' => [
+                    [
+                      'lit' => 'catalog',
+                    ],
+                    [
+                      'lit' => 'datasets',
+                    ],
+                    [
+                      'lit' => 'ist-daten-sbb',
+                    ],
+                    [
+                      'lit' => 'exports',
+                    ],
+                    [
+                      'lit' => 'csv',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'csv',
@@ -185,6 +212,13 @@ class SwissFederalRailwaysSbbConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'catalog',
+                    'datasets',
+                    'ist-daten-sbb',
+                    'exports',
+                    'csv',
+                  ],
                 ],
               ],
             ],
@@ -196,21 +230,25 @@ class SwissFederalRailwaysSbbConfig
         'record' => [
           'fields' => [
             [
+              'format' => 'date-time',
               'name' => 'abfahrtszeit_ist',
               'short' => 'Actual departure time',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'abfahrtszeit_soll',
               'short' => 'Scheduled departure time',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'ankunftszeit_ist',
               'short' => 'Actual arrival time',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'ankunftszeit_soll',
               'short' => 'Scheduled arrival time',
               'type' => '`$STRING`',
@@ -226,6 +264,7 @@ class SwissFederalRailwaysSbbConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date',
               'name' => 'betriebstag',
               'short' => 'Operating day',
               'type' => '`$STRING`',
@@ -275,6 +314,10 @@ class SwissFederalRailwaysSbbConfig
               'short' => 'Transport type',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'record',
           'op' => [
@@ -341,11 +384,19 @@ class SwissFederalRailwaysSbbConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/catalog/datasets/ist-daten-sbb/records',
-                  'parts' => [
-                    'catalog',
-                    'datasets',
-                    'ist-daten-sbb',
-                    'records',
+                  'segments' => [
+                    [
+                      'lit' => 'catalog',
+                    ],
+                    [
+                      'lit' => 'datasets',
+                    ],
+                    [
+                      'lit' => 'ist-daten-sbb',
+                    ],
+                    [
+                      'lit' => 'records',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -362,6 +413,12 @@ class SwissFederalRailwaysSbbConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'catalog',
+                    'datasets',
+                    'ist-daten-sbb',
+                    'records',
                   ],
                 ],
               ],

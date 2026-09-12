@@ -6,24 +6,28 @@ main: kit: entity: record: {
 
   fields: [
     {
+      format: "date-time"
       name: "abfahrtszeit_ist"
       req: false
       short: "Actual departure time"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "abfahrtszeit_soll"
       req: false
       short: "Scheduled departure time"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "ankunftszeit_ist"
       req: false
       short: "Actual arrival time"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "ankunftszeit_soll"
       req: false
       short: "Scheduled arrival time"
@@ -42,6 +46,7 @@ main: kit: entity: record: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "betriebstag"
       req: false
       short: "Operating day"
@@ -179,11 +184,19 @@ main: kit: entity: record: {
           }
           method: "GET"
           orig: "/catalog/datasets/ist-daten-sbb/records"
-          parts: [
-            "catalog"
-            "datasets"
-            "ist-daten-sbb"
-            "records"
+          segments: [
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "datasets"
+            }
+            {
+              lit: "ist-daten-sbb"
+            }
+            {
+              lit: "records"
+            }
           ]
           select: {
             exist: [

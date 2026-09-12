@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -108,12 +119,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/catalog/datasets/ist-daten-sbb/exports/json",
-              "parts": [
-                "catalog",
-                "datasets",
-                "ist-daten-sbb",
-                "exports",
-                "json"
+              "segments": [
+                {
+                  "lit": "catalog"
+                },
+                {
+                  "lit": "datasets"
+                },
+                {
+                  "lit": "ist-daten-sbb"
+                },
+                {
+                  "lit": "exports"
+                },
+                {
+                  "lit": "json"
+                }
               ],
               "select": {
                 "$action": "json",
@@ -127,7 +148,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "catalog",
+                "datasets",
+                "ist-daten-sbb",
+                "exports",
+                "json"
+              ]
             }
           ]
         },
@@ -175,12 +203,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/catalog/datasets/ist-daten-sbb/exports/csv",
-              "parts": [
-                "catalog",
-                "datasets",
-                "ist-daten-sbb",
-                "exports",
-                "csv"
+              "segments": [
+                {
+                  "lit": "catalog"
+                },
+                {
+                  "lit": "datasets"
+                },
+                {
+                  "lit": "ist-daten-sbb"
+                },
+                {
+                  "lit": "exports"
+                },
+                {
+                  "lit": "csv"
+                }
               ],
               "select": {
                 "$action": "csv",
@@ -195,7 +233,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "catalog",
+                "datasets",
+                "ist-daten-sbb",
+                "exports",
+                "csv"
+              ]
             }
           ]
         }
@@ -207,21 +252,25 @@ class Config {
     "record": {
       "fields": [
         {
+          "format": "date-time",
           "name": "abfahrtszeit_ist",
           "short": "Actual departure time",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "abfahrtszeit_soll",
           "short": "Scheduled departure time",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "ankunftszeit_ist",
           "short": "Actual arrival time",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "ankunftszeit_soll",
           "short": "Scheduled arrival time",
           "type": "`$STRING`"
@@ -237,6 +286,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "betriebstag",
           "short": "Operating day",
           "type": "`$STRING`"
@@ -287,6 +337,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "record",
       "op": {
         "list": {
@@ -352,11 +406,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/catalog/datasets/ist-daten-sbb/records",
-              "parts": [
-                "catalog",
-                "datasets",
-                "ist-daten-sbb",
-                "records"
+              "segments": [
+                {
+                  "lit": "catalog"
+                },
+                {
+                  "lit": "datasets"
+                },
+                {
+                  "lit": "ist-daten-sbb"
+                },
+                {
+                  "lit": "records"
+                }
               ],
               "select": {
                 "exist": [
@@ -373,7 +435,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "catalog",
+                "datasets",
+                "ist-daten-sbb",
+                "records"
+              ]
             }
           ]
         }
@@ -389,6 +457,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

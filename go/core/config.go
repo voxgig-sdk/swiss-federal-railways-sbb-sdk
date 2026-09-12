@@ -75,12 +75,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/catalog/datasets/ist-daten-sbb/exports/json",
-								"parts": []any{
-									"catalog",
-									"datasets",
-									"ist-daten-sbb",
-									"exports",
-									"json",
+								"segments": []any{
+									map[string]any{
+										"lit": "catalog",
+									},
+									map[string]any{
+										"lit": "datasets",
+									},
+									map[string]any{
+										"lit": "ist-daten-sbb",
+									},
+									map[string]any{
+										"lit": "exports",
+									},
+									map[string]any{
+										"lit": "json",
+									},
 								},
 								"select": map[string]any{
 									"$action": "json",
@@ -94,6 +104,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"catalog",
+									"datasets",
+									"ist-daten-sbb",
+									"exports",
+									"json",
 								},
 							},
 						},
@@ -142,12 +159,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/catalog/datasets/ist-daten-sbb/exports/csv",
-								"parts": []any{
-									"catalog",
-									"datasets",
-									"ist-daten-sbb",
-									"exports",
-									"csv",
+								"segments": []any{
+									map[string]any{
+										"lit": "catalog",
+									},
+									map[string]any{
+										"lit": "datasets",
+									},
+									map[string]any{
+										"lit": "ist-daten-sbb",
+									},
+									map[string]any{
+										"lit": "exports",
+									},
+									map[string]any{
+										"lit": "csv",
+									},
 								},
 								"select": map[string]any{
 									"$action": "csv",
@@ -163,6 +190,13 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"catalog",
+									"datasets",
+									"ist-daten-sbb",
+									"exports",
+									"csv",
+								},
 							},
 						},
 					},
@@ -174,21 +208,25 @@ func MakeConfig() map[string]any {
 			"record": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date-time",
 						"name": "abfahrtszeit_ist",
 						"short": "Actual departure time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "abfahrtszeit_soll",
 						"short": "Scheduled departure time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "ankunftszeit_ist",
 						"short": "Actual arrival time",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "ankunftszeit_soll",
 						"short": "Scheduled arrival time",
 						"type": "`$STRING`",
@@ -204,6 +242,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "betriebstag",
 						"short": "Operating day",
 						"type": "`$STRING`",
@@ -253,6 +292,10 @@ func MakeConfig() map[string]any {
 						"short": "Transport type",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "record",
 				"op": map[string]any{
@@ -319,11 +362,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/catalog/datasets/ist-daten-sbb/records",
-								"parts": []any{
-									"catalog",
-									"datasets",
-									"ist-daten-sbb",
-									"records",
+								"segments": []any{
+									map[string]any{
+										"lit": "catalog",
+									},
+									map[string]any{
+										"lit": "datasets",
+									},
+									map[string]any{
+										"lit": "ist-daten-sbb",
+									},
+									map[string]any{
+										"lit": "records",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -341,6 +392,12 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.results`",
 								},
+								"parts": []any{
+									"catalog",
+									"datasets",
+									"ist-daten-sbb",
+									"records",
+								},
 							},
 						},
 					},
@@ -351,6 +408,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

@@ -71,12 +71,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/catalog/datasets/ist-daten-sbb/exports/json",
-                ["parts"] = {
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "exports",
-                  "json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "catalog",
+                  },
+                  {
+                    ["lit"] = "datasets",
+                  },
+                  {
+                    ["lit"] = "ist-daten-sbb",
+                  },
+                  {
+                    ["lit"] = "exports",
+                  },
+                  {
+                    ["lit"] = "json",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "json",
@@ -90,6 +100,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "exports",
+                  "json",
                 },
               },
             },
@@ -138,12 +155,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/catalog/datasets/ist-daten-sbb/exports/csv",
-                ["parts"] = {
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "exports",
-                  "csv",
+                ["segments"] = {
+                  {
+                    ["lit"] = "catalog",
+                  },
+                  {
+                    ["lit"] = "datasets",
+                  },
+                  {
+                    ["lit"] = "ist-daten-sbb",
+                  },
+                  {
+                    ["lit"] = "exports",
+                  },
+                  {
+                    ["lit"] = "csv",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "csv",
@@ -159,6 +186,13 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "exports",
+                  "csv",
+                },
               },
             },
           },
@@ -170,21 +204,25 @@ local function make_config()
       ["record"] = {
         ["fields"] = {
           {
+            ["format"] = "date-time",
             ["name"] = "abfahrtszeit_ist",
             ["short"] = "Actual departure time",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "abfahrtszeit_soll",
             ["short"] = "Scheduled departure time",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "ankunftszeit_ist",
             ["short"] = "Actual arrival time",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "ankunftszeit_soll",
             ["short"] = "Scheduled arrival time",
             ["type"] = "`$STRING`",
@@ -200,6 +238,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date",
             ["name"] = "betriebstag",
             ["short"] = "Operating day",
             ["type"] = "`$STRING`",
@@ -249,6 +288,10 @@ local function make_config()
             ["short"] = "Transport type",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "record",
         ["op"] = {
@@ -315,11 +358,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/catalog/datasets/ist-daten-sbb/records",
-                ["parts"] = {
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "records",
+                ["segments"] = {
+                  {
+                    ["lit"] = "catalog",
+                  },
+                  {
+                    ["lit"] = "datasets",
+                  },
+                  {
+                    ["lit"] = "ist-daten-sbb",
+                  },
+                  {
+                    ["lit"] = "records",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -336,6 +387,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "records",
                 },
               },
             },

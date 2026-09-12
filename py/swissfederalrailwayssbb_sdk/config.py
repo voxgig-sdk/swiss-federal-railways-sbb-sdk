@@ -1,6 +1,14 @@
 # SwissFederalRailwaysSbb SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -92,12 +100,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/catalog/datasets/ist-daten-sbb/exports/json",
-                "parts": [
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "exports",
-                  "json",
+                "segments": [
+                  {
+                    "lit": "catalog",
+                  },
+                  {
+                    "lit": "datasets",
+                  },
+                  {
+                    "lit": "ist-daten-sbb",
+                  },
+                  {
+                    "lit": "exports",
+                  },
+                  {
+                    "lit": "json",
+                  },
                 ],
                 "select": {
                   "$action": "json",
@@ -112,6 +130,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "exports",
+                  "json",
+                ],
               },
             ],
           },
@@ -159,12 +184,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/catalog/datasets/ist-daten-sbb/exports/csv",
-                "parts": [
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "exports",
-                  "csv",
+                "segments": [
+                  {
+                    "lit": "catalog",
+                  },
+                  {
+                    "lit": "datasets",
+                  },
+                  {
+                    "lit": "ist-daten-sbb",
+                  },
+                  {
+                    "lit": "exports",
+                  },
+                  {
+                    "lit": "csv",
+                  },
                 ],
                 "select": {
                   "$action": "csv",
@@ -180,6 +215,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "exports",
+                  "csv",
+                ],
               },
             ],
           },
@@ -191,21 +233,25 @@ def make_config():
       "record": {
         "fields": [
           {
+            "format": "date-time",
             "name": "abfahrtszeit_ist",
             "short": "Actual departure time",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "abfahrtszeit_soll",
             "short": "Scheduled departure time",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "ankunftszeit_ist",
             "short": "Actual arrival time",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "ankunftszeit_soll",
             "short": "Scheduled arrival time",
             "type": "`$STRING`",
@@ -221,6 +267,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "betriebstag",
             "short": "Operating day",
             "type": "`$STRING`",
@@ -271,6 +318,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "record",
         "op": {
           "list": {
@@ -336,11 +387,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/catalog/datasets/ist-daten-sbb/records",
-                "parts": [
-                  "catalog",
-                  "datasets",
-                  "ist-daten-sbb",
-                  "records",
+                "segments": [
+                  {
+                    "lit": "catalog",
+                  },
+                  {
+                    "lit": "datasets",
+                  },
+                  {
+                    "lit": "ist-daten-sbb",
+                  },
+                  {
+                    "lit": "records",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -358,6 +417,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "catalog",
+                  "datasets",
+                  "ist-daten-sbb",
+                  "records",
+                ],
               },
             ],
           },
