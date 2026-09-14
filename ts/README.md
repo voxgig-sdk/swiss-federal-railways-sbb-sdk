@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb-sdk'
 
 const client = new SwissFederalRailwaysSbbSDK()
 ```
@@ -482,7 +482,7 @@ swiss-federal-railways-sbb/
 Import the SDK from the package root:
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb-sdk'
 ```
 
 ### Entity state

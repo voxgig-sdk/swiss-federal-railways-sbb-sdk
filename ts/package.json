@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/swiss-federal-railways-sbb",
+  "name": "@voxgig-sdk/swiss-federal-railways-sbb-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Swiss Federal Railways (SBB) public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

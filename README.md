@@ -105,7 +105,7 @@ local results, err = client:Export():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
 | Python | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
 | PHP | `voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go` | `go get github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Export():list()
 ### TypeScript
 
 ```ts
-import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb'
+import { SwissFederalRailwaysSbbSDK } from '@voxgig-sdk/swiss-federal-railways-sbb-sdk'
 
 const client = new SwissFederalRailwaysSbbSDK()
 
