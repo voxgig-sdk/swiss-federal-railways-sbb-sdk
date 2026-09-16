@@ -1,12 +1,18 @@
 # SwissFederalRailwaysSbb SDK feature factory
 
 from swissfederalrailwayssbb_sdk.feature.base_feature import SwissFederalRailwaysSbbBaseFeature
+from swissfederalrailwayssbb_sdk.feature.ratelimit_feature import SwissFederalRailwaysSbbRatelimitFeature
+from swissfederalrailwayssbb_sdk.feature.retry_feature import SwissFederalRailwaysSbbRetryFeature
 from swissfederalrailwayssbb_sdk.feature.test_feature import SwissFederalRailwaysSbbTestFeature
+from swissfederalrailwayssbb_sdk.feature.timeout_feature import SwissFederalRailwaysSbbTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: SwissFederalRailwaysSbbBaseFeature(),
+    "ratelimit": lambda: SwissFederalRailwaysSbbRatelimitFeature(),
+    "retry": lambda: SwissFederalRailwaysSbbRetryFeature(),
     "test": lambda: SwissFederalRailwaysSbbTestFeature(),
+    "timeout": lambda: SwissFederalRailwaysSbbTimeoutFeature(),
 }
 
 

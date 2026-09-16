@@ -4,7 +4,10 @@ declare(strict_types=1);
 // SwissFederalRailwaysSbb SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class SwissFederalRailwaysSbbFeatures
@@ -14,8 +17,14 @@ class SwissFederalRailwaysSbbFeatures
         switch ($name) {
             case "base":
                 return new SwissFederalRailwaysSbbBaseFeature();
+            case "ratelimit":
+                return new SwissFederalRailwaysSbbRatelimitFeature();
+            case "retry":
+                return new SwissFederalRailwaysSbbRetryFeature();
             case "test":
                 return new SwissFederalRailwaysSbbTestFeature();
+            case "timeout":
+                return new SwissFederalRailwaysSbbTimeoutFeature();
             default:
                 return new SwissFederalRailwaysSbbBaseFeature();
         }
@@ -31,7 +40,10 @@ class SwissFederalRailwaysSbbFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
