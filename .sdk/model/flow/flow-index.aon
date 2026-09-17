@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicExportFlow.aon"
-@"BasicRecordFlow.aon"
+@"./BasicExportFlow.aon"
+@"./BasicRecordFlow.aon"

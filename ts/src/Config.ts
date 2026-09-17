@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      export: {
-      },
-
-      record: {
-      },
-
+        export: {
+        },
+  
+        record: {
+        },
+  
     }
   }
 

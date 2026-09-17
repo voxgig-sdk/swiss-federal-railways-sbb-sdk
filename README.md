@@ -105,12 +105,12 @@ local results, err = client:Export():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
-| Python | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
-| PHP | `voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| TypeScript | `@voxgig-sdk/swiss-federal-railways-sbb-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/tags) |
+| Python | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/tags) |
+| PHP | `voxgig-sdk/swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go` | `go get github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go@latest` |
-| Ruby | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
-| Lua | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/releases) |
+| Ruby | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/tags) |
+| Lua | `voxgig-sdk-swiss-federal-railways-sbb` | publish pending — [install from git tag](https://github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go-cli` | `go install github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go-cli/cmd/swiss-federal-railways-sbb@latest` |
 | Go MCP server | `github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go-mcp` | `go get github.com/voxgig-sdk/swiss-federal-railways-sbb-sdk/go-mcp@latest` |
 

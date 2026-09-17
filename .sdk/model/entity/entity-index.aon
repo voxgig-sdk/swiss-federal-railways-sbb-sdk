@@ -1,4 +1,4 @@
 # Entity Models
 
-@"export.aon"
-@"record.aon"
+@"./export.aon"
+@"./record.aon"
