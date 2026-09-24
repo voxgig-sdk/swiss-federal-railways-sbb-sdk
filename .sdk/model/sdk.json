@@ -24,13 +24,79 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "export": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "export",
           "op": {
             "list": {
@@ -38,54 +104,63 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /catalog/datasets/ist-daten-sbb/exports/json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "exclude",
-                        "orig": "exclude",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "exclude",
+                        "or": "exclude",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "de",
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "de",
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "refine",
-                        "orig": "refine",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "refine",
+                        "or": "refine",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "where",
-                        "orig": "where",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "where",
+                        "or": "where",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /catalog/datasets/ist-daten-sbb/exports/json",
-                    "json": "{\"operationId\":\"exportJson\",\"parameters\":[{\"description\":\"Filter expression for export\",\"in\":\"query\",\"name\":\"where\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Refine export by specific field values\",\"in\":\"query\",\"name\":\"refine\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Exclude from export by specific field values\",\"in\":\"query\",\"name\":\"exclude\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Language for export (de, fr, it, en)\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"default\":\"de\",\"enum\":[\"de\",\"fr\",\"it\",\"en\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"JSON export file\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"429\":{\"description\":\"Too many requests\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/catalog/datasets/ist-daten-sbb/exports/json",
+                  "q": {
+                    "$action": "json",
+                    "exist": [
+                      "exclude",
+                      "lang",
+                      "refine",
+                      "where"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/catalog/datasets/ist-daten-sbb/exports/json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "catalog"
                     },
@@ -102,16 +177,7 @@
                       "lit": "json"
                     }
                   ],
-                  "select": {
-                    "$action": "json",
-                    "exist": [
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -123,63 +189,73 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /catalog/datasets/ist-daten-sbb/exports/csv",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": ";",
-                        "kind": "query",
-                        "name": "delimiter",
-                        "orig": "delimiter",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": ";",
+                        "k": "query",
+                        "n": "delimiter",
+                        "or": "delimiter",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "exclude",
-                        "orig": "exclude",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "exclude",
+                        "or": "exclude",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "de",
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "de",
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "refine",
-                        "orig": "refine",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "refine",
+                        "or": "refine",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "where",
-                        "orig": "where",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "where",
+                        "or": "where",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /catalog/datasets/ist-daten-sbb/exports/csv",
-                    "json": "{\"operationId\":\"exportCsv\",\"parameters\":[{\"description\":\"Filter expression for export\",\"in\":\"query\",\"name\":\"where\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Refine export by specific field values\",\"in\":\"query\",\"name\":\"refine\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Exclude from export by specific field values\",\"in\":\"query\",\"name\":\"exclude\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"CSV delimiter character\",\"in\":\"query\",\"name\":\"delimiter\",\"required\":false,\"schema\":{\"default\":\";\",\"enum\":[\",\",\";\",\"\\t\"],\"type\":\"string\"}},{\"description\":\"Language for export (de, fr, it, en)\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"default\":\"de\",\"enum\":[\"de\",\"fr\",\"it\",\"en\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/csv\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"CSV export file\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"429\":{\"description\":\"Too many requests\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/catalog/datasets/ist-daten-sbb/exports/csv",
+                  "q": {
+                    "$action": "csv",
+                    "exist": [
+                      "delimiter",
+                      "exclude",
+                      "lang",
+                      "refine",
+                      "where"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/catalog/datasets/ist-daten-sbb/exports/csv",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "catalog"
                     },
@@ -196,17 +272,7 @@
                       "lit": "csv"
                     }
                   ],
-                  "select": {
-                    "$action": "csv",
-                    "exist": [
-                      "delimiter",
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -223,125 +289,141 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "abfahrtszeit_ist",
-              "req": false,
-              "short": "Actual departure time",
-              "type": "`$STRING`"
+          "fields": {
+            "abfahrtszeit_ist": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Abfahrtszeit Ist",
+              "n": "abfahrtszeit_ist",
+              "r": false,
+              "sh": "Actual departure time",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "abfahrtszeit_soll",
-              "req": false,
-              "short": "Scheduled departure time",
-              "type": "`$STRING`"
+            "abfahrtszeit_soll": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Abfahrtszeit Soll",
+              "n": "abfahrtszeit_soll",
+              "r": false,
+              "sh": "Scheduled departure time",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "ankunftszeit_ist",
-              "req": false,
-              "short": "Actual arrival time",
-              "type": "`$STRING`"
+            "ankunftszeit_ist": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Ankunftszeit Ist",
+              "n": "ankunftszeit_ist",
+              "r": false,
+              "sh": "Actual arrival time",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "ankunftszeit_soll",
-              "req": false,
-              "short": "Scheduled arrival time",
-              "type": "`$STRING`"
+            "ankunftszeit_soll": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Ankunftszeit Soll",
+              "n": "ankunftszeit_soll",
+              "r": false,
+              "sh": "Scheduled arrival time",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "betreiber_id",
-              "req": false,
-              "short": "Operator ID",
-              "type": "`$STRING`"
+            "betreiber_id": {
+              "a": true,
+              "h": "Betreiber Id",
+              "n": "betreiber_id",
+              "r": false,
+              "sh": "Operator ID",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "betreiber_name",
-              "req": false,
-              "short": "Operator name",
-              "type": "`$STRING`"
+            "betreiber_name": {
+              "a": true,
+              "h": "Betreiber Name",
+              "n": "betreiber_name",
+              "r": false,
+              "sh": "Operator name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "betriebstag",
-              "req": false,
-              "short": "Operating day",
-              "type": "`$STRING`"
+            "betriebstag": {
+              "a": true,
+              "fo": "date",
+              "h": "Betriebstag",
+              "n": "betriebstag",
+              "r": false,
+              "sh": "Operating day",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "durchfahrt",
-              "req": false,
-              "short": "Through passage (no stop)",
-              "type": "`$BOOLEAN`"
+            "durchfahrt": {
+              "a": true,
+              "h": "Durchfahrt",
+              "n": "durchfahrt",
+              "r": false,
+              "sh": "Through passage (no stop)",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "faellt_aus",
-              "req": false,
-              "short": "Cancelled",
-              "type": "`$BOOLEAN`"
+            "faellt_aus": {
+              "a": true,
+              "h": "Faellt Aus",
+              "n": "faellt_aus",
+              "r": false,
+              "sh": "Cancelled",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "fahrt_bezeichner",
-              "req": false,
-              "short": "Trip identifier",
-              "type": "`$STRING`"
+            "fahrt_bezeichner": {
+              "a": true,
+              "h": "Fahrt Bezeichner",
+              "n": "fahrt_bezeichner",
+              "r": false,
+              "sh": "Trip identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "haltestellen_name",
-              "req": false,
-              "short": "Station name",
-              "type": "`$STRING`"
+            "haltestellen_name": {
+              "a": true,
+              "h": "Haltestellen Name",
+              "n": "haltestellen_name",
+              "r": false,
+              "sh": "Station name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique record identifier",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique record identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "linien_id",
-              "req": false,
-              "short": "Line ID",
-              "type": "`$STRING`"
+            "linien_id": {
+              "a": true,
+              "h": "Linien Id",
+              "n": "linien_id",
+              "r": false,
+              "sh": "Line ID",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "linien_text",
-              "req": false,
-              "short": "Line text/number",
-              "type": "`$STRING`"
+            "linien_text": {
+              "a": true,
+              "h": "Linien Text",
+              "n": "linien_text",
+              "r": false,
+              "sh": "Line text/number",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "produkt_id",
-              "req": false,
-              "short": "Product ID (train type)",
-              "type": "`$STRING`"
+            "produkt_id": {
+              "a": true,
+              "h": "Produkt Id",
+              "n": "produkt_id",
+              "r": false,
+              "sh": "Product ID (train type)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "verkehrsmittel_text",
-              "req": false,
-              "short": "Transport type",
-              "type": "`$STRING`"
+            "verkehrsmittel_text": {
+              "a": true,
+              "h": "Verkehrsmittel Text",
+              "n": "verkehrsmittel_text",
+              "r": false,
+              "sh": "Transport type",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -353,88 +435,100 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /catalog/datasets/ist-daten-sbb/records",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "exclude",
-                        "orig": "exclude",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "exclude",
+                        "or": "exclude",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "de",
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "de",
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 10,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 10,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "order_by",
-                        "orig": "order_by",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "order_by",
+                        "or": "order_by",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "refine",
-                        "orig": "refine",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "refine",
+                        "or": "refine",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "select",
-                        "orig": "select",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "select",
+                        "or": "select",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "where",
-                        "orig": "where",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "where",
+                        "or": "where",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /catalog/datasets/ist-daten-sbb/records",
-                    "json": "{\"operationId\":\"getRecords\",\"parameters\":[{\"description\":\"Number of records to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":10,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of records to skip for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"Filter expression for querying specific records\",\"in\":\"query\",\"name\":\"where\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Field to order results by\",\"in\":\"query\",\"name\":\"order_by\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of fields to return\",\"in\":\"query\",\"name\":\"select\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Refine results by specific field values\",\"in\":\"query\",\"name\":\"refine\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Exclude results by specific field values\",\"in\":\"query\",\"name\":\"exclude\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Language for response (de, fr, it, en)\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"default\":\"de\",\"enum\":[\"de\",\"fr\",\"it\",\"en\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"results\":{\"items\":{\"properties\":{\"abfahrtszeit_ist\":{\"description\":\"Actual departure time\",\"format\":\"date-time\",\"type\":\"string\"},\"abfahrtszeit_soll\":{\"description\":\"Scheduled departure time\",\"format\":\"date-time\",\"type\":\"string\"},\"ankunftszeit_ist\":{\"description\":\"Actual arrival time\",\"format\":\"date-time\",\"type\":\"string\"},\"ankunftszeit_soll\":{\"description\":\"Scheduled arrival time\",\"format\":\"date-time\",\"type\":\"string\"},\"betreiber_id\":{\"description\":\"Operator ID\",\"type\":\"string\"},\"betreiber_name\":{\"description\":\"Operator name\",\"type\":\"string\"},\"betriebstag\":{\"description\":\"Operating day\",\"format\":\"date\",\"type\":\"string\"},\"durchfahrt\":{\"description\":\"Through passage (no stop)\",\"type\":\"boolean\"},\"faellt_aus\":{\"description\":\"Cancelled\",\"type\":\"boolean\"},\"fahrt_bezeichner\":{\"description\":\"Trip identifier\",\"type\":\"string\"},\"haltestellen_name\":{\"description\":\"Station name\",\"type\":\"string\"},\"id\":{\"description\":\"Unique record identifier\",\"type\":\"string\"},\"linien_id\":{\"description\":\"Line ID\",\"type\":\"string\"},\"linien_text\":{\"description\":\"Line text/number\",\"type\":\"string\"},\"produkt_id\":{\"description\":\"Product ID (train type)\",\"type\":\"string\"},\"verkehrsmittel_text\":{\"description\":\"Transport type\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total_count\":{\"description\":\"Total number of records matching the query\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with SBB departure/arrival records\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"429\":{\"description\":\"Too many requests\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/catalog/datasets/ist-daten-sbb/records",
+                  "q": {
+                    "exist": [
+                      "exclude",
+                      "lang",
+                      "limit",
+                      "offset",
+                      "order_by",
+                      "refine",
+                      "select",
+                      "where"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/catalog/datasets/ist-daten-sbb/records",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "catalog"
                     },
@@ -448,19 +542,7 @@
                       "lit": "records"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "exclude",
-                      "lang",
-                      "limit",
-                      "offset",
-                      "order_by",
-                      "refine",
-                      "select",
-                      "where"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -889,13 +971,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -905,17 +987,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "export_ref01",
                 "srcdatavar": "export_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -935,13 +1017,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

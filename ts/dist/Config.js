@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -120,35 +113,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "exclude",
-                                        "orig": "exclude",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "de",
-                                        "kind": "query",
-                                        "name": "lang",
-                                        "orig": "lang",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "refine",
-                                        "orig": "refine",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "where",
-                                        "orig": "where",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/catalog/datasets/ist-daten-sbb/exports/json",
@@ -169,6 +133,47 @@ class Config {
                                     "lit": "json"
                                 }
                             ],
+                            "parts": [
+                                "catalog",
+                                "datasets",
+                                "ist-daten-sbb",
+                                "exports",
+                                "json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "exclude",
+                                        "orig": "exclude",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "lang",
+                                        "orig": "lang",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "de"
+                                    },
+                                    {
+                                        "name": "refine",
+                                        "orig": "refine",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "where",
+                                        "orig": "where",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "json",
                                 "exist": [
@@ -177,18 +182,7 @@ class Config {
                                     "refine",
                                     "where"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "catalog",
-                                "datasets",
-                                "ist-daten-sbb",
-                                "exports",
-                                "json"
-                            ]
+                            }
                         }
                     ]
                 },
@@ -197,42 +191,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": ";",
-                                        "kind": "query",
-                                        "name": "delimiter",
-                                        "orig": "delimiter",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "exclude",
-                                        "orig": "exclude",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "de",
-                                        "kind": "query",
-                                        "name": "lang",
-                                        "orig": "lang",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "refine",
-                                        "orig": "refine",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "where",
-                                        "orig": "where",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/catalog/datasets/ist-daten-sbb/exports/csv",
@@ -253,6 +211,54 @@ class Config {
                                     "lit": "csv"
                                 }
                             ],
+                            "parts": [
+                                "catalog",
+                                "datasets",
+                                "ist-daten-sbb",
+                                "exports",
+                                "csv"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "delimiter",
+                                        "orig": "delimiter",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": ";"
+                                    },
+                                    {
+                                        "name": "exclude",
+                                        "orig": "exclude",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "lang",
+                                        "orig": "lang",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "de"
+                                    },
+                                    {
+                                        "name": "refine",
+                                        "orig": "refine",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "where",
+                                        "orig": "where",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "csv",
                                 "exist": [
@@ -262,18 +268,7 @@ class Config {
                                     "refine",
                                     "where"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "catalog",
-                                "datasets",
-                                "ist-daten-sbb",
-                                "exports",
-                                "csv"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -285,89 +280,105 @@ class Config {
         "record": {
             "fields": [
                 {
-                    "format": "date-time",
                     "name": "abfahrtszeit_ist",
+                    "title": "Abfahrtszeit Ist",
+                    "type": "`$STRING`",
                     "short": "Actual departure time",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
-                    "format": "date-time",
                     "name": "abfahrtszeit_soll",
+                    "title": "Abfahrtszeit Soll",
+                    "type": "`$STRING`",
                     "short": "Scheduled departure time",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
-                    "format": "date-time",
                     "name": "ankunftszeit_ist",
+                    "title": "Ankunftszeit Ist",
+                    "type": "`$STRING`",
                     "short": "Actual arrival time",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
-                    "format": "date-time",
                     "name": "ankunftszeit_soll",
+                    "title": "Ankunftszeit Soll",
+                    "type": "`$STRING`",
                     "short": "Scheduled arrival time",
-                    "type": "`$STRING`"
+                    "format": "date-time"
                 },
                 {
                     "name": "betreiber_id",
-                    "short": "Operator ID",
-                    "type": "`$STRING`"
+                    "title": "Betreiber Id",
+                    "type": "`$STRING`",
+                    "short": "Operator ID"
                 },
                 {
                     "name": "betreiber_name",
-                    "short": "Operator name",
-                    "type": "`$STRING`"
+                    "title": "Betreiber Name",
+                    "type": "`$STRING`",
+                    "short": "Operator name"
                 },
                 {
-                    "format": "date",
                     "name": "betriebstag",
+                    "title": "Betriebstag",
+                    "type": "`$STRING`",
                     "short": "Operating day",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "durchfahrt",
-                    "short": "Through passage (no stop)",
-                    "type": "`$BOOLEAN`"
+                    "title": "Durchfahrt",
+                    "type": "`$BOOLEAN`",
+                    "short": "Through passage (no stop)"
                 },
                 {
                     "name": "faellt_aus",
-                    "short": "Cancelled",
-                    "type": "`$BOOLEAN`"
+                    "title": "Faellt Aus",
+                    "type": "`$BOOLEAN`",
+                    "short": "Cancelled"
                 },
                 {
                     "name": "fahrt_bezeichner",
-                    "short": "Trip identifier",
-                    "type": "`$STRING`"
+                    "title": "Fahrt Bezeichner",
+                    "type": "`$STRING`",
+                    "short": "Trip identifier"
                 },
                 {
                     "name": "haltestellen_name",
-                    "short": "Station name",
-                    "type": "`$STRING`"
+                    "title": "Haltestellen Name",
+                    "type": "`$STRING`",
+                    "short": "Station name"
                 },
                 {
                     "name": "id",
-                    "short": "Unique record identifier",
-                    "type": "`$STRING`"
+                    "title": "Id",
+                    "type": "`$STRING`",
+                    "short": "Unique record identifier"
                 },
                 {
                     "name": "linien_id",
-                    "short": "Line ID",
-                    "type": "`$STRING`"
+                    "title": "Linien Id",
+                    "type": "`$STRING`",
+                    "short": "Line ID"
                 },
                 {
                     "name": "linien_text",
-                    "short": "Line text/number",
-                    "type": "`$STRING`"
+                    "title": "Linien Text",
+                    "type": "`$STRING`",
+                    "short": "Line text/number"
                 },
                 {
                     "name": "produkt_id",
-                    "short": "Product ID (train type)",
-                    "type": "`$STRING`"
+                    "title": "Produkt Id",
+                    "type": "`$STRING`",
+                    "short": "Product ID (train type)"
                 },
                 {
                     "name": "verkehrsmittel_text",
-                    "short": "Transport type",
-                    "type": "`$STRING`"
+                    "title": "Verkehrsmittel Text",
+                    "type": "`$STRING`",
+                    "short": "Transport type"
                 }
             ],
             "id": {
@@ -381,61 +392,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "exclude",
-                                        "orig": "exclude",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": "de",
-                                        "kind": "query",
-                                        "name": "lang",
-                                        "orig": "lang",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 10,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "offset",
-                                        "orig": "offset",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "order_by",
-                                        "orig": "order_by",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "refine",
-                                        "orig": "refine",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "select",
-                                        "orig": "select",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "where",
-                                        "orig": "where",
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/catalog/datasets/ist-daten-sbb/records",
@@ -453,6 +409,72 @@ class Config {
                                     "lit": "records"
                                 }
                             ],
+                            "parts": [
+                                "catalog",
+                                "datasets",
+                                "ist-daten-sbb",
+                                "records"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.results`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "exclude",
+                                        "orig": "exclude",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "lang",
+                                        "orig": "lang",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "de"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 10
+                                    },
+                                    {
+                                        "name": "offset",
+                                        "orig": "offset",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    },
+                                    {
+                                        "name": "order_by",
+                                        "orig": "order_by",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "refine",
+                                        "orig": "refine",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "select",
+                                        "orig": "select",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "where",
+                                        "orig": "where",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "exclude",
@@ -464,17 +486,7 @@ class Config {
                                     "select",
                                     "where"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.results`"
-                            },
-                            "parts": [
-                                "catalog",
-                                "datasets",
-                                "ist-daten-sbb",
-                                "records"
-                            ]
+                            }
                         }
                     ]
                 }

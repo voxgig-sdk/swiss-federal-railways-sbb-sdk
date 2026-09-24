@@ -105,35 +105,6 @@ module SwissFederalRailwaysSbbConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "exclude",
-                        "orig" => "exclude",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "de",
-                        "kind" => "query",
-                        "name" => "lang",
-                        "orig" => "lang",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "refine",
-                        "orig" => "refine",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "where",
-                        "orig" => "where",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/catalog/datasets/ist-daten-sbb/exports/json",
@@ -154,6 +125,47 @@ module SwissFederalRailwaysSbbConfig
                       "lit" => "json",
                     },
                   ],
+                  "parts" => [
+                    "catalog",
+                    "datasets",
+                    "ist-daten-sbb",
+                    "exports",
+                    "json",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "exclude",
+                        "orig" => "exclude",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "lang",
+                        "orig" => "lang",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "de",
+                      },
+                      {
+                        "name" => "refine",
+                        "orig" => "refine",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "where",
+                        "orig" => "where",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "json",
                     "exist" => [
@@ -163,17 +175,6 @@ module SwissFederalRailwaysSbbConfig
                       "where",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "catalog",
-                    "datasets",
-                    "ist-daten-sbb",
-                    "exports",
-                    "json",
-                  ],
                 },
               ],
             },
@@ -182,42 +183,6 @@ module SwissFederalRailwaysSbbConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "example" => ";",
-                        "kind" => "query",
-                        "name" => "delimiter",
-                        "orig" => "delimiter",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "exclude",
-                        "orig" => "exclude",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "de",
-                        "kind" => "query",
-                        "name" => "lang",
-                        "orig" => "lang",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "refine",
-                        "orig" => "refine",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "where",
-                        "orig" => "where",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/catalog/datasets/ist-daten-sbb/exports/csv",
@@ -238,6 +203,54 @@ module SwissFederalRailwaysSbbConfig
                       "lit" => "csv",
                     },
                   ],
+                  "parts" => [
+                    "catalog",
+                    "datasets",
+                    "ist-daten-sbb",
+                    "exports",
+                    "csv",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "delimiter",
+                        "orig" => "delimiter",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => ";",
+                      },
+                      {
+                        "name" => "exclude",
+                        "orig" => "exclude",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "lang",
+                        "orig" => "lang",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "de",
+                      },
+                      {
+                        "name" => "refine",
+                        "orig" => "refine",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "where",
+                        "orig" => "where",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "$action" => "csv",
                     "exist" => [
@@ -248,17 +261,6 @@ module SwissFederalRailwaysSbbConfig
                       "where",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "catalog",
-                    "datasets",
-                    "ist-daten-sbb",
-                    "exports",
-                    "csv",
-                  ],
                 },
               ],
             },
@@ -270,89 +272,105 @@ module SwissFederalRailwaysSbbConfig
         "record" => {
           "fields" => [
             {
-              "format" => "date-time",
               "name" => "abfahrtszeit_ist",
+              "title" => "Abfahrtszeit Ist",
+              "type" => "`$STRING`",
               "short" => "Actual departure time",
-              "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
-              "format" => "date-time",
               "name" => "abfahrtszeit_soll",
+              "title" => "Abfahrtszeit Soll",
+              "type" => "`$STRING`",
               "short" => "Scheduled departure time",
-              "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
-              "format" => "date-time",
               "name" => "ankunftszeit_ist",
-              "short" => "Actual arrival time",
+              "title" => "Ankunftszeit Ist",
               "type" => "`$STRING`",
+              "short" => "Actual arrival time",
+              "format" => "date-time",
             },
             {
-              "format" => "date-time",
               "name" => "ankunftszeit_soll",
-              "short" => "Scheduled arrival time",
+              "title" => "Ankunftszeit Soll",
               "type" => "`$STRING`",
+              "short" => "Scheduled arrival time",
+              "format" => "date-time",
             },
             {
               "name" => "betreiber_id",
-              "short" => "Operator ID",
+              "title" => "Betreiber Id",
               "type" => "`$STRING`",
+              "short" => "Operator ID",
             },
             {
               "name" => "betreiber_name",
-              "short" => "Operator name",
+              "title" => "Betreiber Name",
               "type" => "`$STRING`",
+              "short" => "Operator name",
             },
             {
-              "format" => "date",
               "name" => "betriebstag",
-              "short" => "Operating day",
+              "title" => "Betriebstag",
               "type" => "`$STRING`",
+              "short" => "Operating day",
+              "format" => "date",
             },
             {
               "name" => "durchfahrt",
-              "short" => "Through passage (no stop)",
+              "title" => "Durchfahrt",
               "type" => "`$BOOLEAN`",
+              "short" => "Through passage (no stop)",
             },
             {
               "name" => "faellt_aus",
-              "short" => "Cancelled",
+              "title" => "Faellt Aus",
               "type" => "`$BOOLEAN`",
+              "short" => "Cancelled",
             },
             {
               "name" => "fahrt_bezeichner",
-              "short" => "Trip identifier",
+              "title" => "Fahrt Bezeichner",
               "type" => "`$STRING`",
+              "short" => "Trip identifier",
             },
             {
               "name" => "haltestellen_name",
-              "short" => "Station name",
+              "title" => "Haltestellen Name",
               "type" => "`$STRING`",
+              "short" => "Station name",
             },
             {
               "name" => "id",
-              "short" => "Unique record identifier",
+              "title" => "Id",
               "type" => "`$STRING`",
+              "short" => "Unique record identifier",
             },
             {
               "name" => "linien_id",
-              "short" => "Line ID",
+              "title" => "Linien Id",
               "type" => "`$STRING`",
+              "short" => "Line ID",
             },
             {
               "name" => "linien_text",
-              "short" => "Line text/number",
+              "title" => "Linien Text",
               "type" => "`$STRING`",
+              "short" => "Line text/number",
             },
             {
               "name" => "produkt_id",
-              "short" => "Product ID (train type)",
+              "title" => "Produkt Id",
               "type" => "`$STRING`",
+              "short" => "Product ID (train type)",
             },
             {
               "name" => "verkehrsmittel_text",
-              "short" => "Transport type",
+              "title" => "Verkehrsmittel Text",
               "type" => "`$STRING`",
+              "short" => "Transport type",
             },
           ],
           "id" => {
@@ -366,61 +384,6 @@ module SwissFederalRailwaysSbbConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "exclude",
-                        "orig" => "exclude",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => "de",
-                        "kind" => "query",
-                        "name" => "lang",
-                        "orig" => "lang",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "example" => 10,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => 0,
-                        "kind" => "query",
-                        "name" => "offset",
-                        "orig" => "offset",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "order_by",
-                        "orig" => "order_by",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "refine",
-                        "orig" => "refine",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "select",
-                        "orig" => "select",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "where",
-                        "orig" => "where",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/catalog/datasets/ist-daten-sbb/records",
@@ -438,6 +401,72 @@ module SwissFederalRailwaysSbbConfig
                       "lit" => "records",
                     },
                   ],
+                  "parts" => [
+                    "catalog",
+                    "datasets",
+                    "ist-daten-sbb",
+                    "records",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.results`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "exclude",
+                        "orig" => "exclude",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "lang",
+                        "orig" => "lang",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "example" => "de",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 10,
+                      },
+                      {
+                        "name" => "offset",
+                        "orig" => "offset",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 0,
+                      },
+                      {
+                        "name" => "order_by",
+                        "orig" => "order_by",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "refine",
+                        "orig" => "refine",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "select",
+                        "orig" => "select",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "where",
+                        "orig" => "where",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "exclude",
@@ -450,16 +479,6 @@ module SwissFederalRailwaysSbbConfig
                       "where",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.results`",
-                  },
-                  "parts" => [
-                    "catalog",
-                    "datasets",
-                    "ist-daten-sbb",
-                    "records",
-                  ],
                 },
               ],
             },

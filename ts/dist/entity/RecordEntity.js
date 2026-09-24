@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecordEntity = void 0;
 const SwissFederalRailwaysSbbEntityBase_1 = require("../SwissFederalRailwaysSbbEntityBase");
-// TODO: needs Entity superclass
 class RecordEntity extends SwissFederalRailwaysSbbEntityBase_1.SwissFederalRailwaysSbbEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

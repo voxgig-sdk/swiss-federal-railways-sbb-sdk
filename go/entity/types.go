@@ -1,7 +1,7 @@
 // Typed models for the SwissFederalRailwaysSbb SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -35,22 +35,6 @@ type ExportListMatch struct {
 
 // Record is the typed data model for the record entity.
 type Record struct {
-	AbfahrtszeitIst *string `json:"abfahrtszeit_ist,omitempty"`
-	AbfahrtszeitSoll *string `json:"abfahrtszeit_soll,omitempty"`
-	AnkunftszeitIst *string `json:"ankunftszeit_ist,omitempty"`
-	AnkunftszeitSoll *string `json:"ankunftszeit_soll,omitempty"`
-	BetreiberId *string `json:"betreiber_id,omitempty"`
-	BetreiberName *string `json:"betreiber_name,omitempty"`
-	Betriebstag *string `json:"betriebstag,omitempty"`
-	Durchfahrt *bool `json:"durchfahrt,omitempty"`
-	FaelltAus *bool `json:"faellt_aus,omitempty"`
-	FahrtBezeichner *string `json:"fahrt_bezeichner,omitempty"`
-	HaltestellenName *string `json:"haltestellen_name,omitempty"`
-	Id *string `json:"id,omitempty"`
-	LinienId *string `json:"linien_id,omitempty"`
-	LinienText *string `json:"linien_text,omitempty"`
-	ProduktId *string `json:"produkt_id,omitempty"`
-	VerkehrsmittelText *string `json:"verkehrsmittel_text,omitempty"`
 }
 
 // RecordListMatch is the typed request payload for Record.ListTyped.

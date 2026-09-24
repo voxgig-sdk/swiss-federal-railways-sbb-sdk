@@ -1,0 +1,245 @@
+# Entity: record
+
+main: kit: entity: record: {
+
+  alias: field: {}
+
+  fields: {
+    abfahrtszeit_ist: {
+      fo: "date-time"
+      h: "Abfahrtszeit Ist"
+      n: "abfahrtszeit_ist"
+      r: false
+      sh: "Actual departure time"
+      t: "`$STRING`"
+    }
+    abfahrtszeit_soll: {
+      fo: "date-time"
+      h: "Abfahrtszeit Soll"
+      n: "abfahrtszeit_soll"
+      r: false
+      sh: "Scheduled departure time"
+      t: "`$STRING`"
+    }
+    ankunftszeit_ist: {
+      fo: "date-time"
+      h: "Ankunftszeit Ist"
+      n: "ankunftszeit_ist"
+      r: false
+      sh: "Actual arrival time"
+      t: "`$STRING`"
+    }
+    ankunftszeit_soll: {
+      fo: "date-time"
+      h: "Ankunftszeit Soll"
+      n: "ankunftszeit_soll"
+      r: false
+      sh: "Scheduled arrival time"
+      t: "`$STRING`"
+    }
+    betreiber_id: {
+      h: "Betreiber Id"
+      n: "betreiber_id"
+      r: false
+      sh: "Operator ID"
+      t: "`$STRING`"
+    }
+    betreiber_name: {
+      h: "Betreiber Name"
+      n: "betreiber_name"
+      r: false
+      sh: "Operator name"
+      t: "`$STRING`"
+    }
+    betriebstag: {
+      fo: "date"
+      h: "Betriebstag"
+      n: "betriebstag"
+      r: false
+      sh: "Operating day"
+      t: "`$STRING`"
+    }
+    durchfahrt: {
+      h: "Durchfahrt"
+      n: "durchfahrt"
+      r: false
+      sh: "Through passage (no stop)"
+      t: "`$BOOLEAN`"
+    }
+    faellt_aus: {
+      h: "Faellt Aus"
+      n: "faellt_aus"
+      r: false
+      sh: "Cancelled"
+      t: "`$BOOLEAN`"
+    }
+    fahrt_bezeichner: {
+      h: "Fahrt Bezeichner"
+      n: "fahrt_bezeichner"
+      r: false
+      sh: "Trip identifier"
+      t: "`$STRING`"
+    }
+    haltestellen_name: {
+      h: "Haltestellen Name"
+      n: "haltestellen_name"
+      r: false
+      sh: "Station name"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique record identifier"
+      t: "`$STRING`"
+    }
+    linien_id: {
+      h: "Linien Id"
+      n: "linien_id"
+      r: false
+      sh: "Line ID"
+      t: "`$STRING`"
+    }
+    linien_text: {
+      h: "Linien Text"
+      n: "linien_text"
+      r: false
+      sh: "Line text/number"
+      t: "`$STRING`"
+    }
+    produkt_id: {
+      h: "Produkt Id"
+      n: "produkt_id"
+      r: false
+      sh: "Product ID (train type)"
+      t: "`$STRING`"
+    }
+    verkehrsmittel_text: {
+      h: "Verkehrsmittel Text"
+      n: "verkehrsmittel_text"
+      r: false
+      sh: "Transport type"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "record"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /catalog/datasets/ist-daten-sbb/records"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "exclude"
+                or: "exclude"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "de"
+                k: "query"
+                n: "lang"
+                or: "lang"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "refine"
+                or: "refine"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "select"
+                or: "select"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "where"
+                or: "where"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/catalog/datasets/ist-daten-sbb/records"
+          q: {
+            exist: [
+              "exclude"
+              "lang"
+              "limit"
+              "offset"
+              "order_by"
+              "refine"
+              "select"
+              "where"
+            ]
+          }
+          s: [
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "datasets"
+            }
+            {
+              lit: "ist-daten-sbb"
+            }
+            {
+              lit: "records"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -19,7 +19,6 @@ import type {
   RecordListMatch,
 } from '../SwissFederalRailwaysSbbTypes'
 
-// TODO: needs Entity superclass
 class RecordEntity extends SwissFederalRailwaysSbbEntityBase<RecordType> {
 
   constructor(client: SwissFederalRailwaysSbbSDK, entopts: any) {
