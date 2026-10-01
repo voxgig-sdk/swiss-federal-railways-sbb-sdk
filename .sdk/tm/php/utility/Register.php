@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 SwissFederalRailwaysSbbUtility::setRegistrar(function (SwissFederalRailwaysSbbUtility $u): void {
     $u->clean = [SwissFederalRailwaysSbbClean::class, 'call'];
+    $u->clean_add = [SwissFederalRailwaysSbbClean::class, 'add'];
+    $u->clean_explain = [SwissFederalRailwaysSbbDone::class, 'clean_explain'];
     $u->done = [SwissFederalRailwaysSbbDone::class, 'call'];
     $u->make_error = [SwissFederalRailwaysSbbMakeError::class, 'call'];
     $u->feature_add = [SwissFederalRailwaysSbbFeatureAdd::class, 'call'];

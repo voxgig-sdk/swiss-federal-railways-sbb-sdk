@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 SwissFederalRailwaysSbbUtility.registrar = ->(u) {
   u.clean = SwissFederalRailwaysSbbUtilities::Clean
+  u.clean_add = SwissFederalRailwaysSbbUtilities::CleanAdd
+  u.clean_explain = SwissFederalRailwaysSbbUtilities::CleanExplain
   u.done = SwissFederalRailwaysSbbUtilities::Done
   u.make_error = SwissFederalRailwaysSbbUtilities::MakeError
   u.feature_add = SwissFederalRailwaysSbbUtilities::FeatureAdd
