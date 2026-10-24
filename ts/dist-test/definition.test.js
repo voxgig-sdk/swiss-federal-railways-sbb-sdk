@@ -18,16 +18,38 @@ const PLAN = [
         "args": [],
         "select": {
             "exclude": "v1",
-            "lang": "v1",
+            "lang": "de",
             "refine": "v1",
             "where": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "where",
             "refine",
             "exclude",
             "lang"
+        ],
+        "queryArgs": [
+            {
+                "name": "exclude",
+                "wire": "exclude"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            },
+            {
+                "name": "refine",
+                "wire": "refine"
+            },
+            {
+                "name": "where",
+                "wire": "where"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -45,19 +67,45 @@ const PLAN = [
         "action": "csv",
         "args": [],
         "select": {
-            "delimiter": "v1",
+            "delimiter": ";",
             "exclude": "v1",
-            "lang": "v1",
+            "lang": "de",
             "refine": "v1",
             "where": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "text/csv"
+        ],
         "query": [
             "where",
             "refine",
             "exclude",
             "delimiter",
             "lang"
+        ],
+        "queryArgs": [
+            {
+                "name": "delimiter",
+                "wire": "delimiter"
+            },
+            {
+                "name": "exclude",
+                "wire": "exclude"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            },
+            {
+                "name": "refine",
+                "wire": "refine"
+            },
+            {
+                "name": "where",
+                "wire": "where"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -73,15 +121,19 @@ const PLAN = [
         "args": [],
         "select": {
             "exclude": "v1",
-            "lang": "v1",
-            "limit": "v1",
-            "offset": "v1",
+            "lang": "de",
+            "limit": 10,
+            "offset": 0,
             "order_by": "v1",
             "refine": "v1",
             "select": "v1",
             "where": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset",
@@ -92,28 +144,62 @@ const PLAN = [
             "exclude",
             "lang"
         ],
+        "queryArgs": [
+            {
+                "name": "exclude",
+                "wire": "exclude"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            },
+            {
+                "name": "order_by",
+                "wire": "order_by"
+            },
+            {
+                "name": "refine",
+                "wire": "refine"
+            },
+            {
+                "name": "select",
+                "wire": "select"
+            },
+            {
+                "name": "where",
+                "wire": "where"
+            }
+        ],
         "auth": null,
         "status": 200,
         "sample": {
             "total_count": 1,
             "results": [
                 {
-                    "abfahrtszeit_ist": "2026-01-01T00:00:00Z",
-                    "abfahrtszeit_soll": "2026-01-01T00:00:00Z",
-                    "ankunftszeit_ist": "2026-01-01T00:00:00Z",
-                    "ankunftszeit_soll": "2026-01-01T00:00:00Z",
+                    "id": "x",
+                    "betriebstag": "2026-01-01",
+                    "fahrt_bezeichner": "x",
                     "betreiber_id": "x",
                     "betreiber_name": "x",
-                    "betriebstag": "2026-01-01",
-                    "durchfahrt": true,
-                    "faellt_aus": true,
-                    "fahrt_bezeichner": "x",
-                    "haltestellen_name": "x",
-                    "id": "x",
+                    "produkt_id": "x",
                     "linien_id": "x",
                     "linien_text": "x",
-                    "produkt_id": "x",
-                    "verkehrsmittel_text": "x"
+                    "verkehrsmittel_text": "x",
+                    "haltestellen_name": "x",
+                    "ankunftszeit_soll": "2026-01-01T00:00:00Z",
+                    "ankunftszeit_ist": "2026-01-01T00:00:00Z",
+                    "abfahrtszeit_soll": "2026-01-01T00:00:00Z",
+                    "abfahrtszeit_ist": "2026-01-01T00:00:00Z",
+                    "durchfahrt": true,
+                    "faellt_aus": true
                 }
             ]
         },

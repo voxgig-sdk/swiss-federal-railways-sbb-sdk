@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -175,13 +176,11 @@ class Config {
                                 ]
                             },
                             "select": {
-                                "$action": "json",
-                                "exist": [
-                                    "exclude",
-                                    "lang",
-                                    "refine",
-                                    "where"
-                                ]
+                                "$action": "json"
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -260,14 +259,11 @@ class Config {
                                 ]
                             },
                             "select": {
-                                "$action": "csv",
-                                "exist": [
-                                    "delimiter",
-                                    "exclude",
-                                    "lang",
-                                    "refine",
-                                    "where"
-                                ]
+                                "$action": "csv"
+                            },
+                            "response": {
+                                "kind": "raw",
+                                "media": "text/csv"
                             }
                         }
                     ]
@@ -475,17 +471,10 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "exclude",
-                                    "lang",
-                                    "limit",
-                                    "offset",
-                                    "order_by",
-                                    "refine",
-                                    "select",
-                                    "where"
-                                ]
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]

@@ -52,12 +52,10 @@ main: kit: entity: export: {
           o: "/catalog/datasets/ist-daten-sbb/exports/json"
           q: {
             "$action": "json"
-            exist: [
-              "exclude"
-              "lang"
-              "refine"
-              "where"
-            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -137,13 +135,10 @@ main: kit: entity: export: {
           o: "/catalog/datasets/ist-daten-sbb/exports/csv"
           q: {
             "$action": "csv"
-            exist: [
-              "delimiter"
-              "exclude"
-              "lang"
-              "refine"
-              "where"
-            ]
+          }
+          rs: {
+            kind: "raw"
+            media: "text/csv"
           }
           s: [
             {

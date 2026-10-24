@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -185,12 +186,10 @@ def make_config():
                 },
                 "select": {
                   "$action": "json",
-                  "exist": [
-                    "exclude",
-                    "lang",
-                    "refine",
-                    "where",
-                  ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -270,13 +269,10 @@ def make_config():
                 },
                 "select": {
                   "$action": "csv",
-                  "exist": [
-                    "delimiter",
-                    "exclude",
-                    "lang",
-                    "refine",
-                    "where",
-                  ],
+                },
+                "response": {
+                  "kind": "raw",
+                  "media": "text/csv",
                 },
               },
             ],
@@ -484,17 +480,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "exclude",
-                    "lang",
-                    "limit",
-                    "offset",
-                    "order_by",
-                    "refine",
-                    "select",
-                    "where",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

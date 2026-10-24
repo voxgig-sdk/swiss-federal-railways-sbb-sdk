@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Export();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('export hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.SwissFederalRailwaysSbbSDK.test(offline).Export().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.SwissFederalRailwaysSbbSDK.test(offline).Export()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.SwissFederalRailwaysSbbSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Export().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.SwissFederalRailwaysSbbSDK.test().Export().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.SwissFederalRailwaysSbbSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Export().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Export().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.SwissFederalRailwaysSbbSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Export().list({ "exclude": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.SWISS_FEDERAL_RAILWAYS_SBB_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "export", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /catalog/datasets/ist-daten-sbb/exports/json", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "exclude", "or": "exclude", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "de", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "k": "query", "n": "refine", "or": "refine", "r": false, "t": "`$STRING`", "index$": 2 }, { "a": true, "k": "query", "n": "where", "or": "where", "r": false, "t": "`$STRING`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/catalog/datasets/ist-daten-sbb/exports/json", "q": { "$action": "json", "exist": ["exclude", "lang", "refine", "where"] }, "r": {}, "s": [{ "lit": "catalog" }, { "lit": "datasets" }, { "lit": "ist-daten-sbb" }, { "lit": "exports" }, { "lit": "json" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /catalog/datasets/ist-daten-sbb/exports/csv", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": ";", "k": "query", "n": "delimiter", "or": "delimiter", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "exclude", "or": "exclude", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "de", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 2 }, { "a": true, "k": "query", "n": "refine", "or": "refine", "r": false, "t": "`$STRING`", "index$": 3 }, { "a": true, "k": "query", "n": "where", "or": "where", "r": false, "t": "`$STRING`", "index$": 4 }] }, "k": "http", "m": "GET", "o": "/catalog/datasets/ist-daten-sbb/exports/csv", "q": { "$action": "csv", "exist": ["delimiter", "exclude", "lang", "refine", "where"] }, "r": {}, "s": [{ "lit": "catalog" }, { "lit": "datasets" }, { "lit": "ist-daten-sbb" }, { "lit": "exports" }, { "lit": "csv" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "export", "name__orig": "export", "Name": "Export", "name_": "export", "name-": "export", "NAME": "EXPORT", "index$": 0 }, { "active": true, "entity": "export", "key$": "BasicExportFlow", "kind": "basic", "name": "BasicExportFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "export_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "export_ref01", "srcdatavar": "export_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-export_ref01" } }], "index$": 1 }] }, 'Export', { "GET /catalog/datasets/ist-daten-sbb/exports/json": { "protocol": "http", "parameters": [{ "name": "where", "in": "query", "description": "Filter expression for export", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "refine", "in": "query", "description": "Refine export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 1 }, { "name": "exclude", "in": "query", "description": "Exclude from export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 2 }, { "name": "lang", "in": "query", "description": "Language for export (de, fr, it, en)", "required": false, "schema": { "type": "string", "enum": ["de", "fr", "it", "en"], "default": "de" }, "index$": 3 }] }, "GET /catalog/datasets/ist-daten-sbb/exports/csv": { "protocol": "http", "parameters": [{ "name": "where", "in": "query", "description": "Filter expression for export", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "refine", "in": "query", "description": "Refine export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 1 }, { "name": "exclude", "in": "query", "description": "Exclude from export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 2 }, { "name": "delimiter", "in": "query", "description": "CSV delimiter character", "required": false, "schema": { "type": "string", "enum": [",", ";", "\t"], "default": ";" }, "index$": 3 }, { "name": "lang", "in": "query", "description": "Language for export (de, fr, it, en)", "required": false, "schema": { "type": "string", "enum": ["de", "fr", "it", "en"], "default": "de" }, "index$": 4 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "export", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /catalog/datasets/ist-daten-sbb/exports/json", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "k": "query", "n": "exclude", "or": "exclude", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "de", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "k": "query", "n": "refine", "or": "refine", "r": false, "t": "`$STRING`", "index$": 2 }, { "a": true, "k": "query", "n": "where", "or": "where", "r": false, "t": "`$STRING`", "index$": 3 }] }, "k": "http", "m": "GET", "o": "/catalog/datasets/ist-daten-sbb/exports/json", "q": { "$action": "json" }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "catalog" }, { "lit": "datasets" }, { "lit": "ist-daten-sbb" }, { "lit": "exports" }, { "lit": "json" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /catalog/datasets/ist-daten-sbb/exports/csv", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": ";", "k": "query", "n": "delimiter", "or": "delimiter", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "query", "n": "exclude", "or": "exclude", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "de", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 2 }, { "a": true, "k": "query", "n": "refine", "or": "refine", "r": false, "t": "`$STRING`", "index$": 3 }, { "a": true, "k": "query", "n": "where", "or": "where", "r": false, "t": "`$STRING`", "index$": 4 }] }, "k": "http", "m": "GET", "o": "/catalog/datasets/ist-daten-sbb/exports/csv", "q": { "$action": "csv" }, "r": {}, "rs": { "kind": "raw", "media": "text/csv" }, "s": [{ "lit": "catalog" }, { "lit": "datasets" }, { "lit": "ist-daten-sbb" }, { "lit": "exports" }, { "lit": "csv" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "export", "name__orig": "export", "Name": "Export", "name_": "export", "name-": "export", "NAME": "EXPORT", "index$": 0 }, { "active": true, "entity": "export", "key$": "BasicExportFlow", "kind": "basic", "name": "BasicExportFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "export_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "export_ref01", "srcdatavar": "export_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-export_ref01" } }], "index$": 1 }] }, 'Export', { "GET /catalog/datasets/ist-daten-sbb/exports/json": { "protocol": "http", "parameters": [{ "name": "where", "in": "query", "description": "Filter expression for export", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "refine", "in": "query", "description": "Refine export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 1 }, { "name": "exclude", "in": "query", "description": "Exclude from export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 2 }, { "name": "lang", "in": "query", "description": "Language for export (de, fr, it, en)", "required": false, "schema": { "type": "string", "enum": ["de", "fr", "it", "en"], "default": "de" }, "index$": 3 }] }, "GET /catalog/datasets/ist-daten-sbb/exports/csv": { "protocol": "http", "parameters": [{ "name": "where", "in": "query", "description": "Filter expression for export", "required": false, "schema": { "type": "string" }, "index$": 0 }, { "name": "refine", "in": "query", "description": "Refine export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 1 }, { "name": "exclude", "in": "query", "description": "Exclude from export by specific field values", "required": false, "schema": { "type": "string" }, "index$": 2 }, { "name": "delimiter", "in": "query", "description": "CSV delimiter character", "required": false, "schema": { "type": "string", "enum": [",", ";", "\t"], "default": ";" }, "index$": 3 }, { "name": "lang", "in": "query", "description": "Language for export (de, fr, it, en)", "required": false, "schema": { "type": "string", "enum": ["de", "fr", "it", "en"], "default": "de" }, "index$": 4 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -79,6 +126,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != export_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // SwissFederalRailwaysSbb SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class SwissFederalRailwaysSbbPrepareBody
 {
     public static function call(SwissFederalRailwaysSbbContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (SwissFederalRailwaysSbbMedia::isRawRequest($ctx->point)) {
+                return SwissFederalRailwaysSbbMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

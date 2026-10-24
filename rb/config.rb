@@ -79,6 +79,7 @@ module SwissFederalRailwaysSbbConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -168,12 +169,10 @@ module SwissFederalRailwaysSbbConfig
                   },
                   "select" => {
                     "$action" => "json",
-                    "exist" => [
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where",
-                    ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -253,13 +252,10 @@ module SwissFederalRailwaysSbbConfig
                   },
                   "select" => {
                     "$action" => "csv",
-                    "exist" => [
-                      "delimiter",
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where",
-                    ],
+                  },
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/csv",
                   },
                 },
               ],
@@ -467,17 +463,10 @@ module SwissFederalRailwaysSbbConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "exclude",
-                      "lang",
-                      "limit",
-                      "offset",
-                      "order_by",
-                      "refine",
-                      "select",
-                      "where",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

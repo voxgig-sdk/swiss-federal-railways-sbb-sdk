@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -160,12 +161,10 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"$action": "json",
-									"exist": []any{
-										"exclude",
-										"lang",
-										"refine",
-										"where",
-									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -245,13 +244,10 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"$action": "csv",
-									"exist": []any{
-										"delimiter",
-										"exclude",
-										"lang",
-										"refine",
-										"where",
-									},
+								},
+								"response": map[string]any{
+									"kind": "raw",
+									"media": "text/csv",
 								},
 							},
 						},
@@ -459,17 +455,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"exclude",
-										"lang",
-										"limit",
-										"offset",
-										"order_by",
-										"refine",
-										"select",
-										"where",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

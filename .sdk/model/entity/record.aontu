@@ -205,17 +205,9 @@ main: kit: entity: record: {
           }
           m: "GET"
           o: "/catalog/datasets/ist-daten-sbb/records"
-          q: {
-            exist: [
-              "exclude"
-              "lang"
-              "limit"
-              "offset"
-              "order_by"
-              "refine"
-              "select"
-              "where"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

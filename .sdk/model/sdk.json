@@ -151,15 +151,13 @@
                   "m": "GET",
                   "o": "/catalog/datasets/ist-daten-sbb/exports/json",
                   "q": {
-                    "$action": "json",
-                    "exist": [
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where"
-                    ]
+                    "$action": "json"
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "catalog"
@@ -245,16 +243,13 @@
                   "m": "GET",
                   "o": "/catalog/datasets/ist-daten-sbb/exports/csv",
                   "q": {
-                    "$action": "csv",
-                    "exist": [
-                      "delimiter",
-                      "exclude",
-                      "lang",
-                      "refine",
-                      "where"
-                    ]
+                    "$action": "csv"
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "raw",
+                    "media": "text/csv"
+                  },
                   "s": [
                     {
                       "lit": "catalog"
@@ -515,19 +510,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/catalog/datasets/ist-daten-sbb/records",
-                  "q": {
-                    "exist": [
-                      "exclude",
-                      "lang",
-                      "limit",
-                      "offset",
-                      "order_by",
-                      "refine",
-                      "select",
-                      "where"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "catalog"
@@ -877,6 +865,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -1063,7 +1052,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1116,6 +1105,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1346,7 +1340,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1723,6 +1720,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

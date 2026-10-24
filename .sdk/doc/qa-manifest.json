@@ -3,5 +3,19 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Actual arrival time",
+      "Actual departure time",
+      "CSV export file",
+      "JSON export file",
+      "Operator ID",
+      "SBB Open Data API Server",
+      "Scheduled arrival time",
+      "Scheduled departure time",
+      "Successful response with SBB departure/arrival records",
+      "This API provides departure, delay, and cancellation data from the Swiss Federal Railways (SBB) for the previous day. It compares scheduled (soll) vs. actual (ist) operations."
+    ]
+  }
 }
